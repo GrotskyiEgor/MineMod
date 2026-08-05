@@ -1,6 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "ompetition:block/flower_dark"
-  }
-}
