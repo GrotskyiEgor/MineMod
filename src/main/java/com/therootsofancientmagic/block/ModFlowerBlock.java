@@ -10,12 +10,13 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
-
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 
 import net.minecraft.util.Identifier;
 import net.minecraft.entity.effect.StatusEffects;
+
+// import net.minecraft.item.ItemStack;
 
 public class ModFlowerBlock {
     public static void RenderFlowers() {
@@ -38,6 +39,8 @@ public class ModFlowerBlock {
                 .nonOpaque()
         )
     );
+
+    // public static final Block FLOWER_DARK_POT
 
     public static final Block FLOWER_LIGHT = registerBlock(
         "flower_light",
@@ -113,6 +116,12 @@ public class ModFlowerBlock {
         );
 
         return block;
+    }
+
+    // ItemStack
+    private static void createSuspiciousStew(StatusEffects effect, int durationInTicks){
+        // 
+        System.err.println("createSuspiciousStew");
     }
 
     public static void registerModBlocks(){

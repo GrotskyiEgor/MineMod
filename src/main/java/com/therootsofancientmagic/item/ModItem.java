@@ -40,6 +40,12 @@ public class ModItem{
         new Item(new Item.Settings())
     );
 
+    public static final Item FIRE_STAFF = registerItem(
+        "fire_staff",
+        new Item(new Item.Settings())
+    );
+
+
     // public static final Item FLOWER_AQUA = registerItem(
     //     "flower_aqua",
     //     new Item(new Item.Settings())
@@ -86,6 +92,8 @@ public class ModItem{
             entries.add(ESSENCE_EARTH);
             entries.add(ESSENCE_LIGHT);
             entries.add(ESSENCE_DARK);
+
+            entries.add(FIRE_STAFF);
         });
     }
 }
