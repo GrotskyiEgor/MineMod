@@ -10,9 +10,8 @@ import net.minecraft.util.Identifier;
 
 public class ModBlockEntities {
     public static final BlockEntityType<FurnacePowderBlockEntity> FURNACE_POWDER_BLOCK_ENTITY =
-            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(TheRootsOfAncientMagic.MOD_ID, "gem_polishing_be"),
-                    FabricBlockEntityTypeBuilder.create(FurnacePowderBlockEntity::new,
-                            ModBlock.FURNACE_POWDER).build());
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(TheRootsOfAncientMagic.MOD_ID, "furnace_powder_be"),
+                    FabricBlockEntityTypeBuilder.create(FurnacePowderBlockEntity::new, ModBlock.FURNACE_POWDER).build());
 
     public static void registerBlockEntities() {
         TheRootsOfAncientMagic.LOGGER.info("Registering Block Entities for " + TheRootsOfAncientMagic.MOD_ID);

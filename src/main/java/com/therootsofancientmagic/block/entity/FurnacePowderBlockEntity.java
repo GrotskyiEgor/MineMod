@@ -72,7 +72,7 @@ public class FurnacePowderBlockEntity extends BlockEntity implements ExtendedScr
 
     @Override
     public Text getDisplayName() {
-        return Text.literal("Gem Polishing Station");
+        return Text.literal("Furnace Powder");
     }
 
     @Override
@@ -84,14 +84,14 @@ public class FurnacePowderBlockEntity extends BlockEntity implements ExtendedScr
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
         Inventories.writeNbt(nbt, inventory);
-        nbt.putInt("gem_polishing_station.progress", progress);
+        nbt.putInt("furnace_powder.progress", progress);
     }
 
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
         Inventories.readNbt(nbt, inventory);
-        progress = nbt.getInt("gem_polishing_station.progress");
+        progress = nbt.getInt("furnace_powder.progress");
     }
 
     @Nullable
@@ -144,7 +144,24 @@ public class FurnacePowderBlockEntity extends BlockEntity implements ExtendedScr
 
     private boolean hasRecipe() {
         ItemStack result = new ItemStack(ModItem.ESSENCE_FIRE);
-        boolean hasInput = getStack(INPUT_SLOT).getItem() == ModFlowerBlock.FLOWER_FIRE.asItem();
+        boolean hasInput = getStack(INPUT_SLOT).getItem() == ModFlowerBlock.FLOWER_FIRE.asItem()
+            || getStack(INPUT_SLOT).getItem() == ModFlowerBlock.FLOWER_AQUA.asItem()
+            || getStack(INPUT_SLOT).getItem() == ModFlowerBlock.FLOWER_WEED.asItem()
+            || getStack(INPUT_SLOT).getItem() == ModFlowerBlock.FLOWER_EARTH.asItem()
+            || getStack(INPUT_SLOT).getItem() == ModFlowerBlock.FLOWER_DARK.asItem()
+            || getStack(INPUT_SLOT).getItem() == ModFlowerBlock.FLOWER_LIGHT.asItem();
+        
+        if (getStack(INPUT_SLOT).getItem() == ModFlowerBlock.FLOWER_AQUA.asItem()) {
+            result = new ItemStack(ModItem.ESSENCE_AQUA);
+        } else if (getStack(INPUT_SLOT).getItem() == ModFlowerBlock.FLOWER_WEED.asItem()) {
+            result = new ItemStack(ModItem.ESSENCE_WEED);
+        } else if (getStack(INPUT_SLOT).getItem() == ModFlowerBlock.FLOWER_EARTH.asItem()) {
+            result = new ItemStack(ModItem.ESSENCE_EARTH);
+        } else if (getStack(INPUT_SLOT).getItem() == ModFlowerBlock.FLOWER_DARK.asItem()) {
+            result = new ItemStack(ModItem.ESSENCE_DARK);
+        } else if (getStack(INPUT_SLOT).getItem() == ModFlowerBlock.FLOWER_LIGHT.asItem()) {
+            result = new ItemStack(ModItem.ESSENCE_LIGHT);
+        }
 
         return hasInput && canInsertAmountIntoOutputSlot(result) && canInsertItemIntoOutputSlot(result.getItem());
     }

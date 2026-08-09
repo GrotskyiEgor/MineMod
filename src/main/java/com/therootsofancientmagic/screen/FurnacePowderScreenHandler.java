@@ -24,8 +24,7 @@ public class FurnacePowderScreenHandler extends ScreenHandler {
                 new ArrayPropertyDelegate(2));
     }
 
-    public FurnacePowderScreenHandler(int syncId, PlayerInventory playerInventory,
-                                     BlockEntity blockEntity, PropertyDelegate arrayPropertyDelegate) {
+    public FurnacePowderScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity, PropertyDelegate arrayPropertyDelegate) {
         super(ModScreenHandlers.FURNACE_POWDER_SCREEN_HANDLER, syncId);
         checkSize(((Inventory) blockEntity), 2);
         this.inventory = ((Inventory) blockEntity);

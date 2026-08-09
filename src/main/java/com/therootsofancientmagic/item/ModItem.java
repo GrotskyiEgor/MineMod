@@ -2,6 +2,8 @@ package com.therootsofancientmagic.item;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
+import net.minecraft.item.PickaxeItem;
+import net.minecraft.item.ToolMaterials;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 
 import net.minecraft.registry.Registries;
@@ -45,37 +47,11 @@ public class ModItem{
         new Item(new Item.Settings())
     );
 
-
-    // public static final Item FLOWER_AQUA = registerItem(
-    //     "flower_aqua",
-    //     new Item(new Item.Settings())
-    // );
-    
-    // public static final Item FLOWER_FIRE = registerItem(
-    //     "flower_fire",
-    //     new Item(new Item.Settings())
+    // public static final Item FIRE_PICKAXE = registerItem(
+    //     "fire_pickaxe", 
+    //     new PickaxeItem(ModToolMaterials.ESSENCE_FIRE, 1, -2.8f, new Item.Settings())
     // );
 
-    // public static final Item FLOWER_WEED = registerItem(
-    //     "flower_weed",
-    //     new Item(new Item.Settings())
-    // );
-    
-    // public static final Item FLOWER_EARTH = registerItem(
-    //     "flower_earth",
-    //     new Item(new Item.Settings())
-    // );
-
-    // public static final Item FLOWER_LIGHT = registerItem(
-    //     "flower_light",
-    //     new Item(new Item.Settings())
-    // );
-    
-    // public static final Item FLOWER_DARK = registerItem(
-    //     "flower_dark",
-    //     new Item(new Item.Settings())
-    // );
-    
     public static Item registerItem(String name, Item item){
         return Registry.register(
             Registries.ITEM, 
