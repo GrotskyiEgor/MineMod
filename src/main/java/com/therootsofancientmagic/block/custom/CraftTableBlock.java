@@ -1,6 +1,6 @@
 package com.therootsofancientmagic.block.custom;
 
-import com.therootsofancientmagic.block.entity.FurnacePowderBlockEntity;
+import com.therootsofancientmagic.block.entity.CraftTableBlockEntity;
 import com.therootsofancientmagic.block.entity.ModBlockEntities;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -18,17 +18,17 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class FurnacePowderStationBlock extends BlockWithEntity implements BlockEntityProvider {
-    private static final VoxelShape SHAPE = Block.createCuboidShape(0, 0, 0, 16, 16, 16);
+public class CraftTableBlock extends BlockWithEntity implements BlockEntityProvider {
+    // private static final VoxelShape SHAPE = Block.createCuboidShape(0, 0, 0, 16, 16, 16);
 
-    public FurnacePowderStationBlock(Settings settings) {
+    public CraftTableBlock(Settings settings) {
         super(settings);
     }
 
-    @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return SHAPE;  
-    }
+    // @Override
+    // public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+    //     return SHAPE;
+    // }
 
     @Override
     public BlockRenderType getRenderType(BlockState state) {
@@ -38,15 +38,15 @@ public class FurnacePowderStationBlock extends BlockWithEntity implements BlockE
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new FurnacePowderBlockEntity(pos, state);
+        return new CraftTableBlockEntity(pos, state);
     }
 
     @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof FurnacePowderBlockEntity) {
-                ItemScatterer.spawn(world, pos, (FurnacePowderBlockEntity)blockEntity);
+            if (blockEntity instanceof CraftTableBlockEntity) {
+                ItemScatterer.spawn(world, pos, (CraftTableBlockEntity)blockEntity);
                 world.updateComparators(pos,this);
             }
             super.onStateReplaced(state, world, pos, newState, moved);
@@ -56,7 +56,7 @@ public class FurnacePowderStationBlock extends BlockWithEntity implements BlockE
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient) {
-            NamedScreenHandlerFactory screenHandlerFactory = ((FurnacePowderBlockEntity) world.getBlockEntity(pos));
+            NamedScreenHandlerFactory screenHandlerFactory = ((CraftTableBlockEntity) world.getBlockEntity(pos));
 
             if (screenHandlerFactory != null) {
                 player.openHandledScreen(screenHandlerFactory);
@@ -66,10 +66,10 @@ public class FurnacePowderStationBlock extends BlockWithEntity implements BlockE
         return ActionResult.SUCCESS;
     }
 
-    @Nullable
-    @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ModBlockEntities.FURNACE_POWDER_BLOCK_ENTITY,
-                (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1));
-    }
+    // @Nullable
+    // @Override
+    // public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+    //     return checkType(type, ModBlockEntities.CRAFT_TABLE_BLOCK_ENTITY,
+    //             (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1));
+    // }
 }

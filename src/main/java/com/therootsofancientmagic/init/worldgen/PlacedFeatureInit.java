@@ -3,6 +3,7 @@ package com.therootsofancientmagic.init.worldgen;
 import java.util.List;
 
 import com.therootsofancientmagic.TheRootsOfAncientMagic;
+import com.therootsofancientmagic.block.ModFlowerBlock;
 
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
@@ -11,10 +12,13 @@ import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.PlacedFeatures;
+import net.minecraft.world.gen.feature.RandomPatchFeatureConfig;
+import net.minecraft.world.gen.feature.SimpleBlockFeatureConfig;
 import net.minecraft.world.gen.placementmodifier.BiomePlacementModifier;
 import net.minecraft.world.gen.placementmodifier.PlacementModifier;
 import net.minecraft.world.gen.placementmodifier.RarityFilterPlacementModifier;
 import net.minecraft.world.gen.placementmodifier.SquarePlacementModifier;
+import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 
 public class PlacedFeatureInit {
 
@@ -55,69 +59,63 @@ public class PlacedFeatureInit {
                     TheRootsOfAncientMagic.id("flower_aqua_placed")
             );
 
-    public static void bootstrap(Registerable<PlacedFeature> context) {
+    public static final List<RegistryKey<PlacedFeature>> FLOWERS_KEYS = List.of(
+        FLOWER_DARK_PLACED_KEY, 
+        FLOWER_LIGHT_PLACED_KEY, 
+        FLOWER_WEED_PLACED_KEY, 
+        FLOWER_EARTH_PLACED_KEY, 
+        FLOWER_FIRE_PLACED_KEY, 
+        FLOWER_AQUA_PLACED_KEY
+    );
 
-        RegistryEntry<ConfiguredFeature<?, ?>> configuredFeatureEntry =
-                context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE)
-                        .getOrThrow(
-                                ConfigureFeatureInit.FLOWER_DARK_KEY
-                        );
+    private static RegistryKey<ConfiguredFeature<?, ?>> getKeyForKeconfiguredFeatureEntry(RegistryKey<PlacedFeature> key) {
+        String path = key.getValue().getPath();
 
+        return switch(path) {
+                case "flower_dark_placed" -> ConfigureFeatureInit.FLOWER_DARK_KEY;
+                case "flower_light_placed" -> ConfigureFeatureInit.FLOWER_LIGHT_KEY;
+                case "flower_weed_placed" -> ConfigureFeatureInit.FLOWER_WEED_KEY;
+                case "flower_earth_placed" -> ConfigureFeatureInit.FLOWER_EARTH_KEY;
+                case "flower_fire_placed" -> ConfigureFeatureInit.FLOWER_FIRE_KEY;
+                case "flower_aqua_placed" -> ConfigureFeatureInit.FLOWER_AQUA_KEY;
+                default -> throw new IllegalArgumentException("Unknown flower patch");
+        };
+    }
+    
+    private static RegistryEntry<ConfiguredFeature<?, ?>> getConfiguredFeatureEntry(
+            Registerable<PlacedFeature> context, 
+            RegistryKey<ConfiguredFeature<?, ?>> configuredKey) {
+        
+        return context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE)
+                .getOrThrow(configuredKey);
+    }
+
+    private static List<PlacementModifier> getModifiers() {
         List<PlacementModifier> modifiers = List.of(
                 RarityFilterPlacementModifier.of(16),
                 SquarePlacementModifier.of(),
                 PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
                 BiomePlacementModifier.of()
-        );
+        ); 
 
-        context.register(
-                FLOWER_DARK_PLACED_KEY,
-                new PlacedFeature(
-                        configuredFeatureEntry,
-                        modifiers
-                )
-        );
+        return modifiers;
+    }
 
-        context.register(
-                FLOWER_LIGHT_PLACED_KEY,
-                new PlacedFeature(
-                        configuredFeatureEntry,
-                        modifiers
-                )
-        );
+    public static void bootstrap(Registerable<PlacedFeature> context) {
 
-        context.register(
-                FLOWER_WEED_PLACED_KEY,
-                new PlacedFeature(
-                        configuredFeatureEntry,
-                        modifiers
-                )
-        );
+        List<PlacementModifier> modifiers = getModifiers();
 
-
-        context.register(
-                FLOWER_EARTH_PLACED_KEY,
-                new PlacedFeature(
-                        configuredFeatureEntry,
-                        modifiers
-                )
-        );
-
-
-        context.register(
-                FLOWER_FIRE_PLACED_KEY,
-                new PlacedFeature(
-                        configuredFeatureEntry,
-                        modifiers
-                )
-        );
-
-        context.register(
-                FLOWER_AQUA_PLACED_KEY,
-                new PlacedFeature(
-                        configuredFeatureEntry,
-                        modifiers
-                )
-        );
+        for (RegistryKey<PlacedFeature> placeKey : FLOWERS_KEYS) {
+                RegistryKey<ConfiguredFeature<?, ?>> configuredKey = getKeyForKeconfiguredFeatureEntry(placeKey);
+                RegistryEntry<ConfiguredFeature<?, ?>> configuredFeatureEntry = getConfiguredFeatureEntry(context, configuredKey);
+        
+                context.register(
+                        placeKey,
+                        new PlacedFeature(
+                                configuredFeatureEntry,
+                                modifiers
+                        )
+                );
+        }
     }
 }

@@ -8,6 +8,7 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.AbstractBlock;
 
 import com.therootsofancientmagic.block.custom.FurnacePowderBlock;
+import com.therootsofancientmagic.block.custom.CraftTableBlock;
 import com.therootsofancientmagic.block.entity.FurnacePowderBlockEntity;
 
 import net.minecraft.item.BlockItem;
@@ -30,6 +31,10 @@ public class ModBlock {
     public static final Block FURNACE_POWDER = registerBlock("furnace_powder",
         new FurnacePowderBlock(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).nonOpaque())
     );
+
+    public static final Block CRAFT_TABLE = registerBlock("craft_table",
+        new CraftTableBlock(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).nonOpaque())
+    );
     
     public static Block registerBlock(String name, Block block){
         Registry.register(
@@ -49,8 +54,8 @@ public class ModBlock {
 
     public static void registerModBlocks(){
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register((entries) -> {
-            // entries.add(NEW_BLOCK);
             entries.add(FURNACE_POWDER);
+            entries.add(CRAFT_TABLE);
         });
     }
 }

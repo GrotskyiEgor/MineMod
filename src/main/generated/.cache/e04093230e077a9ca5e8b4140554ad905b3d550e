@@ -1,8 +1,13 @@
-// 1.20.1	2026-08-09T11:35:13.9969389	The Roots of Ancient Magic/World Generation
-70d90c7a12f4a2f84c66832156982fb1e9183940 data\the-roots-of-ancient-magic\worldgen\placed_feature\flower_aqua_placed.json
-cabc8d8195dc6355bee78e5fb60a092e69971c3f data\the-roots-of-ancient-magic\worldgen\configured_feature\flower_dark_patch.json
+// 1.20.1	2026-08-10T12:57:28.7928053	The Roots of Ancient Magic/World Generation
+b6dc9f91da0f88a272098f15a3d7227e32b8e101 data\the-roots-of-ancient-magic\worldgen\configured_feature\flower_earth_patch.json
+ac52aa3e08395b69f3b6c2485a94da55af26ebee data\the-roots-of-ancient-magic\worldgen\configured_feature\flower_dark_patch.json
 70d90c7a12f4a2f84c66832156982fb1e9183940 data\the-roots-of-ancient-magic\worldgen\placed_feature\flower_dark_placed.json
-70d90c7a12f4a2f84c66832156982fb1e9183940 data\the-roots-of-ancient-magic\worldgen\placed_feature\flower_weed_placed.json
-70d90c7a12f4a2f84c66832156982fb1e9183940 data\the-roots-of-ancient-magic\worldgen\placed_feature\flower_light_placed.json
-70d90c7a12f4a2f84c66832156982fb1e9183940 data\the-roots-of-ancient-magic\worldgen\placed_feature\flower_earth_placed.json
-70d90c7a12f4a2f84c66832156982fb1e9183940 data\the-roots-of-ancient-magic\worldgen\placed_feature\flower_fire_placed.json
+52f27d04b54c52e7541c4b8985c21cbde94b2885 data\the-roots-of-ancient-magic\worldgen\placed_feature\flower_weed_placed.json
+37054c7bd503b98a9008f97f4ad3228dd9968116 data\the-roots-of-ancient-magic\worldgen\placed_feature\flower_light_placed.json
+00dbece12e882a5f0070b01c1cfaba6a7fae9bd0 data\the-roots-of-ancient-magic\worldgen\configured_feature\flower_aqua_patch.json
+8c2674f3700c170813d0bae64c5f01f7838bcd84 data\the-roots-of-ancient-magic\worldgen\configured_feature\flower_fire_patch.json
+1c17ff04ca76423ca3ca42abc909191ae0ddf05d data\the-roots-of-ancient-magic\worldgen\placed_feature\flower_aqua_placed.json
+5d854b8fed5b84d3f718988e58f6fe34a821fe90 data\the-roots-of-ancient-magic\worldgen\configured_feature\flower_light_patch.json
+f7e7408af3875d01616cc1ea001f47251049cc8e data\the-roots-of-ancient-magic\worldgen\configured_feature\flower_weed_patch.json
+46b3783235043963e8aab4cd8c9d64d39ba39f84 data\the-roots-of-ancient-magic\worldgen\placed_feature\flower_earth_placed.json
+854699cb950f3ba573118436aea06fd577bef450 data\the-roots-of-ancient-magic\worldgen\placed_feature\flower_fire_placed.json

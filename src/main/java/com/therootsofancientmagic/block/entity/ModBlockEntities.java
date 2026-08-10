@@ -13,6 +13,10 @@ public class ModBlockEntities {
             Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(TheRootsOfAncientMagic.MOD_ID, "furnace_powder_be"),
                     FabricBlockEntityTypeBuilder.create(FurnacePowderBlockEntity::new, ModBlock.FURNACE_POWDER).build());
 
+    public static final BlockEntityType<CraftTableBlockEntity> CRAFT_TABLE_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(TheRootsOfAncientMagic.MOD_ID, "craft_table_be"),
+                    FabricBlockEntityTypeBuilder.create(CraftTableBlockEntity::new, ModBlock.CRAFT_TABLE).build());
+
     public static void registerBlockEntities() {
         TheRootsOfAncientMagic.LOGGER.info("Registering Block Entities for " + TheRootsOfAncientMagic.MOD_ID);
     }

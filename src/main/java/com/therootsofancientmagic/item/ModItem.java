@@ -42,15 +42,27 @@ public class ModItem{
         new Item(new Item.Settings())
     );
 
-    public static final Item FIRE_STAFF = registerItem(
-        "fire_staff",
-        new Item(new Item.Settings())
-    );
-
-    // public static final Item FIRE_PICKAXE = registerItem(
-    //     "fire_pickaxe", 
-    //     new PickaxeItem(ModToolMaterials.ESSENCE_FIRE, 1, -2.8f, new Item.Settings())
+    // public static final Item FIRE_STAFF = registerItem(
+    //     "fire_staff",
+    //     new Item(new Item.Settings())
     // );
+
+   
+    public static final Item FIRE_ESSENCE_PICKAXE = registerItem("fire_essence_pickaxe",
+            new PickaxeItem(ModToolMaturial.ESSENCE_FIRE, 1, -2.8f, new Item.Settings()));
+    public static final Item AQUA_ESSENCE_PICKAXE = registerItem("aqua_essence_pickaxe",
+            new PickaxeItem(ModToolMaturial.ESSENCE_AQUA, 1, -2.8f, new Item.Settings()));
+    public static final Item WEED_ESSENCE_PICKAXE = registerItem("weed_essence_pickaxe",
+            new PickaxeItem(ModToolMaturial.ESSENCE_WEED, 1, -2.8f, new Item.Settings()));
+            
+    public static final Item DARK_ESSENCE_PICKAXE = registerItem("dark_essence_pickaxe",
+            new PickaxeItem(ModToolMaturial.ESSENCE_DARK, 1, -2.8f, new Item.Settings()));
+            
+    public static final Item LIGHT_ESSENCE_PICKAXE = registerItem("light_essence_pickaxe",
+            new PickaxeItem(ModToolMaturial.ESSENCE_LIGHT, 1, -2.8f, new Item.Settings()));
+            
+    public static final Item EARTH_ESSENCE_PICKAXE = registerItem("earth_essence_pickaxe",
+            new PickaxeItem(ModToolMaturial.ESSENCE_EARTH, 1, -2.8f, new Item.Settings()));
 
     public static Item registerItem(String name, Item item){
         return Registry.register(
@@ -68,8 +80,15 @@ public class ModItem{
             entries.add(ESSENCE_EARTH);
             entries.add(ESSENCE_LIGHT);
             entries.add(ESSENCE_DARK);
+            
+            entries.add(FIRE_ESSENCE_PICKAXE);
+            entries.add(AQUA_ESSENCE_PICKAXE);
+            entries.add(WEED_ESSENCE_PICKAXE);
+            entries.add(DARK_ESSENCE_PICKAXE);
+            entries.add(LIGHT_ESSENCE_PICKAXE);
+            entries.add(EARTH_ESSENCE_PICKAXE);
 
-            entries.add(FIRE_STAFF);
+            // entries.add(FIRE_STAFF);
         });
     }
 }

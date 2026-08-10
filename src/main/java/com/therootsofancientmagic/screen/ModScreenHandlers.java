@@ -17,6 +17,14 @@ public class ModScreenHandlers {
                             new FurnacePowderScreenHandler(syncId, inventory, buf))
             );
 
+    public static final ScreenHandlerType<CraftTableScreenHandler> CRAFT_TABLE_SCREEN_HANDLER =
+            Registry.register(
+                    Registries.SCREEN_HANDLER,
+                    new Identifier(TheRootsOfAncientMagic.MOD_ID, "craft_table"),
+                    new ExtendedScreenHandlerType<>((syncId, inventory, buf) -> 
+                            new CraftTableScreenHandler(syncId, inventory, buf))
+            );
+
     public static void registerScreenHandlers() {
         TheRootsOfAncientMagic.LOGGER.info("Registering Screen Handlers for " + TheRootsOfAncientMagic.MOD_ID);
     }

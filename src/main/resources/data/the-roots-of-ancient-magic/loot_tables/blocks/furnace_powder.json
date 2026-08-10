@@ -1,10 +1,11 @@
 {
+	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-	    "1": "the-roots-of-ancient-magic:block/furnace_powder",
-	    "2": "the-roots-of-ancient-magic:block/furnace_powder_gray",
-	    "particle": "the-roots-of-ancient-magic:block/furnace_powder"
+		"1": "the-roots-of-ancient-magic:block/furnace_powder",
+    	"2": "the-roots-of-ancient-magic:block/furnace_powder_gray",
+    	"particle": "the-roots-of-ancient-magic:block/furnace_powder"
 	},
 	"elements": [
 		{
