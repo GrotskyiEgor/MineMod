@@ -53,9 +53,9 @@ public class ModBlock {
     }
 
     public static void registerModBlocks(){
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register((entries) -> {
-            entries.add(FURNACE_POWDER);
-            entries.add(CRAFT_TABLE);
-        });
+        // ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register((entries) -> {
+        //     entries.add(FURNACE_POWDER);
+        //     entries.add(CRAFT_TABLE);
+        // });
     }
 }

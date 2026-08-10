@@ -4,6 +4,7 @@ import com.therootsofancientmagic.block.ModBlock;
 import com.therootsofancientmagic.block.ModFlowerBlock;
 import com.therootsofancientmagic.init.worldgen.PlacedFeatureInit;
 import com.therootsofancientmagic.item.ModItem;
+import com.therootsofancientmagic.item.ModItemGroup;
 import com.therootsofancientmagic.screen.FurnacePowderScreen;
 import com.therootsofancientmagic.screen.CraftTableScreen;
 import com.therootsofancientmagic.screen.ModScreenHandlers;
@@ -32,10 +33,10 @@ public class TheRootsOfAncientMagic implements ModInitializer {
     @Override
     public void onInitialize() {
 
+        ModItemGroup.registerItemGroups();
+
         ModItem.registerModItems();
-
         ModBlock.registerModBlocks();
-
         ModFlowerBlock.registerModBlocks();
         ModFlowerBlock.RenderFlowers();
 
@@ -45,7 +46,7 @@ public class TheRootsOfAncientMagic implements ModInitializer {
         HandledScreens.register(ModScreenHandlers.FURNACE_POWDER_SCREEN_HANDLER, FurnacePowderScreen::new);
         HandledScreens.register(ModScreenHandlers.CRAFT_TABLE_SCREEN_HANDLER, CraftTableScreen::new);
 
-	registerFlowers();
+	    registerFlowers();
     }
 
     public static Identifier id(String path) {

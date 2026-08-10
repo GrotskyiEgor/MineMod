@@ -118,20 +118,18 @@ public class ModFlowerBlock {
         return block;
     }
 
-    // ItemStack
     private static void createSuspiciousStew(StatusEffects effect, int durationInTicks){
-        // 
         System.err.println("createSuspiciousStew");
     }
 
     public static void registerModBlocks(){
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register((entries) -> {
-            entries.add(FLOWER_DARK);
-            entries.add(FLOWER_LIGHT);
-            entries.add(FLOWER_AQUA);
-            entries.add(FLOWER_FIRE);
-            entries.add(FLOWER_EARTH);
-            entries.add(FLOWER_WEED);
-        });
+        // ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register((entries) -> {
+        //     entries.add(FLOWER_DARK);
+        //     entries.add(FLOWER_LIGHT);
+        //     entries.add(FLOWER_AQUA);
+        //     entries.add(FLOWER_FIRE);
+        //     entries.add(FLOWER_EARTH);
+        //     entries.add(FLOWER_WEED);
+        // });
     }
 }
