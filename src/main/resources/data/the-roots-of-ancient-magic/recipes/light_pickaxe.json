@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "FFF",
+    " P ",
+    " P "
+  ],
+  "key": {
+    "F": {
+      "item": "the-roots-of-ancient-magic:essence_light"
+    },
+    "P": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "the-roots-of-ancient-magic:light_pickaxe",
+    "count": 1
+  }
+}

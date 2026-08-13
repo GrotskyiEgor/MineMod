@@ -11,30 +11,30 @@
             "item": "minecraft:gunpowder"
         },
         "W": {
-            "item": "therootsofancientmagic:essence_fire"
+            "item": "the-roots-of-ancient-magic:essence_fire"
         },
         "E": {
-            "item": "therootsofancientmagic:essence_aqua"
+            "item": "the-roots-of-ancient-magic:essence_aqua"
         },
         "A": {
-            "item": "therootsofancientmagic:essence_weed"
+            "item": "the-roots-of-ancient-magic:essence_weed"
         },
         "S": {
             "item": "minecraft:crafting_table"
         },
         "D": {
-            "item": "therootsofancientmagic:essence_earth"
+            "item": "the-roots-of-ancient-magic:essence_earth"
         },
         "Z": {
-            "item": "therootsofancientmagic:essence_dark"
+            "item": "the-roots-of-ancient-magic:essence_dark"
         },
         "X": {
-            "item": "therootsofancientmagic:essence_light"
+            "item": "the-roots-of-ancient-magic:essence_light"
         }
         
     },
     "result": {
-        "item": "therootsofancientmagic:craft_table",
+        "item": "the-roots-of-ancient-magic:craft_table",
         "count": 1
     }
 }

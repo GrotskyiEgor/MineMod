@@ -8,14 +8,14 @@
     ],
     "key": {
         "Q": {
-            "item": "therootsofancientmagic:flower_fire"
+            "item": "the-roots-of-ancient-magic:flower_fire"
         },
         "A": {
             "item": "minecraft:gunpowder"
         }
     },
     "result": {
-        "item": "therootsofancientmagic:furnace_powder",
+        "item": "the-roots-of-ancient-magic:furnace_powder",
         "count": 1
     }
 }
