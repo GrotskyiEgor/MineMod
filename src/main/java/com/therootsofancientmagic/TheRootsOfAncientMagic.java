@@ -8,6 +8,8 @@ import com.therootsofancientmagic.item.ModItemGroup;
 import com.therootsofancientmagic.screen.FurnacePowderScreen;
 import com.therootsofancientmagic.screen.CraftTableScreen;
 import com.therootsofancientmagic.screen.ModScreenHandlers;
+import com.therootsofancientmagic.world.ModBiomGenerator;
+import com.therootsofancientmagic.world.ModWordGenerator;
 import com.therootsofancientmagic.block.entity.ModBlockEntities;
 
 import net.fabricmc.api.ModInitializer;
@@ -32,7 +34,6 @@ public class TheRootsOfAncientMagic implements ModInitializer {
 
     @Override
     public void onInitialize() {
-
         ModItemGroup.registerItemGroups();
 
         ModItem.registerModItems();

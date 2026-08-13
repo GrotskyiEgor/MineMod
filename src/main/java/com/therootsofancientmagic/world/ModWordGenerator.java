@@ -1,6 +1,7 @@
 package com.therootsofancientmagic.world;
 
 import java.util.concurrent.CompletableFuture;
+import com.therootsofancientmagic.biome.ModBiomes;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
@@ -27,6 +28,10 @@ public class ModWordGenerator extends FabricDynamicRegistryProvider {
 
         entries.addAll(
                 registries.getWrapperOrThrow(RegistryKeys.PLACED_FEATURE)
+        );
+
+        entries.addAll(
+            registries.getWrapperOrThrow(RegistryKeys.BIOME)
         );
     }
 
