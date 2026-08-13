@@ -1,6 +1,6 @@
 {
     "parent": "minecraft:item/generated",
     "textures": {
-        "layer0": "the-roots-of-ancient-magic:item/earth_pickaxe"
+        "layer0": "the-roots-of-ancient-magic:item/def_tool/pickaxe/earth_pickaxe"
     }
 }

@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": {
+        "layer0": "the-roots-of-ancient-magic:item/def_tool/shovel/fire_shovel"
+    }
+}

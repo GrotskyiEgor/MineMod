@@ -1,17 +1,21 @@
 package com.therootsofancientmagic.item;
-
+import net.minecraft.item.AxeItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
-import net.minecraft.item.PickaxeItem;
-import net.minecraft.item.ToolMaterials;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-
+import com.therootsofancientmagic.item.sword.ElementalSwordItem;
+import com.therootsofancientmagic.item.pickaxe.ElementalPickaxeItem;
+import com.therootsofancientmagic.item.shovel.ElementalShovelItem;
+import com.therootsofancientmagic.item.axe.ElementalAxeItem;
+import com.therootsofancientmagic.item.staff.FireStaff;
 import net.minecraft.util.Identifier;
 
-public class ModItem{
+public class ModItem {
+    public static final Item FIRE_SFAFF = registerItem(
+        "fire_staff",
+        new Item(new FireStaff.Settings())
+    );
+
     public static final Item ESSENCE_AQUA = registerItem(
         "essence_aqua",
         new Item(new Item.Settings())
@@ -41,24 +45,89 @@ public class ModItem{
         "essence_dark",
         new Item(new Item.Settings())
     );
+
    
     public static final Item FIRE_PICKAXE = registerItem("fire_pickaxe",
-            new PickaxeItem(ModToolMaturial.ESSENCE_FIRE, 1, -2.8f, new Item.Settings()));
+            new ElementalPickaxeItem(ModToolMaturial.ESSENCE_FIRE, 1, -2.8f, new Item.Settings()));
 
     public static final Item AQUA_PICKAXE = registerItem("aqua_pickaxe",
-            new PickaxeItem(ModToolMaturial.ESSENCE_AQUA, 1, -2.8f, new Item.Settings()));
+            new ElementalPickaxeItem(ModToolMaturial.ESSENCE_AQUA, 1, -2.8f, new Item.Settings()));
 
     public static final Item WEED_PICKAXE = registerItem("weed_pickaxe",
-            new PickaxeItem(ModToolMaturial.ESSENCE_WEED, 1, -2.8f, new Item.Settings()));
-            
-    public static final Item DARK_PICKAXE = registerItem("dark_pickaxe",
-            new PickaxeItem(ModToolMaturial.ESSENCE_DARK, 1, -2.8f, new Item.Settings()));
-            
-    public static final Item LIGHT_PICKAXE = registerItem("light_pickaxe",
-            new PickaxeItem(ModToolMaturial.ESSENCE_LIGHT, 1, -2.8f, new Item.Settings()));
+            new ElementalPickaxeItem(ModToolMaturial.ESSENCE_WEED, 1, -2.8f, new Item.Settings()));
             
     public static final Item EARTH_PICKAXE = registerItem("earth_pickaxe",
-            new PickaxeItem(ModToolMaturial.ESSENCE_EARTH, 1, -2.8f, new Item.Settings()));
+            new ElementalPickaxeItem(ModToolMaturial.ESSENCE_EARTH, 1, -2.8f, new Item.Settings()));
+
+    public static final Item DARK_PICKAXE = registerItem("dark_pickaxe",
+            new ElementalPickaxeItem(ModToolMaturial.ESSENCE_DARK, 1, -2.8f, new Item.Settings()));
+            
+    public static final Item LIGHT_PICKAXE = registerItem("light_pickaxe",
+            new ElementalPickaxeItem(ModToolMaturial.ESSENCE_LIGHT, 1, -2.8f, new Item.Settings()));
+            
+    
+    public static final Item FIRE_AXE = registerItem("fire_axe",
+            new ElementalAxeItem(ModToolMaturial.ESSENCE_FIRE, 5.0f, -3.0f, new Item.Settings()));
+    
+    public static final Item AQUA_AXE = registerItem("aqua_axe",
+            new ElementalAxeItem(ModToolMaturial.ESSENCE_AQUA, 5.0f, -3.0f, new Item.Settings()));
+    
+    public static final Item WEED_AXE = registerItem("weed_axe",
+            new ElementalAxeItem(ModToolMaturial.ESSENCE_WEED, 5.0f, -3.0f, new Item.Settings()));
+    
+    public static final Item DARK_AXE = registerItem("dark_axe",
+            new ElementalAxeItem(ModToolMaturial.ESSENCE_DARK, 5.0f, -3.0f, new Item.Settings()));
+    
+    public static final Item LIGHT_AXE = registerItem("light_axe",
+            new ElementalAxeItem(ModToolMaturial.ESSENCE_LIGHT, 5.0f, -3.0f, new Item.Settings()));
+         
+    public static final Item EARTH_AXE = registerItem("earth_axe",
+            new ElementalAxeItem(ModToolMaturial.ESSENCE_EARTH, 5.0f, -3.0f, new Item.Settings()));
+    
+        
+    // поджигает противника.
+    public static final Item FIRE_SWORD = registerItem("fire_sword",
+            new ElementalSwordItem(ModToolMaturial.ESSENCE_FIRE, 3, -2.4f, new Item.Settings()));
+
+    // замедляет противника
+    public static final Item AQUA_SWORD = registerItem("aqua_sword",
+            new ElementalSwordItem(ModToolMaturial.ESSENCE_AQUA, 3, -2.4f, new Item.Settings()));
+
+    // отталкивает противника
+    public static final Item WEED_SWORD = registerItem("weed_sword",
+            new ElementalSwordItem(ModToolMaturial.ESSENCE_WEED, 3, -2.4f, new Item.Settings()));
+
+    // подкидивание вверх
+    public static final Item EARTH_SWORD = registerItem("earth_sword",
+            new ElementalSwordItem(ModToolMaturial.ESSENCE_EARTH, 3, -2.4f, new Item.Settings()));
+
+    // накладивает слепоту на противника
+    public static final Item DARK_SWORD = registerItem("dark_sword",
+            new ElementalSwordItem(ModToolMaturial.ESSENCE_DARK, 3, -2.4f, new Item.Settings()));
+
+    // ефект спектральной стрели(свечения)
+    public static final Item LIGHT_SWORD = registerItem("light_sword",
+            new ElementalSwordItem(ModToolMaturial.ESSENCE_LIGHT, 3, -2.4f, new Item.Settings()));
+
+
+    public static final Item FIRE_SHOVEL = registerItem("fire_shovel",
+            new ElementalShovelItem(ModToolMaturial.ESSENCE_FIRE, 1, -2.8f, new Item.Settings()));
+
+    public static final Item AQUA_SHOVEL = registerItem("aqua_shovel",
+            new ElementalShovelItem(ModToolMaturial.ESSENCE_AQUA, 1, -2.8f, new Item.Settings()));
+
+    public static final Item WEED_SHOVEL = registerItem("weed_shovel",
+            new ElementalShovelItem(ModToolMaturial.ESSENCE_WEED, 1, -2.8f, new Item.Settings()));
+
+    public static final Item DARK_SHOVEL = registerItem("dark_shovel",
+            new ElementalShovelItem(ModToolMaturial.ESSENCE_DARK, 1, -2.8f, new Item.Settings()));
+
+    public static final Item LIGHT_SHOVEL = registerItem("light_shovel",
+            new ElementalShovelItem(ModToolMaturial.ESSENCE_LIGHT, 1, -2.8f, new Item.Settings()));
+
+    public static final Item EARTH_SHOVEL = registerItem("earth_shovel",
+            new ElementalShovelItem(ModToolMaturial.ESSENCE_EARTH, 1, -2.8f, new Item.Settings()));
+
 
     public static Item registerItem(String name, Item item){
         return Registry.register(

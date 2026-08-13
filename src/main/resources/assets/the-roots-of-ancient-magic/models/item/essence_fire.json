@@ -1,6 +1,6 @@
 {
     "parent": "minecraft:item/generated",
     "textures": {
-        "layer0": "the-roots-of-ancient-magic:item/essence_fire"
+        "layer0": "the-roots-of-ancient-magic:item/essence/essence_fire"
     }
 }
