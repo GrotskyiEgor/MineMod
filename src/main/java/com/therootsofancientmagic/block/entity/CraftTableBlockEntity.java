@@ -1,22 +1,17 @@
 package com.therootsofancientmagic.block.entity;
 
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
-import com.therootsofancientmagic.item.ModItem;
-import com.therootsofancientmagic.block.ModFlowerBlock;
-import com.therootsofancientmagic.block.custom.CraftTableBlock;
-import com.therootsofancientmagic.screen.CraftTableScreen;
-import com.therootsofancientmagic.screen.ModScreenHandlers;
 import com.therootsofancientmagic.util.ImplementedInventory;
 import com.therootsofancientmagic.screen.CraftTableScreenHandler;
 
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityType;
+
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
-import net.minecraft.item.Item;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
@@ -119,7 +114,7 @@ public class CraftTableBlockEntity extends BlockEntity implements ExtendedScreen
         // }
     }
 
-    private void resetProgress() {
+    /*private void resetProgress() {
         this.progress = 0;
     }
 
@@ -140,7 +135,7 @@ public class CraftTableBlockEntity extends BlockEntity implements ExtendedScreen
 
     private boolean hasRecipe() {
         return false;
-    }
+    }*/
 
     // private boolean canInsertItemIntoOutputSlot(Item item) {
     //     return this.getStack(OUTPUT_SLOT).getItem() == item || this.getStack(OUTPUT_SLOT).isEmpty();

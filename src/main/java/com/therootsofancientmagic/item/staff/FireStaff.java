@@ -11,7 +11,7 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
 public class FireStaff extends Item {
-    private static final int COOLDOWN_TICKS = 40;
+    private static final int COOLDOWN_TICKS = 15;
 
     public FireStaff(Settings settings) {
         super(settings);
@@ -51,10 +51,10 @@ public class FireStaff extends Item {
         FireballEntity fireball = new FireballEntity(
                 world,
                 user,
-                lookVec.x * 0.1,
-                lookVec.y * 0.1,
-                lookVec.z * 0.1,
-                1 // сила взрыва
+                lookVec.x * 0.3,
+                lookVec.y * 0.3,
+                lookVec.z * 0.3,
+                3 // сила взрыва
         );
 
         fireball.setPos(

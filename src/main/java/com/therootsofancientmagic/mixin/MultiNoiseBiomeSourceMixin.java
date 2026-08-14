@@ -1,6 +1,5 @@
 package com.therootsofancientmagic.mixin;
 
-import com.therootsofancientmagic.biome.ModBiomes;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.source.MultiNoiseBiomeSource;

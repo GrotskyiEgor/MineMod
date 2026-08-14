@@ -1,11 +1,8 @@
 package com.therootsofancientmagic.block.custom;
 
 import com.therootsofancientmagic.block.entity.CraftTableBlockEntity;
-import com.therootsofancientmagic.block.entity.ModBlockEntities;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityTicker;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.util.ActionResult;
@@ -14,20 +11,12 @@ import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.BlockWithEntity;
-import net.minecraft.block.ShapeContext;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
-import net.minecraft.world.BlockView;
 
-public class CraftTableBlock extends BlockWithEntity implements BlockEntityProvider {
+public class CraftTableBlock extends BlockWithEntity {
     private static final VoxelShape SHAPE = VoxelShapes.union(
         Block.createCuboidShape(0, 0, 0, 16, 10, 16),
         Block.createCuboidShape(1, 10, 1, 15, 11, 15)  
@@ -59,6 +48,7 @@ public class CraftTableBlock extends BlockWithEntity implements BlockEntityProvi
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);

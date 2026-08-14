@@ -1,5 +1,4 @@
 package com.therootsofancientmagic.item;
-import net.minecraft.item.AxeItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -8,12 +7,18 @@ import com.therootsofancientmagic.item.pickaxe.ElementalPickaxeItem;
 import com.therootsofancientmagic.item.shovel.ElementalShovelItem;
 import com.therootsofancientmagic.item.axe.ElementalAxeItem;
 import com.therootsofancientmagic.item.staff.FireStaff;
+import com.therootsofancientmagic.item.staff.WeedStaff;
 import net.minecraft.util.Identifier;
 
 public class ModItem {
-    public static final Item FIRE_SFAFF = registerItem(
+    public static final Item FIRE_STAFF = registerItem(
         "fire_staff",
-        new Item(new FireStaff.Settings())
+        new FireStaff(new Item.Settings())
+    );
+
+    public static final Item WEED_STAFF = registerItem(
+        "weed_staff",
+        new WeedStaff(new Item.Settings())
     );
 
     public static final Item ESSENCE_AQUA = registerItem(

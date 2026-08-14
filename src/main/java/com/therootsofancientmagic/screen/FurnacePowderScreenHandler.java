@@ -12,7 +12,7 @@ import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 
-import com.therootsofancientmagic.screen.ModScreenHandlers;
+
 
 public class FurnacePowderScreenHandler extends ScreenHandler {
     private final Inventory inventory;
