@@ -26,13 +26,11 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.Optional;
 
-// Ми НАСЛЕДУЕМ ShovelItem, чтоби лопата эффективно копала землю, песок и гравий
 public class ElementalShovelItem extends ShovelItem {
 
     public ElementalShovelItem(ToolMaterial material, float attackDamage, float attackSpeed, Item.Settings settings) {
         super(material, attackDamage, attackSpeed, settings);
         
-        // Регистрируем собития Fabric для автоплавки Огненной лопати прямо при ее создании
         this.registerEvents();
     }
 
@@ -41,12 +39,12 @@ public class ElementalShovelItem extends ShovelItem {
             if (!world.isClient() && player instanceof ServerPlayerEntity serverPlayer) {
                 ItemStack mainHandItem = serverPlayer.getMainHandStack();
 
-                // Проверяем, что игрок держит именно нашу Огненную лопату
+                // Проверяет если игрок держит в руке лопату с материалом ESSENCE_FIRE, то активирует функцию AutoSmeltBlock
                 if (mainHandItem.getItem() == this && this.getMaterial() == ModToolMaturial.ESSENCE_FIRE) {
                     if (world instanceof ServerWorld serverWorld) {
-                        // Запускаем переплавку блоков (например, песок превратится в стекло, глина в кирпичи)
-                        if (executeAutoSmelt(serverWorld, pos, state, serverPlayer, mainHandItem)) {
-                            return false; // Отменяем обичний ванильний дроп песка/земли
+
+                        //Визиваем метод AutoSmeltBlock, которий обрабативает переплавку
+                        if (AutoSmeltBlock(serverWorld, pos, state, serverPlayer, mainHandItem)) {
                         }
                     }
                 }
@@ -54,26 +52,30 @@ public class ElementalShovelItem extends ShovelItem {
             return true;
         });
     }
-
-    private boolean executeAutoSmelt(ServerWorld world, BlockPos pos, BlockState state, ServerPlayerEntity player, ItemStack toolStack) {
+// Функция, которая переплавляет блоки, если на них есть рецепт переплавки
+    private boolean AutoSmeltBlock(ServerWorld world, BlockPos pos, BlockState state, ServerPlayerEntity player, ItemStack toolStack) {
+        // Получаем список предметов, которие должни били випасть
         List<ItemStack> normalDrops = Block.getDroppedStacks(state, world, pos, null, player, player.getMainHandStack());
         boolean smeltedAny = false;
 
         for (ItemStack drop : normalDrops) {
+            // Ищем подходящий рецепт плавки в печи для полученного предмета
             Optional<SmeltingRecipe> recipe = world.getRecipeManager()
                 .getFirstMatch(RecipeType.SMELTING, new SimpleInventory(drop), world);
 
+             // Если нашли рецепт, то сразу переплавляет предмет в его переплавленний предмет
             if (recipe.isPresent()) {
                 ItemStack cookedResult = recipe.get().getOutput(world.getRegistryManager()).copy();
                 cookedResult.setCount(drop.getCount()); 
 
+                // Удаляет старий предмет из мира и заменяет его на переплавленний предмет
                 world.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
                 Block.dropStack(world, pos, cookedResult);
 
                 toolStack.damage(1, player, (p) -> p.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
                 smeltedAny = true;
 
-                // ОГНЕННиЙ ЭФФЕКТ: 5% шанс на Огнестойкость при плавке
+                 // 5% шанс на накладивание эффекта Огнестойкость I на 30 секунд при ломание блока
                 if (player.getRandom().nextFloat() < 0.05F) {
                     player.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 600, 0));
                 }
@@ -132,7 +134,7 @@ public class ElementalShovelItem extends ShovelItem {
 
         return super.postMine(stack, world, state, pos, miner);
     }
-
+    //Функция которая создает лазер из голови игрока и определяет на какой блок игрок смотрит
     private Direction getPlayerDirection(ServerPlayerEntity player) {
         HitResult hit = player.raycast(20.0D, 0.0F, false);
         if (hit.getType() == HitResult.Type.BLOCK) {
@@ -140,7 +142,7 @@ public class ElementalShovelItem extends ShovelItem {
         }
         return Direction.UP;
     }
-
+    //Тоже самое что и breakArea, только ломает блоки вглубь, в зависимости от того на какой блок игрок нажал
     private void breakTunnel(World world, BlockPos targetPos, ServerPlayerEntity player, ItemStack toolStack, int maxDepth) {
         Direction face = getPlayerDirection(player);
         Direction inwardDirection = face.getOpposite();
@@ -148,8 +150,8 @@ public class ElementalShovelItem extends ShovelItem {
         for (int i = 1; i <= maxDepth; i++) {
             BlockPos nextBlockPos = targetPos.offset(inwardDirection, i);
             BlockState nextBlockState = world.getBlockState(nextBlockPos);
-
-            // Перевіряємо, чи блок підходить для копання лопатою (земля, пісок)
+            
+            //Проверяет если блок сломать можно, если ето бедрок или воздух,то не ломает
             if (this.isSuitableFor(nextBlockState) && nextBlockState.getHardness(world, nextBlockPos) >= 0) {
                 world.breakBlock(nextBlockPos, true, player);
                 toolStack.damage(1, player, (p) -> p.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
@@ -157,7 +159,7 @@ public class ElementalShovelItem extends ShovelItem {
             }
         }
     }
-
+    //функция которая определяет куда смотрит игрок,верх/вниз/влево/вправо и в зависимости от этого ломает блоки вокруг блока на которий игрок нажал
     private BlockPos getTargetBlockPos(BlockPos center, Direction face, int gridX, int gridY, int depth) {
         BlockPos shiftedCenter = center.offset(face.getOpposite(), depth);
 
@@ -169,20 +171,24 @@ public class ElementalShovelItem extends ShovelItem {
             return shiftedCenter.add(gridX, gridY, 0);
         }
     }
-
+    //Самая главная функция, в зависимости от значений в (), ломает блоки так,
+    // breakArea(world, pos, player, stack, -1, 1, -1, 1) - ломает блоки 3x3 
+    // breakArea(world, pos, player, stack, -1, 2, -1, 2) - ломает блоки 4x4
     private void breakArea(World world, BlockPos targetPos, ServerPlayerEntity player, ItemStack toolStack, int minX, int maxX, int minY, int maxY, int minDepth, int maxDepth) {
         Direction directionSide = getPlayerDirection(player);
-        
+        // 3D и 2D сетка, которая определяет какие блоки ломать вокруг блока на которий игрок нажал
         for (int depth = minDepth; depth <= maxDepth; depth++) {
             for (int gridX = minX; gridX <= maxX; gridX++) {
                 for (int gridY = minY; gridY <= maxY; gridY++) {
 
+                    // Пропускает центральний блок которий игрок сломал
                     if (depth == 0 && gridX == 0 && gridY == 0) continue;
-               
+
+                    // Получает блоки которие возле блока на которий игрок нажал,в зависимости от сторони на которую игрок смотрит(raycast)
                     BlockPos neighbourBlockPos = getTargetBlockPos(targetPos, directionSide, gridX, gridY, depth);
                     BlockState neighbourBlockState = world.getBlockState(neighbourBlockPos);
-                
-                    // Перевіряємо за допомогою лопати, щоб не ламати камінь великою областю
+
+                    //Проверяет если блок сломать можно, если ето бедрок или воздух,то не ломает
                     if (this.isSuitableFor(neighbourBlockState) && neighbourBlockState.getHardness(world, neighbourBlockPos) >= 0) {
                         world.breakBlock(neighbourBlockPos, true, player);
                         toolStack.damage(1, player, (p) -> p.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));

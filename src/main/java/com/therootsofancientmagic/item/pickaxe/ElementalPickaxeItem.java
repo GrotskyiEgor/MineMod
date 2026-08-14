@@ -73,7 +73,7 @@ public class ElementalPickaxeItem extends PickaxeItem {
                 smeltedAny = true;
                 // 5% шанс на накладивание эффекта Огнестойкость I на 30 секунд при ломание блока огненной киркой
                 if (player.getRandom().nextFloat() < 0.05F) {
-                    // Накладиваем Огнестойкость I на 30 секунд (30 * 20 тиков = 600 тиков)
+                    // Накладиваем Огнестойкость I на 30 секунд
                     player.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 600, 0));
                 }
             }

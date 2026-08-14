@@ -68,6 +68,13 @@ public class ModItemGroup {
                         entries.add(ModItem.DARK_SHOVEL);
                         entries.add(ModItem.LIGHT_SHOVEL);
                         entries.add(ModItem.EARTH_SHOVEL);
+
+                        entries.add(ModItem.FIRE_HOE);
+                        entries.add(ModItem.AQUA_HOE);
+                        entries.add(ModItem.WEED_HOE);
+                        entries.add(ModItem.DARK_HOE);
+                        entries.add(ModItem.LIGHT_HOE);
+                        entries.add(ModItem.EARTH_HOE);
                     })
                     .build()
     );
