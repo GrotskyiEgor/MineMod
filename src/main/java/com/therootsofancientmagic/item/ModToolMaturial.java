@@ -12,7 +12,8 @@ public enum ModToolMaturial implements ToolMaterial {
     ESSENCE_WEED(5, 1000, 6.0f, 5.0f, 20, () -> Ingredient.ofItems(Registries.ITEM.get(new Identifier("the-roots-of-ancient-magic", "ESSENCE_WEED")))),
     ESSENCE_DARK(5, 1750, 8.0f, 5.0f, 30, () -> Ingredient.ofItems(Registries.ITEM.get(new Identifier("the-roots-of-ancient-magic", "ESSENCE_DARK")))),
     ESSENCE_LIGHT(5, 700, 9.0f, 4.50f, 30, () -> Ingredient.ofItems(Registries.ITEM.get(new Identifier("the-roots-of-ancient-magic", "ESSENCE_LIGHT")))),
-    ESSENCE_EARTH(5, 2000, 7.5f, 5.0f, 25, () -> Ingredient.ofItems(Registries.ITEM.get(new Identifier("the-roots-of-ancient-magic", "ESSENCE_EARTH"))));
+    ESSENCE_EARTH(5, 2000, 7.5f, 5.0f, 25, () -> Ingredient.ofItems(Registries.ITEM.get(new Identifier("the-roots-of-ancient-magic", "ESSENCE_EARTH")))),
+    ESSENCE_HEROIC(6, 2500, 8.0f, 8f, 30, () -> Ingredient.ofItems(Registries.ITEM.get(new Identifier("the-roots-of-ancient-magic", "HEROIC_ESSENCE"))));
 
     private final int miningLevel;
     private final int itemDurability;

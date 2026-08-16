@@ -3,11 +3,8 @@ import net.minecraft.item.Item;
 // import net.minecraft.item.ItemGroups;
 import net.minecraft.item.PickaxeItem;
 // import net.minecraft.item.ToolMaterials;
-
 import com.therootsofancientmagic.item.robe.RobeItem;
-
 // import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import com.therootsofancientmagic.item.sword.ElementalSwordItem;
@@ -15,10 +12,11 @@ import com.therootsofancientmagic.item.pickaxe.ElementalPickaxeItem;
 import com.therootsofancientmagic.item.shovel.ElementalShovelItem;
 import com.therootsofancientmagic.item.axe.ElementalAxeItem;
 import com.therootsofancientmagic.item.hoe.ElementalHoeItem;
+import com.therootsofancientmagic.item.heroic_tools.HeroicAxeItem;
+import com.therootsofancientmagic.item.heroic_tools.HeroicSwordItem;
 import com.therootsofancientmagic.item.staff.FireStaff;
 import com.therootsofancientmagic.item.staff.WeedStaff;
 import net.minecraft.util.Identifier;
-
 
 public class ModItem {
     public static final Item FIRE_STAFF = registerItem(
@@ -60,11 +58,20 @@ public class ModItem {
         "essence_dark",
         new Item(new Item.Settings())
     );
+    public static final Item ESSENCE_HEROIC = registerItem(
+        "essence_heroic",
+        new Item(new Item.Settings())
+    );
 
     public static final Item WIZARD_ROBE = registerItem(
         "wizard_robe", 
         new RobeItem(new Item.Settings().maxCount(1)));
-   
+
+    public static final Item HEROIC_AXE = registerItem("heroic_axe",
+            new HeroicAxeItem(ModToolMaturial.ESSENCE_HEROIC, 3.0f, -2.4f, new Item.Settings()));
+    public static final Item HEROIC_SWORD = registerItem("heroic_sword",
+            new HeroicSwordItem(ModToolMaturial.ESSENCE_HEROIC, -3, -3.0f, new Item.Settings()));
+
     public static final Item FIRE_PICKAXE = registerItem("fire_pickaxe",
             new ElementalPickaxeItem(ModToolMaturial.ESSENCE_FIRE, 1, -2.8f, new Item.Settings()));
 
@@ -175,20 +182,5 @@ public class ModItem {
     }
 
     public static void registerModItems(){
-        // ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register((entries) -> {
-        //     entries.add(ESSENCE_AQUA);
-        //     entries.add(ESSENCE_FIRE);
-        //     entries.add(ESSENCE_WEED);
-        //     entries.add(ESSENCE_EARTH);
-        //     entries.add(ESSENCE_LIGHT);
-        //     entries.add(ESSENCE_DARK);
-            
-        //     entries.add(FIRE_ESSENCE_PICKAXE);
-        //     entries.add(AQUA_ESSENCE_PICKAXE);
-        //     entries.add(WEED_ESSENCE_PICKAXE);
-        //     entries.add(DARK_ESSENCE_PICKAXE);
-        //     entries.add(LIGHT_ESSENCE_PICKAXE);
-        //     entries.add(EARTH_ESSENCE_PICKAXE);
-        // });
     }
 }

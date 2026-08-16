@@ -35,7 +35,7 @@ public class ElementalSwordItem extends SwordItem {
         }
          if (this.getMaterial() == ModToolMaturial.ESSENCE_EARTH && randomChance < 0.3F) {
             // Подбрасываем цель 5 блоков верх
-            target.addVelocity(0, 5.0, 0);
+            target.addVelocity(0, 1.0, 0);
             target.velocityModified = true;
         }
         

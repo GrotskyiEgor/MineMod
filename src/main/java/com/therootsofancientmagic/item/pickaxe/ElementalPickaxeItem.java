@@ -50,6 +50,7 @@ public class ElementalPickaxeItem extends PickaxeItem {
             return true;
         });
     }
+    
     // Функция, которая переплавляет блоки, если на них есть рецепт переплавки,например железная руда сразу превращаеться железний слиток
     private boolean AutoSmeltBlock(ServerWorld world, BlockPos pos, BlockState state, ServerPlayerEntity player, ItemStack toolStack) {
         // Получаем список предметов, которие должни били випасть
@@ -187,10 +188,10 @@ public class ElementalPickaxeItem extends PickaxeItem {
                  // Пропускает центральний блок которий игрок сломал
                 if (depth == 0 && gridX == 0 && gridY == 0) continue;
            
-                // Получает блоки которие возле блока на которий игрок нажал,в зависимости от сторони на которую игрок смотрит(raycast)
+              // Получает блоки которие возле блока на которий игрок нажал,в зависимости от сторони на которую игрок смотрит(raycast)
               BlockPos NeighbourBlockPos = getTargetBlockPos(targetPos, DirectionSide, gridX, gridY, depth);
               BlockState NeighbourBlockState = world.getBlockState(NeighbourBlockPos);
-            //Проверяет если блок сломать можно, если ето бедрок или воздух,то не ломает
+             //Проверяет если блок сломать можно, если ето бедрок или воздух,то не ломает
              if (!NeighbourBlockState.isAir() && NeighbourBlockState.getHardness(world, NeighbourBlockPos) >= 0) {
                         world.breakBlock(NeighbourBlockPos, true, player);
 
