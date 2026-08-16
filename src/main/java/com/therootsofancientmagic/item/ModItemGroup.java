@@ -55,19 +55,14 @@ public class ModItemGroup {
                         entries.add(ModItem.LIGHT_AXE);
                         entries.add(ModItem.EARTH_AXE);
 
-                        entries.add(ModItem.FIRE_SWORD);
-                        entries.add(ModItem.AQUA_SWORD);
-                        entries.add(ModItem.WEED_SWORD);
-                        entries.add(ModItem.DARK_SWORD);
-                        entries.add(ModItem.LIGHT_SWORD);
-                        entries.add(ModItem.EARTH_SWORD);
+                        entries.add(ModFlowerBlock.FLOWER_DARK);
+                        entries.add(ModFlowerBlock.FLOWER_LIGHT);
+                        entries.add(ModFlowerBlock.FLOWER_AQUA);
+                        entries.add(ModFlowerBlock.FLOWER_FIRE);
+                        entries.add(ModFlowerBlock.FLOWER_EARTH);
+                        entries.add(ModFlowerBlock.FLOWER_WEED);
 
-                        entries.add(ModItem.FIRE_SHOVEL);
-                        entries.add(ModItem.AQUA_SHOVEL);
-                        entries.add(ModItem.WEED_SHOVEL);
-                        entries.add(ModItem.DARK_SHOVEL);
-                        entries.add(ModItem.LIGHT_SHOVEL);
-                        entries.add(ModItem.EARTH_SHOVEL);
+                        entries.add(ModItem.WIZARD_ROBE);
                     })
                     .build()
     );
