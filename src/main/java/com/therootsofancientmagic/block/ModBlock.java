@@ -1,19 +1,14 @@
 package com.therootsofancientmagic.block;
 
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.AbstractBlock;
 
 import com.therootsofancientmagic.block.custom.FurnacePowderBlock;
 import com.therootsofancientmagic.block.custom.CraftTableBlock;
-import com.therootsofancientmagic.block.entity.FurnacePowderBlockEntity;
 
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
 
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;

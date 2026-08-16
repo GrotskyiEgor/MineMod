@@ -7,6 +7,7 @@ import com.therootsofancientmagic.biome.ModBiomes;
 import com.therootsofancientmagic.block.ModBlock;
 import com.therootsofancientmagic.block.ModFlowerBlock;
 import com.therootsofancientmagic.block.entity.ModBlockEntities;
+import com.therootsofancientmagic.entity.ModEntities;
 import com.therootsofancientmagic.init.worldgen.PlacedFeatureInit;
 import com.therootsofancientmagic.item.ModItem;
 import com.therootsofancientmagic.item.ModItemGroup;
@@ -19,7 +20,6 @@ import com.therootsofancientmagic.screen.ModScreenHandlers;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-// import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
@@ -44,6 +44,7 @@ public class TheRootsOfAncientMagic implements ModInitializer {
         ModFlowerBlock.RenderFlowers();
         ModRecipes.registerRecipes();
 
+        ModEntities.registerModEntities();
         ModBlockEntities.registerBlockEntities();
         ModScreenHandlers.registerScreenHandlers();
 

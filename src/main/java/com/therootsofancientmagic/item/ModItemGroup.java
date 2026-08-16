@@ -22,7 +22,8 @@ public class ModItemGroup {
                     ))
                     .icon(() -> new ItemStack(ModFlowerBlock.FLOWER_DARK))
                     .entries((context, entries) -> {
-                        entries.add(ModItem.FIRE_SFAFF);
+                        entries.add(ModItem.FIRE_STAFF);
+                        entries.add(ModItem.WEED_STAFF);
 
                         entries.add(ModItem.ESSENCE_AQUA);
                         entries.add(ModItem.ESSENCE_FIRE);

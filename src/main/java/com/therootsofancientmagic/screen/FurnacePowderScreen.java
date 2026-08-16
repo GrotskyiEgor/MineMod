@@ -9,8 +9,6 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
-// import com.therootsofancientmagic.screen.FurnacePowderScreenHandler;
-
 public class FurnacePowderScreen extends HandledScreen<FurnacePowderScreenHandler> {
     private static final Identifier TEXTURE = new Identifier(TheRootsOfAncientMagic.MOD_ID, "textures/gui/furnace_powder_gui.png");
 

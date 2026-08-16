@@ -18,7 +18,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class FurnacePowderBlock extends BlockWithEntity implements BlockEntityProvider {
+public class FurnacePowderBlock extends BlockWithEntity {
     private static final VoxelShape SHAPE = Block.createCuboidShape(0, 0, 0, 16, 16, 16);
 
     public FurnacePowderBlock(Settings settings) {
@@ -42,6 +42,7 @@ public class FurnacePowderBlock extends BlockWithEntity implements BlockEntityPr
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
