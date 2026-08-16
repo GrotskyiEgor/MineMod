@@ -1,5 +1,4 @@
 package com.therootsofancientmagic.item;
-import net.minecraft.item.AxeItem;
 import net.minecraft.item.Item;
 // import net.minecraft.item.ItemGroups;
 import net.minecraft.item.PickaxeItem;
@@ -15,8 +14,10 @@ import com.therootsofancientmagic.item.sword.ElementalSwordItem;
 import com.therootsofancientmagic.item.pickaxe.ElementalPickaxeItem;
 import com.therootsofancientmagic.item.shovel.ElementalShovelItem;
 import com.therootsofancientmagic.item.axe.ElementalAxeItem;
+import com.therootsofancientmagic.item.hoe.ElementalHoeItem;
 import com.therootsofancientmagic.item.staff.FireStaff;
 import net.minecraft.util.Identifier;
+
 
 public class ModItem {
     public static final Item FIRE_SFAFF = registerItem(
@@ -138,6 +139,25 @@ public class ModItem {
 
     public static final Item EARTH_SHOVEL = registerItem("earth_shovel",
             new ElementalShovelItem(ModToolMaturial.ESSENCE_EARTH, 1, -2.8f, new Item.Settings()));
+
+    public static final Item FIRE_HOE = registerItem("fire_hoe",
+            new ElementalHoeItem(ModToolMaturial.ESSENCE_FIRE, 1, -2.8f, new Item.Settings()));
+
+    public static final Item AQUA_HOE = registerItem("aqua_hoe",
+            new ElementalHoeItem(ModToolMaturial.ESSENCE_AQUA, 1, -2.8f, new Item.Settings()));
+
+    public static final Item WEED_HOE = registerItem("weed_hoe",
+            new ElementalHoeItem(ModToolMaturial.ESSENCE_WEED, 1, -2.8f, new Item.Settings()));
+
+    public static final Item LIGHT_HOE = registerItem("light_hoe",
+            new ElementalHoeItem(ModToolMaturial.ESSENCE_LIGHT, 1, -2.8f, new Item.Settings()));
+
+    public static final Item DARK_HOE = registerItem("dark_hoe",
+            new ElementalHoeItem(ModToolMaturial.ESSENCE_DARK, 1, -2.8f, new Item.Settings()));
+
+    public static final Item EARTH_HOE = registerItem("earth_hoe",
+            new ElementalHoeItem(ModToolMaturial.ESSENCE_EARTH, 1, -2.8f, new Item.Settings()));
+
 
 
     public static Item registerItem(String name, Item item){
