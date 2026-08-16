@@ -45,15 +45,22 @@ public abstract class PlayerEntityMixin implements CustomArmorHolder {
         PlayerEntity player = (PlayerEntity) (Object) this;
 
         if (!player.getWorld().isClient()) {
-            ItemStack robeStack = this.customArmorInventory.getStack(1); // 2-й слот
+            int robeCount = 0;
 
-            if (!robeStack.isEmpty() && robeStack.getItem() instanceof RobeItem) {
+            for (int i = 0; i < 4; i++) {
+                ItemStack stack = this.customArmorInventory.getStack(i);
+                if (!stack.isEmpty() && stack.getItem() instanceof RobeItem) {
+                    robeCount++;
+                }
+            }
+
+            if (robeCount > 0) {
                 player.addStatusEffect(new StatusEffectInstance(
                     StatusEffects.SPEED, 
-                    20,
-                    0,
-                    true,
-                    false
+                    20,           
+                    robeCount - 1,
+                    true,           
+                    false          
                 ));
             }
         }
