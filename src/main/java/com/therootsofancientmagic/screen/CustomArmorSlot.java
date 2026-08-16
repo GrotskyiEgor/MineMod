@@ -1,9 +1,8 @@
 package com.therootsofancientmagic.screen;
 
+import com.therootsofancientmagic.item.robe.RobeItem;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
-import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.slot.Slot;
 
@@ -15,21 +14,20 @@ public class CustomArmorSlot extends Slot {
         this.equipmentSlot = equipmentSlot;
     }
 
+    public EquipmentSlot getEquipmentSlot() {
+        return this.equipmentSlot;
+    }
+
     @Override
     public boolean canInsert(ItemStack stack) {
-        if (stack.getItem() instanceof ArmorItem armorItem) {
-            return armorItem.getSlotType() == this.equipmentSlot;
+        if (this.getIndex() == 1) {
+            return stack.getItem() instanceof RobeItem;
         }
-        return true;
-    }
 
-    @Override
-    public boolean canTakeItems(PlayerEntity playerEntity) {
-        return true;
-    }
+        if (stack.getItem() instanceof RobeItem) {
+            return false;
+        }
 
-    @Override
-    public int getMaxItemCount() {
-        return 1;
+        return super.canInsert(stack);
     }
 }

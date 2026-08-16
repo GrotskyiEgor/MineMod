@@ -1,9 +1,13 @@
 package com.therootsofancientmagic.mixin;
 
 import com.therootsofancientmagic.component.CustomArmorHolder;
+import com.therootsofancientmagic.item.robe.RobeItem;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
 import org.spongepowered.asm.mixin.Mixin;
@@ -33,6 +37,25 @@ public abstract class PlayerEntityMixin implements CustomArmorHolder {
         if (nbt.contains("CustomArmorInventory", 9)) {
             NbtList nbtList = nbt.getList("CustomArmorInventory", 10);
             this.customArmorInventory.readNbtList(nbtList);
+        }
+    }
+
+    @Inject(method = "tick", at = @At("TAIL"))
+    private void applyRobeEffects(CallbackInfo ci) {
+        PlayerEntity player = (PlayerEntity) (Object) this;
+
+        if (!player.getWorld().isClient()) {
+            ItemStack robeStack = this.customArmorInventory.getStack(1); // 2-й слот
+
+            if (!robeStack.isEmpty() && robeStack.getItem() instanceof RobeItem) {
+                player.addStatusEffect(new StatusEffectInstance(
+                    StatusEffects.SPEED, 
+                    20,
+                    0,
+                    true,
+                    false
+                ));
+            }
         }
     }
 }

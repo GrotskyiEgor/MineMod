@@ -45,6 +45,8 @@ public class ModItemGroup {
                         entries.add(ModFlowerBlock.FLOWER_FIRE);
                         entries.add(ModFlowerBlock.FLOWER_EARTH);
                         entries.add(ModFlowerBlock.FLOWER_WEED);
+
+                        entries.add(ModItem.WIZARD_ROBE);
                     })
                     .build()
     );
