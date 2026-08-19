@@ -16,7 +16,6 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
 public class HeroicPickaxeItem extends PickaxeItem {
-
     public HeroicPickaxeItem(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
         super(material, attackDamage, attackSpeed, settings);
     }
@@ -31,10 +30,10 @@ public class HeroicPickaxeItem extends PickaxeItem {
 
              // Проверяет, держит ли вобще кирку в любой руке
             if (isHoldingInMainHand || isHoldingInOffHand) {
-                // Накладывает Спешку 2 на игрока на 4 секунди
-                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.HASTE, 80, 1, false, false, true));
-                // Накладивает ночное зрение на игрока на 4 секунди
-                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 80, 0, false, false, true));
+                // Накладывает Спешку 2 на игрока
+                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.HASTE, 2, 1, false, false, true));
+                // Накладивает ночное зрение на игрока
+                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 2, 0, false, false, true));
             }
         }
         super.inventoryTick(stack, world, entity, slot, selected);
@@ -103,5 +102,5 @@ public class HeroicPickaxeItem extends PickaxeItem {
                 }
             }
         }
-    }
+}
 }

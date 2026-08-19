@@ -20,6 +20,14 @@ public class CustomArmorSlot extends Slot {
 
     @Override
     public boolean canInsert(ItemStack stack) {
-        return stack.getItem() instanceof RobeItem;
+        if (this.getIndex() == 1) {
+            return stack.getItem() instanceof RobeItem;
+        }
+
+        if (stack.getItem() instanceof RobeItem) {
+            return false;
+        }
+
+        return super.canInsert(stack);
     }
 }

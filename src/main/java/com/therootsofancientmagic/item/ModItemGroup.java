@@ -24,6 +24,7 @@ public class ModItemGroup {
                     .entries((context, entries) -> {
                         entries.add(ModItem.FIRE_STAFF);
                         entries.add(ModItem.WEED_STAFF);
+                        entries.add(ModItem.EARTH_STAFF);
                         
                         entries.add(ModItem.HEROIC_AXE);
                         entries.add(ModItem.HEROIC_SWORD);

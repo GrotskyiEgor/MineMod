@@ -1,6 +1,5 @@
 package com.therootsofancientmagic.item.heroic_tools;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -24,11 +23,11 @@ public class HeroicSwordItem extends SwordItem {
 
             // Проверяет, держит ли вобще меч в любой руке
             if (isHoldingInMainHand || isHoldingInOffHand) { 
-                // Накладивает Силу 2 на игрока на 4 секунди
-                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 80, 1, false, false, true)); 
+                // Накладивает Силу 2 на игрока
+                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 2, 1, false, false, true)); 
                 
-                // Накладивает Огненний Резистенс(стойкость к огню) 2 на игрока на 4 секунди
-                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 80, 1, false, false, true));
+                // Накладивает Огненний Резистенс(стойкость к огню) 2 на игрока
+                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 2, 1, false, false, true));
             }
         }
         super.inventoryTick(stack, world, entity, slot, selected); 

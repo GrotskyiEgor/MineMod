@@ -15,6 +15,7 @@ import com.therootsofancientmagic.item.heroic_tools.HeroicAxeItem;
 import com.therootsofancientmagic.item.heroic_tools.HeroicSwordItem;
 import com.therootsofancientmagic.item.heroic_tools.HeroicPickaxeItem;
 import com.therootsofancientmagic.item.heroic_tools.HeroicShovelItem;
+import com.therootsofancientmagic.item.staff.EarthStaff;
 import com.therootsofancientmagic.item.staff.FireStaff;
 import com.therootsofancientmagic.item.staff.WeedStaff;
 import net.minecraft.util.Identifier;
@@ -25,6 +26,11 @@ public class ModItem {
         new FireStaff(new Item.Settings())
     );
 
+    public static final Item EARTH_STAFF = registerItem(
+                "earth_staff",
+                new EarthStaff(new Item.Settings())
+        );
+        
     public static final Item WEED_STAFF = registerItem(
         "weed_staff",
         new WeedStaff(new Item.Settings())

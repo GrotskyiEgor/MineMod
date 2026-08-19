@@ -51,11 +51,11 @@ public class HeroicAxeItem extends AxeItem {
 
             // Проверяет, держит ли вобще топор в любой руке
             if (isHoldingInMainHand || isHoldingInOffHand) { 
-                // Накладивает Скорость 2 на игрока на 4 секунди
-                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 80, 1, false, false, true)); 
+                // Накладивает Скорость 2 на игрока 
+                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 2, 1, false, false, true)); 
                 
-                // Накладивает Резистенс(стойкость) 2 на игрока на 4 секунди
-                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 80, 1, false, false, true));
+                // Накладивает Резистенс(стойкость) 2 на игрока
+                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 2, 1, false, false, true));
             }
         }
         super.inventoryTick(stack, world, entity, slot, selected); 

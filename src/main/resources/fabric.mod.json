@@ -18,9 +18,6 @@
 		"main": [
 			"com.therootsofancientmagic.TheRootsOfAncientMagic"
 		],
-		"client": [
-    		"com.therootsofancientmagic.client.TheRootsOfAncientMagicClient"
-  		],
 		"fabric-datagen": [
 			"com.therootsofancientmagic.TheRootsOfAncientMagicDataGenerator"
 		]

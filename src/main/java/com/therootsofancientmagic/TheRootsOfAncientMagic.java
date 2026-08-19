@@ -13,7 +13,6 @@ import com.therootsofancientmagic.item.ModItem;
 import com.therootsofancientmagic.item.ModItemGroup;
 import com.therootsofancientmagic.network.RobeAbilityServerHandler;
 import com.therootsofancientmagic.recipe.ModRecipes;
-import com.therootsofancientmagic.screen.FurnacePowderScreen;
 import com.therootsofancientmagic.screen.CraftTableScreen;
 import com.therootsofancientmagic.screen.FurnacePowderScreen;
 import com.therootsofancientmagic.screen.ModScreenHandlers;

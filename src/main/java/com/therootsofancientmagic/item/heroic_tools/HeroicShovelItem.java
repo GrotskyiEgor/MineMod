@@ -31,10 +31,10 @@ public class HeroicShovelItem extends ShovelItem {
 
              // Проверяет, держит ли вобще лопату в любой руке
             if (isHoldingInMainHand || isHoldingInOffHand) {
-                // Накладывает Спешку 2 на игрока на 4 секунди
-                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.HASTE, 80, 1, false, false, true));
-                // Накладивает джамп буст на игрока на 4 секунди
-                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 80, 0, false, false, true));
+                // Накладывает Спешку 2 на игрока
+                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.HASTE, 2, 1, false, false, true));
+                // Накладивает джамп буст на игрока
+                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 2, 0, false, false, true));
             }
         }
         super.inventoryTick(stack, world, entity, slot, selected);
