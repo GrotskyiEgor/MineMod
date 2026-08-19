@@ -39,13 +39,6 @@ public class TheRootsOfAncientMagic implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        // Пассивная регенерация маны: заставляем код тикать на сервере каждую секунду
-        ServerTickEvents.START_SERVER_TICK.register(server -> {
-            for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
-                com.therootsofancientmagic.mana.PlayerMana.regenerateMana(player);
-            }
-        });
-
         ModItemGroup.registerItemGroups();
 
         ModItem.registerModItems();
