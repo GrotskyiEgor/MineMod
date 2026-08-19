@@ -1,7 +1,6 @@
 package com.therootsofancientmagic.item;
 import net.minecraft.item.Item;
 // import net.minecraft.item.ItemGroups;
-import net.minecraft.item.PickaxeItem;
 // import net.minecraft.item.ToolMaterials;
 import com.therootsofancientmagic.item.robe.RobeItem;
 // import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -14,6 +13,8 @@ import com.therootsofancientmagic.item.axe.ElementalAxeItem;
 import com.therootsofancientmagic.item.hoe.ElementalHoeItem;
 import com.therootsofancientmagic.item.heroic_tools.HeroicAxeItem;
 import com.therootsofancientmagic.item.heroic_tools.HeroicSwordItem;
+import com.therootsofancientmagic.item.heroic_tools.HeroicPickaxeItem;
+import com.therootsofancientmagic.item.heroic_tools.HeroicShovelItem;
 import com.therootsofancientmagic.item.staff.FireStaff;
 import com.therootsofancientmagic.item.staff.WeedStaff;
 import net.minecraft.util.Identifier;
@@ -71,6 +72,11 @@ public class ModItem {
             new HeroicAxeItem(ModToolMaturial.ESSENCE_HEROIC, 3.0f, -2.4f, new Item.Settings()));
     public static final Item HEROIC_SWORD = registerItem("heroic_sword",
             new HeroicSwordItem(ModToolMaturial.ESSENCE_HEROIC, -3, -3.0f, new Item.Settings()));
+    public static final Item HEROIC_PICKAXE= registerItem("heroic_pickaxe",
+            new HeroicPickaxeItem(ModToolMaturial.ESSENCE_HEROIC, 3, -2.4f, new Item.Settings()));
+    public static final Item HEROIC_SHOVEL = registerItem("heroic_shovel",
+            new HeroicShovelItem(ModToolMaturial.ESSENCE_HEROIC, 3, -2.4f, new Item.Settings()));
+
 
     public static final Item FIRE_PICKAXE = registerItem("fire_pickaxe",
             new ElementalPickaxeItem(ModToolMaturial.ESSENCE_FIRE, 1, -2.8f, new Item.Settings()));

@@ -27,6 +27,8 @@ public class ModItemGroup {
                         
                         entries.add(ModItem.HEROIC_AXE);
                         entries.add(ModItem.HEROIC_SWORD);
+                        entries.add(ModItem.HEROIC_PICKAXE);
+                        entries.add(ModItem.HEROIC_SHOVEL);
 
                         entries.add(ModItem.ESSENCE_AQUA);
                         entries.add(ModItem.ESSENCE_FIRE);
