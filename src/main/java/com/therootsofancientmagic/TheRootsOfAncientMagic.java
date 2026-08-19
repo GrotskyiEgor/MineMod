@@ -11,6 +11,7 @@ import com.therootsofancientmagic.entity.ModEntities;
 import com.therootsofancientmagic.init.worldgen.PlacedFeatureInit;
 import com.therootsofancientmagic.item.ModItem;
 import com.therootsofancientmagic.item.ModItemGroup;
+import com.therootsofancientmagic.network.RobeAbilityServerHandler;
 import com.therootsofancientmagic.recipe.ModRecipes;
 import com.therootsofancientmagic.screen.FurnacePowderScreen;
 import com.therootsofancientmagic.screen.CraftTableScreen;
@@ -47,6 +48,8 @@ public class TheRootsOfAncientMagic implements ModInitializer {
         ModEntities.registerModEntities();
         ModBlockEntities.registerBlockEntities();
         ModScreenHandlers.registerScreenHandlers();
+
+        RobeAbilityServerHandler.register();
 
         HandledScreens.register(ModScreenHandlers.FURNACE_POWDER_SCREEN_HANDLER, FurnacePowderScreen::new);
         HandledScreens.register(ModScreenHandlers.CRAFT_TABLE_SCREEN_HANDLER, CraftTableScreen::new);
