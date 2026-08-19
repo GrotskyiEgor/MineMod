@@ -43,6 +43,7 @@ public class HeroicHoeItem extends HoeItem {
         }
         super.inventoryTick(stack, world, entity, slot, selected);
     }
+    // Главний метод как и harvestAndreplant
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
         World world = context.getWorld();
@@ -51,9 +52,7 @@ public class HeroicHoeItem extends HoeItem {
         ItemStack hoeStack = context.getStack();
         BlockState clickedState = world.getBlockState(clickedPos);
 
-        
         if (clickedState.getBlock() instanceof CropBlock clickedCrop && clickedCrop.isMature(clickedState)) {
-            
             
             if (world.isClient()) {
                 return ActionResult.SUCCESS;
@@ -61,19 +60,7 @@ public class HeroicHoeItem extends HoeItem {
 
             if (player instanceof ServerPlayerEntity serverPlayer) {
                 
-               
-                Item seedItem = clickedCrop.getPickStack(world, clickedPos, clickedState).getItem();
-                
-                
-                int requiredSeeds = 49; 
-                
-                
-                if (!serverPlayer.isCreative() && serverPlayer.getInventory().count(seedItem) < requiredSeeds) {
-                    return ActionResult.FAIL; 
-                }
-
-                
-                //harvestAndReplantArea(world, clickedPos, serverPlayer, hoeStack, -3, 3, -3, 3);
+                harvestAndReplantArea(world, clickedPos, serverPlayer, hoeStack, -3, 3, -3, 3);
 
                 return ActionResult.CONSUME;
             }
@@ -81,39 +68,45 @@ public class HeroicHoeItem extends HoeItem {
 
         return super.useOnBlock(context);
     }
-    private void tryHarvestAndReplant(World world, BlockPos pos, ServerPlayerEntity player, ItemStack hoeStack) {
+        // обрабатывает один конкретный блок, типо (сбор плодов + посадка семечка обратно)
+        private boolean tryHarvestAndReplant(World world, BlockPos pos, ServerPlayerEntity player, ItemStack hoeStack) { // //
         BlockState state = world.getBlockState(pos);
         
         if (state.getBlock() instanceof CropBlock cropBlock && cropBlock.isMature(state)) {
             Item seedItem = cropBlock.getPickStack(world, pos, state).getItem();
 
-            if (player.isCreative() || player.getInventory().count(seedItem) > 0) {
-                List<ItemStack> drops = Block.getDroppedStacks(state, (net.minecraft.server.world.ServerWorld) world, pos, null, player, hoeStack);
-                
-        
-                for (ItemStack drop : drops) {
-                    Block.dropStack(world, pos, drop);
-                }
-
-                // Забирает 49 семян из инвентаря для посадки
-                if (!player.isCreative()) {
-                    player.getInventory().remove(stack -> stack.getItem() == seedItem, 49, player.getInventory());
-                }
-                world.setBlockState(pos, cropBlock.withAge(0), 3);
-
-                // Тратит 1 прочность мотиги
-                hoeStack.damage(1, player, (p) -> p.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+           //Если семена кончились то преривает харвест и посадку
+            if (!player.isCreative() && player.getInventory().count(seedItem) <= 0) {
+                return false;
             }
+            // Считает лут, который должен был выпасть если би ми все просто собирали 
+            List<ItemStack> drops = Block.getDroppedStacks(state, (net.minecraft.server.world.ServerWorld) world, pos, null, player, hoeStack);
+            
+            for (ItemStack drop : drops) {
+                Block.dropStack(world, pos, drop);
+            }
+             // Забирает семена из инвентаре при посадке
+            if (!player.isCreative()) {
+                player.getInventory().remove(stack -> stack.getItem() == seedItem, 1, player.getInventory());
+            }
+
+            world.setBlockState(pos, cropBlock.withAge(0), 3);
+            // Тратит 1 прочность мотиги 
+            hoeStack.damage(1, player, (p) -> p.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
         }
+        return true;
     }
 
-   // Перебор кординатной сетки
     private void harvestAndReplantArea(World world, BlockPos targetPos, ServerPlayerEntity player, ItemStack hoeStack, int minX, int maxX, int minZ, int maxZ) {
         for (int gridX = minX; gridX <= maxX; gridX++) {
             for (int gridZ = minZ; gridZ <= maxZ; gridZ++) {
-                if (hoeStack.isEmpty()) return; 
+                if (hoeStack.isEmpty()) return;
+
                 BlockPos neighbourCropPos = targetPos.add(gridX, 0, gridZ);
-                tryHarvestAndReplant(world, neighbourCropPos, player, hoeStack);
+                // Харвест 7 на 7 или столько сколько есть семян в инвентаре
+                if (!tryHarvestAndReplant(world, neighbourCropPos, player, hoeStack)) {
+                    return;
+                }
             }
         }
     }

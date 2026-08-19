@@ -2,7 +2,7 @@ package com.therootsofancientmagic.network;
 
 import com.therootsofancientmagic.TheRootsOfAncientMagic;
 import com.therootsofancientmagic.component.CustomArmorHolder;
-import com.therootsofancientmagic.item.robe.RobeItem;
+import com.therootsofancientmagic.item.robe.ElementalRobeItem;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -27,7 +27,7 @@ public class RobeAbilityServerHandler {
                     Inventory inventory = holder.getCustomArmorInventory();
                     for (int i = 0; i < 4; i++) {
                         ItemStack stack = inventory.getStack(i);
-                        if (!stack.isEmpty() && stack.getItem() instanceof RobeItem) {
+                        if (!stack.isEmpty() && stack.getItem() instanceof ElementalRobeItem) {
                             equippedRobeStack = stack;
                             break;
                         }
@@ -50,7 +50,7 @@ public class RobeAbilityServerHandler {
                         world.playSound(null, player.getBlockPos(),
                                 SoundEvents.ENTITY_EVOKER_CAST_SPELL, SoundCategory.PLAYERS, 1.0F, 1.2F);
 
-                        player.getItemCooldownManager().set(robeItem, 300);
+                        player.getItemCooldownManager().set(robeItem, 100);
                     }
                 }
             });

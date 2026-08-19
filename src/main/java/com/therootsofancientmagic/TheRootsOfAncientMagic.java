@@ -16,12 +16,17 @@ import com.therootsofancientmagic.recipe.ModRecipes;
 import com.therootsofancientmagic.screen.CraftTableScreen;
 import com.therootsofancientmagic.screen.FurnacePowderScreen;
 import com.therootsofancientmagic.screen.ModScreenHandlers;
+import com.therootsofancientmagic.util.AccessoryHandler;
+import com.therootsofancientmagic.block.entity.ModBlockEntities;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+// import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
@@ -50,12 +55,19 @@ public class TheRootsOfAncientMagic implements ModInitializer {
 
         RobeAbilityServerHandler.register();
 
+        ServerTickEvents.START_SERVER_TICK.register(server -> {
+            for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
+                AccessoryHandler.applyAccessoryEffects(player);
+            }
+        });
+
         HandledScreens.register(ModScreenHandlers.FURNACE_POWDER_SCREEN_HANDLER, FurnacePowderScreen::new);
         HandledScreens.register(ModScreenHandlers.CRAFT_TABLE_SCREEN_HANDLER, CraftTableScreen::new);
 
 	    registerFlowers();
     }
 
+    
     public static Identifier id(String path) {
         return new Identifier(MOD_ID, path);
     }

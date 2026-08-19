@@ -53,7 +53,7 @@ public class EarthStaff extends Item {
 		BlockPos centerPos = bottomPos.up(SPHERE_RADIUS);
 
 		for (int x = -SPHERE_RADIUS; x <= SPHERE_RADIUS; x++) {
-			for (int y = -SPHERE_RADIUS + 1; y <= SPHERE_RADIUS; y++) {
+			for (int y = -SPHERE_RADIUS - 1; y <= SPHERE_RADIUS; y++) {
 				for (int z = -SPHERE_RADIUS; z <= SPHERE_RADIUS; z++) {
 					double distance = Math.sqrt(x * x + y * y + z * z);
 					if (distance < SPHERE_RADIUS - 0.5D
@@ -75,9 +75,7 @@ public class EarthStaff extends Item {
 	}
 
 	private boolean isSecondLayerOpening(int x, int y, int z) {
-		return y == 0
-				&& ((Math.abs(x) == SPHERE_RADIUS && z == 0)
-				|| (Math.abs(z) == SPHERE_RADIUS && x == 0));
+		return y == 0 && ((Math.abs(x) == SPHERE_RADIUS && z == 0) || (Math.abs(z) == SPHERE_RADIUS && x == 0));
 	}
 
 	private BlockPos getTargetPoint(World world, PlayerEntity player) {

@@ -1,8 +1,13 @@
 package com.therootsofancientmagic.item;
+
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.Item;
 // import net.minecraft.item.ItemGroups;
 // import net.minecraft.item.ToolMaterials;
-import com.therootsofancientmagic.item.robe.RobeItem;
+
+import com.therootsofancientmagic.item.necklace.NecklaceItem;
+import com.therootsofancientmagic.item.ring.RingItem;
+import com.therootsofancientmagic.item.robe.ElementalRobeItem;
 // import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -15,6 +20,8 @@ import com.therootsofancientmagic.item.heroic_tools.HeroicAxeItem;
 import com.therootsofancientmagic.item.heroic_tools.HeroicSwordItem;
 import com.therootsofancientmagic.item.heroic_tools.HeroicPickaxeItem;
 import com.therootsofancientmagic.item.heroic_tools.HeroicShovelItem;
+import com.therootsofancientmagic.item.heroic_tools.HeroicHoeItem;
+import com.therootsofancientmagic.item.staff.AquaStaff;
 import com.therootsofancientmagic.item.staff.EarthStaff;
 import com.therootsofancientmagic.item.staff.FireStaff;
 import com.therootsofancientmagic.item.staff.WeedStaff;
@@ -35,6 +42,12 @@ public class ModItem {
         "weed_staff",
         new WeedStaff(new Item.Settings())
     );
+
+    public static final Item AQUA_STAFF = registerItem(
+        "aqua_staff",
+        new AquaStaff(new Item.Settings())
+    );
+
 
     public static final Item ESSENCE_AQUA = registerItem(
         "essence_aqua",
@@ -70,39 +83,57 @@ public class ModItem {
         new Item(new Item.Settings())
     );
 
-    public static final Item WIZARD_ROBE = registerItem(
-        "wizard_robe", 
-        new RobeItem(new Item.Settings().maxCount(1)));
+    
+    public static final Item FIRE_ROBE = registerItem(
+        "fire_robe", 
+        new ElementalRobeItem(new Item.Settings().maxCount(1)));
+
+    public static final Item WEED_ROBE = registerItem(
+        "weed_robe", 
+        new ElementalRobeItem(new Item.Settings().maxCount(1)));
 
     public static final Item HEROIC_AXE = registerItem("heroic_axe",
-            new HeroicAxeItem(ModToolMaturial.ESSENCE_HEROIC, 3.0f, -2.4f, new Item.Settings()));
+            new HeroicAxeItem(ModToolMaturial.ESSENCE_HEROIC, 3.0f, -2.4f, new Item.Settings()));    
+        
     public static final Item HEROIC_SWORD = registerItem("heroic_sword",
             new HeroicSwordItem(ModToolMaturial.ESSENCE_HEROIC, -3, -3.0f, new Item.Settings()));
+
     public static final Item HEROIC_PICKAXE= registerItem("heroic_pickaxe",
             new HeroicPickaxeItem(ModToolMaturial.ESSENCE_HEROIC, 3, -2.4f, new Item.Settings()));
+
     public static final Item HEROIC_SHOVEL = registerItem("heroic_shovel",
             new HeroicShovelItem(ModToolMaturial.ESSENCE_HEROIC, 3, -2.4f, new Item.Settings()));
-
-
-    public static final Item FIRE_PICKAXE = registerItem("fire_pickaxe",
-            new ElementalPickaxeItem(ModToolMaturial.ESSENCE_FIRE, 1, -2.8f, new Item.Settings()));
-
-    public static final Item AQUA_PICKAXE = registerItem("aqua_pickaxe",
-            new ElementalPickaxeItem(ModToolMaturial.ESSENCE_AQUA, 1, -2.8f, new Item.Settings()));
-
-    public static final Item WEED_PICKAXE = registerItem("weed_pickaxe",
-            new ElementalPickaxeItem(ModToolMaturial.ESSENCE_WEED, 1, -2.8f, new Item.Settings()));
             
-    public static final Item EARTH_PICKAXE = registerItem("earth_pickaxe",
-            new ElementalPickaxeItem(ModToolMaturial.ESSENCE_EARTH, 1, -2.8f, new Item.Settings()));
+    public static final Item HEROIC_HOE = registerItem("heroic_hoe",
+            new HeroicHoeItem(ModToolMaturial.ESSENCE_HEROIC, 3, -2.4f, new Item.Settings()));
 
-    public static final Item DARK_PICKAXE = registerItem("dark_pickaxe",
-            new ElementalPickaxeItem(ModToolMaturial.ESSENCE_DARK, 1, -2.8f, new Item.Settings()));
-            
+
+    public static final Item MAGIC_NECKLACE = registerItem(
+        "magic_necklace",
+        new NecklaceItem(new FabricItemSettings().maxCount(1)));
+    public static final Item MAGIC_RING = registerItem(
+        "magic_ring",
+        new RingItem(new FabricItemSettings().maxCount(1)));
+
     public static final Item LIGHT_PICKAXE = registerItem("light_pickaxe",
             new ElementalPickaxeItem(ModToolMaturial.ESSENCE_LIGHT, 1, -2.8f, new Item.Settings()));
+        
+    public static final Item DARK_PICKAXE = registerItem("dark_pickaxe",
+            new ElementalPickaxeItem(ModToolMaturial.ESSENCE_LIGHT, 1, -2.8f, new Item.Settings()));
             
-    
+    public static final Item FIRE_PICKAXE = registerItem("fire_pickaxe",
+            new ElementalPickaxeItem(ModToolMaturial.ESSENCE_LIGHT, 1, -2.8f, new Item.Settings()));
+            
+    public static final Item AQUA_PICKAXE = registerItem("aqua_pickaxe",
+            new ElementalPickaxeItem(ModToolMaturial.ESSENCE_LIGHT, 1, -2.8f, new Item.Settings()));
+            
+    public static final Item EARTH_PICKAXE = registerItem("earth_pickaxe",
+            new ElementalPickaxeItem(ModToolMaturial.ESSENCE_LIGHT, 1, -2.8f, new Item.Settings()));
+            
+    public static final Item WEED_PICKAXE = registerItem("weed_pickaxe",
+            new ElementalPickaxeItem(ModToolMaturial.ESSENCE_LIGHT, 1, -2.8f, new Item.Settings()));
+            
+            
     public static final Item FIRE_AXE = registerItem("fire_axe",
             new ElementalAxeItem(ModToolMaturial.ESSENCE_FIRE, 5.0f, -3.0f, new Item.Settings()));
     
