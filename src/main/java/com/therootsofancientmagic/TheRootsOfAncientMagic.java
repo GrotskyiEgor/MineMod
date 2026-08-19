@@ -17,7 +17,6 @@ import com.therootsofancientmagic.screen.CraftTableScreen;
 import com.therootsofancientmagic.screen.FurnacePowderScreen;
 import com.therootsofancientmagic.screen.ModScreenHandlers;
 import com.therootsofancientmagic.util.AccessoryHandler;
-import com.therootsofancientmagic.block.entity.ModBlockEntities;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -33,7 +32,6 @@ import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.PlacedFeature;
 
 public class TheRootsOfAncientMagic implements ModInitializer {
-
     public static final String MOD_ID = "the-roots-of-ancient-magic";
 
     public static final Logger LOGGER =
@@ -41,6 +39,13 @@ public class TheRootsOfAncientMagic implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        // Пассивная регенерация маны: заставляем код тикать на сервере каждую секунду
+        ServerTickEvents.START_SERVER_TICK.register(server -> {
+            for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
+                com.therootsofancientmagic.mana.PlayerMana.regenerateMana(player);
+            }
+        });
+
         ModItemGroup.registerItemGroups();
 
         ModItem.registerModItems();
@@ -71,7 +76,7 @@ public class TheRootsOfAncientMagic implements ModInitializer {
     public static Identifier id(String path) {
         return new Identifier(MOD_ID, path);
     }
-
+    
     public void registerFlowers() {
         registerFlowerInBiome(PlacedFeatureInit.FLOWER_DARK_PLACED_KEY, ModBiomes.DARK);
         registerFlowerInBiome(PlacedFeatureInit.FLOWER_LIGHT_PLACED_KEY, ModBiomes.LIGHT);
