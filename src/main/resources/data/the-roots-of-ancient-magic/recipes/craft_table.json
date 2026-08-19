@@ -1,0 +1,40 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "pattern": [
+        "QWE",
+        "ASD",
+        "ZXQ"
+    ],
+    "key": {
+        "Q": {
+            "item": "minecraft:gunpowder"
+        },
+        "W": {
+            "item": "the-roots-of-ancient-magic:essence_fire"
+        },
+        "E": {
+            "item": "the-roots-of-ancient-magic:essence_aqua"
+        },
+        "A": {
+            "item": "the-roots-of-ancient-magic:essence_weed"
+        },
+        "S": {
+            "item": "minecraft:crafting_table"
+        },
+        "D": {
+            "item": "the-roots-of-ancient-magic:essence_earth"
+        },
+        "Z": {
+            "item": "the-roots-of-ancient-magic:essence_dark"
+        },
+        "X": {
+            "item": "the-roots-of-ancient-magic:essence_light"
+        }
+        
+    },
+    "result": {
+        "item": "the-roots-of-ancient-magic:craft_table",
+        "count": 1
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "pattern": [
+        "QQQ",
+        "AQA",
+        "AAA"
+    ],
+    "key": {
+        "Q": {
+            "item": "the-roots-of-ancient-magic:flower_fire"
+        },
+        "A": {
+            "item": "minecraft:gunpowder"
+        }
+    },
+    "result": {
+        "item": "the-roots-of-ancient-magic:furnace_powder",
+        "count": 1
+    }
+}
