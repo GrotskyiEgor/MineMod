@@ -1,10 +1,13 @@
 package com.therootsofancientmagic.item;
 
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.Item;
 // import net.minecraft.item.ItemGroups;
 import net.minecraft.item.PickaxeItem;
 // import net.minecraft.item.ToolMaterials;
 
+import com.therootsofancientmagic.item.necklace.NecklaceItem;
+import com.therootsofancientmagic.item.ring.RingItem;
 import com.therootsofancientmagic.item.robe.RobeItem;
 
 // import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -45,9 +48,17 @@ public class ModItem{
         new Item(new Item.Settings())
     );
 
+
     public static final Item WIZARD_ROBE = registerItem(
         "wizard_robe", 
         new RobeItem(new Item.Settings().maxCount(1)));
+
+    public static final Item MAGIC_NECKLACE = registerItem(
+        "magic_necklace",
+        new NecklaceItem(new FabricItemSettings().maxCount(1)));
+    public static final Item MAGIC_RING = registerItem(
+        "magic_ring",
+        new RingItem(new FabricItemSettings().maxCount(1)));
    
     public static final Item FIRE_PICKAXE = registerItem("fire_pickaxe",
             new PickaxeItem(ModToolMaturial.ESSENCE_FIRE, 1, -2.8f, new Item.Settings()));
