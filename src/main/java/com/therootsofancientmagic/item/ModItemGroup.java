@@ -24,6 +24,8 @@ public class ModItemGroup {
                     .entries((context, entries) -> {
                         entries.add(ModItem.FIRE_STAFF);
                         entries.add(ModItem.WEED_STAFF);
+                        entries.add(ModItem.EARTH_STAFF);
+                        entries.add(ModItem.AQUA_STAFF);           
                         
                         // entries.add(ModItem.HEROIC_AXE);
                         // entries.add(ModItem.HEROIC_SWORD);
@@ -49,8 +51,8 @@ public class ModItemGroup {
                         entries.add(ModItem.FIRE_PICKAXE);
                         entries.add(ModItem.AQUA_PICKAXE);
                         entries.add(ModItem.WEED_PICKAXE);
-                        entries.add(ModItem.DARK_PICKAXE);
-                        entries.add(ModItem.LIGHT_PICKAXE);
+                        // entries.add(ModItem.DARK_PICKAXE);
+                        // entries.add(ModItem.LIGHT_PICKAXE);
                         entries.add(ModItem.EARTH_PICKAXE);
 
                         entries.add(ModItem.FIRE_AXE);
@@ -60,7 +62,8 @@ public class ModItemGroup {
                         entries.add(ModItem.LIGHT_AXE);
                         entries.add(ModItem.EARTH_AXE);
 
-                        entries.add(ModItem.WIZARD_ROBE);
+                        entries.add(ModItem.FIRE_ROBE);
+                        entries.add(ModItem.WEED_ROBE);
                         entries.add(ModItem.MAGIC_NECKLACE);
                         entries.add(ModItem.MAGIC_RING);
                     })

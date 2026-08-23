@@ -13,9 +13,8 @@ import com.therootsofancientmagic.item.ModItem;
 import com.therootsofancientmagic.item.ModItemGroup;
 import com.therootsofancientmagic.network.WeedRobeAbilityServerHandler;
 import com.therootsofancientmagic.recipe.ModRecipes;
-import com.therootsofancientmagic.screen.FurnacePowderScreen;
 import com.therootsofancientmagic.screen.CraftTableScreen;
-// import com.therootsofancientmagic.screen.FurnacePowderScreen;
+import com.therootsofancientmagic.screen.FurnacePowderScreen;
 import com.therootsofancientmagic.screen.ModScreenHandlers;
 import com.therootsofancientmagic.util.AccessoryHandler;
 // import com.therootsofancientmagic.block.entity.ModBlockEntities;
@@ -34,7 +33,6 @@ import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.PlacedFeature;
 
 public class TheRootsOfAncientMagic implements ModInitializer {
-
     public static final String MOD_ID = "the-roots-of-ancient-magic";
 
     public static final Logger LOGGER =
@@ -68,11 +66,11 @@ public class TheRootsOfAncientMagic implements ModInitializer {
 	    registerFlowers();
     }
 
-
+    
     public static Identifier id(String path) {
         return new Identifier(MOD_ID, path);
     }
-
+    
     public void registerFlowers() {
         registerFlowerInBiome(PlacedFeatureInit.FLOWER_DARK_PLACED_KEY, ModBiomes.DARK);
         registerFlowerInBiome(PlacedFeatureInit.FLOWER_LIGHT_PLACED_KEY, ModBiomes.LIGHT);

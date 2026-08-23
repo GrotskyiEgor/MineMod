@@ -42,11 +42,6 @@ public class ElementalHoeItem extends HoeItem {
             if (player instanceof ServerPlayerEntity serverPlayer) {
                 Item seedItem = clickedCrop.getPickStack(world, clickedPos, clickedState).getItem();
                 
-                int requiredSeeds = getRequiredSeedCount();
-                if (!serverPlayer.isCreative() && serverPlayer.getInventory().count(seedItem) < requiredSeeds) {
-                    return ActionResult.FAIL; 
-                } 
-                
                 // Получаем случайное число для расчета 5% шанса баффов
                 float effectChance = player.getRandom().nextFloat();
                 if (effectChance < 0.05F) {
@@ -63,7 +58,7 @@ public class ElementalHoeItem extends HoeItem {
                         if (hoeStack.isEmpty()) break;
 
                         BlockPos nextCropPos = clickedPos.offset(playerFacing, i);
-                        tryHarvestAndReplant(world, nextCropPos, serverPlayer, hoeStack);
+                        if (!tryHarvestAndReplant(world, nextCropPos, serverPlayer, hoeStack)) break;
                     }
                 }
                 // Огненная и Земляная, собирает 3 на 3
@@ -94,19 +89,8 @@ public class ElementalHoeItem extends HoeItem {
             player.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 600, 0));
         }
     }
-        private int getRequiredSeedCount() {
-        if (this.getMaterial() == ModToolMaturial.ESSENCE_WEED || this.getMaterial() == ModToolMaturial.ESSENCE_AQUA) { 
-            return 3;
-        } else if (this.getMaterial() == ModToolMaturial.ESSENCE_EARTH || this.getMaterial() == ModToolMaturial.ESSENCE_FIRE) { 
-            return 9;
-        } else if (this.getMaterial() == ModToolMaturial.ESSENCE_DARK || this.getMaterial() == ModToolMaturial.ESSENCE_LIGHT) {
-            return 25;
-        }
-        return 1;
-    }
-
     // обрабатывает один конкретный блок, типо (сбор плодов + посадка семечка обратно)
-    private void tryHarvestAndReplant(World world, BlockPos pos, ServerPlayerEntity player, ItemStack hoeStack) {
+    private boolean tryHarvestAndReplant(World world, BlockPos pos, ServerPlayerEntity player, ItemStack hoeStack) {
         BlockState state = world.getBlockState(pos);
         
         // Опять проверяет что перед нами созревший урожай
@@ -114,11 +98,13 @@ public class ElementalHoeItem extends HoeItem {
             Item seedItem = cropBlock.getPickStack(world, pos, state).getItem();
             
             // Проверяет если ли игрок в креативе, если нет то ищет семечко в инвентаре
-            if (player.isCreative() || player.getInventory().count(seedItem) > 0) {
+           if (!player.isCreative() && player.getInventory().count(seedItem) <= 0) {
+                return false;
+            }
                 // Считает лут, который должен был выпасть если би ми все просто собирали 
                 List<ItemStack> drops = Block.getDroppedStacks(state, (net.minecraft.server.world.ServerWorld) world, pos, null, player, hoeStack);
-                
-                    for (ItemStack drop : drops) {
+                    
+                for (ItemStack drop : drops) {
                     Block.dropStack(world, pos, drop);
                 }
                 // Забирает семена из инвентаре при посадке
@@ -130,8 +116,9 @@ public class ElementalHoeItem extends HoeItem {
                 // Тратит 1 прочность мотиги
                 hoeStack.damage(1, player, (p) -> p.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
             }
+            return true;
         }
-    }
+    
 
     //Перебор координатной сетки
     private void harvestAndReplantArea(World world, BlockPos targetPos, ServerPlayerEntity player, ItemStack hoeStack, int minX, int maxX, int minZ, int maxZ) {
@@ -142,7 +129,9 @@ public class ElementalHoeItem extends HoeItem {
                 // Находит соседний блок
                 BlockPos neighbourCropPos = targetPos.add(gridX, 0, gridZ);
                 // Собирает и пересаживает
-                tryHarvestAndReplant(world, neighbourCropPos, player, hoeStack);
+                if (!tryHarvestAndReplant(world, neighbourCropPos, player, hoeStack)) {
+                    return;
+                }
             }
         }
     }

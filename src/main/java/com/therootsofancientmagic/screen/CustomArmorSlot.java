@@ -2,7 +2,7 @@ package com.therootsofancientmagic.screen;
 
 import com.therootsofancientmagic.item.necklace.NecklaceItem;
 import com.therootsofancientmagic.item.ring.RingItem;
-import com.therootsofancientmagic.item.robe.RobeItem;
+import com.therootsofancientmagic.item.robe.ElementalRobeItem;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.inventory.Inventory;
@@ -33,7 +33,7 @@ public class CustomArmorSlot extends Slot {
     public boolean canInsert(ItemStack stack) {
         int index = this.getIndex();
 
-        if (index == 0) return stack.getItem() instanceof RobeItem;
+        if (index == 0) return stack.getItem() instanceof ElementalRobeItem;
         if (index == 1) return stack.getItem() instanceof NecklaceItem;
         if (index == 2 || index == 3) return stack.getItem() instanceof RingItem;
 

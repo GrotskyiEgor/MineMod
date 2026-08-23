@@ -2,8 +2,8 @@ package com.therootsofancientmagic.item.robe;
 
 import net.minecraft.item.Item;
 
-public class RobeItem extends Item {
-    public RobeItem(Settings settings) {
+public class ElementalRobeItem extends Item {
+    public ElementalRobeItem(Settings settings) {
         super(settings);
     }
 }

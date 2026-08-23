@@ -25,8 +25,6 @@ public class ModScreenHandlers {
                             new CraftTableScreenHandler(syncId, inventory, buf))
             );
     
-    
-
     public static void registerScreenHandlers() {
         TheRootsOfAncientMagic.LOGGER.info("Registering Screen Handlers for " + TheRootsOfAncientMagic.MOD_ID);
     }

@@ -1,56 +1,148 @@
-// package com.therootsofancientmagic.item;
+package com.therootsofancientmagic.item;
 
-// import net.minecraft.item.ArmorMaterial;
-// import net.minecraft.recipe.Ingredient;
-// import net.minecraft.util.Identifier;
-// import net.minecraft.registry.Registries;
-// import java.util.function.Supplier;
+// import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.ArmorMaterial;
+import net.minecraft.recipe.Ingredient;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 
-// public enum ModArmorMaterial implements ArmorMaterial {
-//     ESSENCE_FIRE(1500, 7.0f, 5.5f, 20, () -> Ingredient.ofItems(Registries.ITEM.get(new Identifier("the-roots-of-ancient-magic", "essence_fire")))),
-//     ESSENCE_AQUA(1250, 4.5f, 3.5f, 15, () -> Ingredient.ofItems(Registries.ITEM.get(new Identifier("the-roots-of-ancient-magic", "essence_aqua")))),
-//     ESSENCE_WEED(1000, 6.0f, 5.0f, 20, () -> Ingredient.ofItems(Registries.ITEM.get(new Identifier("the-roots-of-ancient-magic", "essence_weed")))),
-//     ESSENCE_DARK(1750, 8.0f, 5.0f, 30, () -> Ingredient.ofItems(Registries.ITEM.get(new Identifier("the-roots-of-ancient-magic", "essence_dark")))),
-//     ESSENCE_LIGHT(700, 9.0f, 4.50f, 30, () -> Ingredient.ofItems(Registries.ITEM.get(new Identifier("the-roots-of-ancient-magic", "essence_light")))),
-//     ESSENCE_EARTH(52000, 7.5f, 5.0f, 25, () -> Ingredient.ofItems(Registries.ITEM.get(new Identifier("the-roots-of-ancient-magic", "essence_earth"))));
+import java.util.function.Supplier;
 
+public enum ModArmorMaterial implements ArmorMaterial {
+    ESSENCE_FIRE(
+            "essence_fire",
+            35,
+            new int[]{4, 9, 7, 4},
+            20,
+            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
+            2.5f,
+            0.1f,
+            () -> Ingredient.ofItems(ModItem.ESSENCE_FIRE)
+    ),
 
-//     private final int durability;
-//     private final int protection;
-//     private final float toughness;
-//     private final int enchantability;
-//     private final Supplier<Ingredient> repairIngredient;
+    ESSENCE_AQUA(
+            "essence_aqua",
+            30,
+            new int[]{3, 8, 6, 3},
+            15,
+            SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,
+            2.0f,
+            0.1f,
+            () -> Ingredient.ofItems(ModItem.ESSENCE_AQUA)
+    ),
 
-//     ModArmorMaterial(int durability, int protection, float toughness, int enchantability, Supplier<Ingredient> repairIngredient) {
-//         this.durability = durability;
-//         this.protection = protection;
-//         this.toughness = toughness;
-//         this.enchantability = enchantability;
-//         this.repairIngredient = repairIngredient;
-//     }
+    ESSENCE_WEED(
+            "essence_weed",
+            25,
+            new int[]{3, 7, 6, 3},
+            20,
+            SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
+            1.0f,
+            0.0f,
+            () -> Ingredient.ofItems(ModItem.ESSENCE_WEED)
+    ),
 
-//     @Override 
-//     public int getDurability() { 
-//         return this.durability; 
-//     }
-    
-//     @Override 
-//     public float getProtectionAmount() { 
-//         return this.protection; 
-//     }
+    ESSENCE_DARK(
+            "essence_dark",
+            40,
+            new int[]{4, 9, 7, 4},
+            30,
+            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
+            3.0f,
+            0.2f,
+            () -> Ingredient.ofItems(ModItem.ESSENCE_DARK)
+    ),
 
-//     @Override 
-//     public int getKnockbackResistance() { 
-//         return 0; 
-//     }
+    ESSENCE_LIGHT(
+            "essence_light",
+            20,
+            new int[]{5, 10, 8, 5},
+            30,
+            SoundEvents.ITEM_ARMOR_EQUIP_GOLD,
+            2.0f,
+            0.1f,
+            () -> Ingredient.ofItems(ModItem.ESSENCE_LIGHT)
+    ),
 
-//     @Override 
-//     public int getEnchantability() { 
-//         return this.enchantability; 
-//     }
-    
-//     @Override 
-//     public Ingredient getRepairIngredient() { 
-//         return this.repairIngredient.get(); 
-//     }
-// }
+    ESSENCE_EARTH(
+            "essence_earth",
+            50,
+            new int[]{5, 10, 8, 5},
+            25,
+            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
+            3.0f,
+            0.2f,
+            () -> Ingredient.ofItems(ModItem.ESSENCE_EARTH)
+    );
+
+    private final String gameName;
+    private final int durabilityMultiplier;
+    private final int[] protectionAmounts;
+    private final int enchantability;
+    private final SoundEvent equipSound;
+    private final float toughness;
+    private final float knockbackResistance;
+    private final Supplier<Ingredient> repairIngredient;
+
+    ModArmorMaterial(
+            String gameName,
+            int durabilityMultiplier,
+            int[] protectionAmounts,
+            int enchantability,
+            SoundEvent equipSound,
+            float toughness,
+            float knockbackResistance,
+            Supplier<Ingredient> repairIngredient
+    ) {
+        this.gameName = gameName;
+        this.durabilityMultiplier = durabilityMultiplier;
+        this.protectionAmounts = protectionAmounts;
+        this.enchantability = enchantability;
+        this.equipSound = equipSound;
+        this.toughness = toughness;
+        this.knockbackResistance = knockbackResistance;
+        this.repairIngredient = repairIngredient;
+    }
+
+    @Override
+    public String getName() {
+        return gameName;
+    }
+
+    @Override
+    public int getDurability(ArmorItem.Type type) {
+        int[] baseDurability = {13, 15, 16, 11};
+        return baseDurability[type.ordinal()] * durabilityMultiplier;
+    }
+
+    @Override
+    public int getProtection(ArmorItem.Type type) {
+        return protectionAmounts[type.ordinal()];
+    }
+
+    @Override
+    public int getEnchantability() {
+        return enchantability;
+    }
+
+    @Override
+    public SoundEvent getEquipSound() {
+        return equipSound;
+    }
+
+    @Override
+    public Ingredient getRepairIngredient() {
+        return repairIngredient.get();
+    }
+
+    @Override
+    public float getToughness() {
+        return toughness;
+    }
+
+    @Override
+    public float getKnockbackResistance() {
+        return knockbackResistance;
+    }
+}
