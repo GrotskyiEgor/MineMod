@@ -11,7 +11,7 @@ import com.therootsofancientmagic.entity.ModEntities;
 import com.therootsofancientmagic.init.worldgen.PlacedFeatureInit;
 import com.therootsofancientmagic.item.ModItem;
 import com.therootsofancientmagic.item.ModItemGroup;
-import com.therootsofancientmagic.network.WeedRobeAbilityServerHandler;
+import com.therootsofancientmagic.network.RobeAbilityServerHandler;
 import com.therootsofancientmagic.recipe.ModRecipes;
 import com.therootsofancientmagic.screen.CraftTableScreen;
 import com.therootsofancientmagic.screen.FurnacePowderScreen;
@@ -52,7 +52,7 @@ public class TheRootsOfAncientMagic implements ModInitializer {
         ModBlockEntities.registerBlockEntities();
         ModScreenHandlers.registerScreenHandlers();
 
-        WeedRobeAbilityServerHandler.register();
+        RobeAbilityServerHandler.register();
 
         ServerTickEvents.START_SERVER_TICK.register(server -> {
             for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {

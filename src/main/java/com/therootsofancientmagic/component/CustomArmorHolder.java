@@ -4,4 +4,5 @@ import net.minecraft.inventory.Inventory;
 
 public interface CustomArmorHolder {
     Inventory getCustomArmorInventory();
+    default void activateFireRobeAbility() {}
 }
