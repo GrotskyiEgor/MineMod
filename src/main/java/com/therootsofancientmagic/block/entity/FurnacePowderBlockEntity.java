@@ -3,16 +3,13 @@ package com.therootsofancientmagic.block.entity;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import com.therootsofancientmagic.item.ModItem;
 import com.therootsofancientmagic.block.ModFlowerBlock;
-import com.therootsofancientmagic.block.custom.FurnacePowderBlock;
-import com.therootsofancientmagic.screen.FurnacePowderScreen;
-import com.therootsofancientmagic.screen.ModScreenHandlers;
 import com.therootsofancientmagic.util.ImplementedInventory;
 import com.therootsofancientmagic.screen.FurnacePowderScreenHandler;
 
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityType;
+
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;

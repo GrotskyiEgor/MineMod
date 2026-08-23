@@ -1,5 +1,6 @@
 package com.therootsofancientmagic;
 
+import com.therootsofancientmagic.biome.ModBiomes;
 import com.therootsofancientmagic.init.worldgen.ConfigureFeatureInit;
 import com.therootsofancientmagic.init.worldgen.PlacedFeatureInit;
 import com.therootsofancientmagic.world.ModWordGenerator;
@@ -32,6 +33,11 @@ public class TheRootsOfAncientMagicDataGenerator
         registryBuilder.addRegistry(
                 RegistryKeys.PLACED_FEATURE,
                 PlacedFeatureInit::bootstrap
+        );
+
+        registryBuilder.addRegistry(
+            RegistryKeys.BIOME,
+            ModBiomes::bootstrap
         );
     }
 }

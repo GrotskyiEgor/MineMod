@@ -22,13 +22,30 @@ public class ModItemGroup {
                     ))
                     .icon(() -> new ItemStack(ModFlowerBlock.FLOWER_DARK))
                     .entries((context, entries) -> {
+                        entries.add(ModItem.FIRE_STAFF);
+                        entries.add(ModItem.WEED_STAFF);
+                        
+                        entries.add(ModItem.HEROIC_AXE);
+                        entries.add(ModItem.HEROIC_SWORD);
+
                         entries.add(ModItem.ESSENCE_AQUA);
                         entries.add(ModItem.ESSENCE_FIRE);
                         entries.add(ModItem.ESSENCE_WEED);
                         entries.add(ModItem.ESSENCE_EARTH);
                         entries.add(ModItem.ESSENCE_LIGHT);
                         entries.add(ModItem.ESSENCE_DARK);
+                        entries.add(ModItem.ESSENCE_HEROIC);
                         
+                        entries.add(ModBlock.FURNACE_POWDER);
+                        entries.add(ModBlock.CRAFT_TABLE);
+                        
+                        entries.add(ModFlowerBlock.FLOWER_DARK);
+                        entries.add(ModFlowerBlock.FLOWER_LIGHT);
+                        entries.add(ModFlowerBlock.FLOWER_AQUA);
+                        entries.add(ModFlowerBlock.FLOWER_FIRE);
+                        entries.add(ModFlowerBlock.FLOWER_EARTH);
+                        entries.add(ModFlowerBlock.FLOWER_WEED);
+
                         entries.add(ModItem.FIRE_PICKAXE);
                         entries.add(ModItem.AQUA_PICKAXE);
                         entries.add(ModItem.WEED_PICKAXE);
@@ -36,15 +53,12 @@ public class ModItemGroup {
                         entries.add(ModItem.LIGHT_PICKAXE);
                         entries.add(ModItem.EARTH_PICKAXE);
 
-                        entries.add(ModBlock.FURNACE_POWDER);
-                        entries.add(ModBlock.CRAFT_TABLE);
-
-                        entries.add(ModFlowerBlock.FLOWER_DARK);
-                        entries.add(ModFlowerBlock.FLOWER_LIGHT);
-                        entries.add(ModFlowerBlock.FLOWER_AQUA);
-                        entries.add(ModFlowerBlock.FLOWER_FIRE);
-                        entries.add(ModFlowerBlock.FLOWER_EARTH);
-                        entries.add(ModFlowerBlock.FLOWER_WEED);
+                        entries.add(ModItem.FIRE_AXE);
+                        entries.add(ModItem.AQUA_AXE);
+                        entries.add(ModItem.WEED_AXE);
+                        entries.add(ModItem.DARK_AXE);
+                        entries.add(ModItem.LIGHT_AXE);
+                        entries.add(ModItem.EARTH_AXE);
 
                         entries.add(ModItem.WIZARD_ROBE);
                         entries.add(ModItem.MAGIC_NECKLACE);

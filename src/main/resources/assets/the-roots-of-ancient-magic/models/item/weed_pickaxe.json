@@ -1,6 +1,6 @@
 {
-    "parent": "minecraft:item/generated",
+    "parent": "minecraft:item/handheld",
     "textures": {
-        "layer0": "the-roots-of-ancient-magic:item/weed_pickaxe"
+        "layer0": "the-roots-of-ancient-magic:item/def_tool/pickaxe/weed_pickaxe"
     }
 }

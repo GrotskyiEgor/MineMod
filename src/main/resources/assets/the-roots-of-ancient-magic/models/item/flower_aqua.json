@@ -1,6 +1,6 @@
 {
     "parent": "minecraft:item/generated",
     "textures": {
-        "layer0": "the-roots-of-ancient-magic:item/flower_aqua"
+        "layer0": "the-roots-of-ancient-magic:item/flowers/flower_aqua"
     }
 }
