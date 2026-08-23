@@ -15,11 +15,11 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
-public class RobeAbilityServerHandler {
-    public static final Identifier ROBE_ABILITY_PACKET = new Identifier(TheRootsOfAncientMagic.MOD_ID, "robe_ability");
+public class WeedRobeAbilityServerHandler {
+    public static final Identifier WEED_ROBE_ABILITY_PACKET = new Identifier(TheRootsOfAncientMagic.MOD_ID, "weed_robe_ability");
 
     public static void register() {
-        ServerPlayNetworking.registerGlobalReceiver(ROBE_ABILITY_PACKET, (server, player, handler, buf, responseSender) -> {
+        ServerPlayNetworking.registerGlobalReceiver(WEED_ROBE_ABILITY_PACKET, (server, player, handler, buf, responseSender) -> {
             server.execute(() -> {
                 ItemStack equippedRobeStack = ItemStack.EMPTY;
 

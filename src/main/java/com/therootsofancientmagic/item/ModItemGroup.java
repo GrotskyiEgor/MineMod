@@ -25,8 +25,8 @@ public class ModItemGroup {
                         entries.add(ModItem.FIRE_STAFF);
                         entries.add(ModItem.WEED_STAFF);
                         
-                        entries.add(ModItem.HEROIC_AXE);
-                        entries.add(ModItem.HEROIC_SWORD);
+                        // entries.add(ModItem.HEROIC_AXE);
+                        // entries.add(ModItem.HEROIC_SWORD);
 
                         entries.add(ModItem.ESSENCE_AQUA);
                         entries.add(ModItem.ESSENCE_FIRE);
@@ -34,7 +34,7 @@ public class ModItemGroup {
                         entries.add(ModItem.ESSENCE_EARTH);
                         entries.add(ModItem.ESSENCE_LIGHT);
                         entries.add(ModItem.ESSENCE_DARK);
-                        entries.add(ModItem.ESSENCE_HEROIC);
+                        // entries.add(ModItem.ESSENCE_HEROIC);
                         
                         entries.add(ModBlock.FURNACE_POWDER);
                         entries.add(ModBlock.CRAFT_TABLE);
