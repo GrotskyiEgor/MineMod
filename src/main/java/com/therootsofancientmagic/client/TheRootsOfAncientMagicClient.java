@@ -31,5 +31,9 @@ public class TheRootsOfAncientMagicClient implements ClientModInitializer {
                 }
             }
         });
+        
+        com.therootsofancientmagic.network.ModMessages.registerS2CPackets();
+
+        net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback.EVENT.register(new ManaHudOverlay());
     }
 }

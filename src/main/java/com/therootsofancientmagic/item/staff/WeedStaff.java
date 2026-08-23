@@ -16,6 +16,9 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.RaycastContext;
+import com.therootsofancientmagic.mana.PlayerMana;
+import com.therootsofancientmagic.util.IEntityDataSaver;
+import net.minecraft.server.network.ServerPlayerEntity;
 
 import java.util.List;
 
@@ -34,49 +37,65 @@ public class WeedStaff extends Item {
         super(settings);
     }
 
-    @Override
+@Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack stack = user.getStackInHand(hand);
 
-        if (!world.isClient) {
-            Vec3d targetPoint = getTargetPoint(world, user);
-
-            Box searchBox = new Box(
-                    targetPoint.x - PULL_RADIUS, targetPoint.y - PULL_RADIUS, targetPoint.z - PULL_RADIUS,
-                    targetPoint.x + PULL_RADIUS, targetPoint.y + PULL_RADIUS, targetPoint.z + PULL_RADIUS
-            );
-
-            List<Entity> entities = world.getOtherEntities(user, searchBox,
-                    entity -> entity.squaredDistanceTo(targetPoint) <= PULL_RADIUS * PULL_RADIUS);
-
-            for (Entity entity : entities) {
-                Vec3d toCenter = targetPoint.subtract(entity.getPos());
-                Vec3d pullVec = toCenter.lengthSquared() > 0.0001
-                        ? toCenter.normalize().multiply(PULL_STRENGTH)
-                        : Vec3d.ZERO;
-
-                Vec3d newVelocity = entity.getVelocity()
-                        .add(pullVec.x, pullVec.y, pullVec.z)
-                        .add(0, LAUNCH_VELOCITY_Y, 0);
-
-                entity.setVelocity(newVelocity);
-                entity.velocityModified = true;
-                entity.fallDistance = 0.0F;
-            }
-
-            world.playSound(null, user.getBlockPos(), SoundEvents.ENTITY_ILLUSIONER_CAST_SPELL,
-                    SoundCategory.PLAYERS, 1.0F, 1.0F);
-
-            if (world instanceof ServerWorld serverWorld) {
-                serverWorld.spawnParticles(ParticleTypes.EXPLOSION_EMITTER,
-                        targetPoint.x, targetPoint.y, targetPoint.z,
-                        1, 0.2, 0.2, 0.2, 0.0);
-            }
+        // Проверка кулдауна
+        if (user.getItemCooldownManager().isCoolingDown(this)) {
+            return TypedActionResult.fail(stack);
         }
 
-        user.getItemCooldownManager().set(this, 40);
-        return TypedActionResult.success(stack, world.isClient);
+        if (!world.isClient) {
+            if (user instanceof ServerPlayerEntity serverPlayer) {
+                
+                if (PlayerMana.consumeMana((IEntityDataSaver) serverPlayer, 10, serverPlayer)) {
+                    
+                    Vec3d targetPoint = getTargetPoint(world, user);
+
+                    Box searchBox = new Box(
+                            targetPoint.x - PULL_RADIUS, targetPoint.y - PULL_RADIUS, targetPoint.z - PULL_RADIUS,
+                            targetPoint.x + PULL_RADIUS, targetPoint.y + PULL_RADIUS, targetPoint.z + PULL_RADIUS
+                    );
+
+                        List<Entity> entities = world.getOtherEntities(user, searchBox,
+                            entity -> entity.squaredDistanceTo(targetPoint) > 0.0001D);
+
+                        for (Entity entity : entities) {
+                        Vec3d toCenter = targetPoint.subtract(entity.getPos());
+                        Vec3d pullVec = toCenter.normalize().multiply(PULL_STRENGTH);
+
+                        Vec3d newVelocity = entity.getVelocity()
+                            .add(pullVec.x, pullVec.y, pullVec.z)
+                            .add(0, LAUNCH_VELOCITY_Y, 0);
+
+                        entity.setVelocity(newVelocity);
+                        entity.velocityModified = true;
+                        entity.fallDistance = 0.0F;
+                        }
+
+                    world.playSound(null, user.getBlockPos(), SoundEvents.ENTITY_ILLUSIONER_CAST_SPELL,
+                            SoundCategory.PLAYERS, 1.0F, 1.0F);
+
+                    if (world instanceof ServerWorld serverWorld) {
+                        serverWorld.spawnParticles(ParticleTypes.EXPLOSION_EMITTER,
+                                targetPoint.x, targetPoint.y, targetPoint.z,
+                                1, 0.2, 0.2, 0.2, 0.0);
+                    }
+
+                    user.getItemCooldownManager().set(this, 40);
+
+                } else {
+
+                    return TypedActionResult.fail(stack);
+                }
+            }
+        }
+         return TypedActionResult.success(stack, world.isClient);
     }
+
+        
+
 
     private Vec3d getTargetPoint(World world, PlayerEntity player) {
         Vec3d start = player.getCameraPosVec(1.0F);

@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:item/handheld",
+    "textures": {
+        "layer0": "the-roots-of-ancient-magic:item/improvements/necklace/weed_necklace"
+    }
+}

@@ -109,4 +109,50 @@ public abstract class PlayerEntityMixin implements CustomArmorHolder {
             }
         }
     }
+
+    @Unique
+    private boolean isAquaRobeOnBack() {
+        PlayerEntity player = (PlayerEntity) (Object) this;
+        if (player instanceof CustomArmorHolder holder) {
+            Inventory inv = holder.getCustomArmorInventory();
+            if (inv != null) {
+                ItemStack backStack = inv.getStack(0);
+                return !backStack.isEmpty() && backStack.isOf(ModItem.AQUA_ROBE);
+            }
+        }
+        return false;
+    }
+
+    @Unique
+    private boolean isFireRobeOnBack() {
+        PlayerEntity player = (PlayerEntity) (Object) this;
+        if (player instanceof CustomArmorHolder holder) {
+            Inventory inv = holder.getCustomArmorInventory();
+            if (inv != null) {
+                ItemStack backStack = inv.getStack(0);
+                return !backStack.isEmpty() && backStack.isOf(ModItem.FIRE_ROBE);
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public void ActivateAquaRobeAbility() {
+        PlayerEntity player = (PlayerEntity) (Object) this;
+        if (isAquaRobeOnBack() && !player.getItemCooldownManager().isCoolingDown(ModItem.AQUA_ROBE)) {
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.DOLPHINS_GRACE, 600, 0, true, false));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING, 600, 0, true, false));
+            player.getItemCooldownManager().set(ModItem.AQUA_ROBE, 700);
+        }
+    }
+
+    @Override
+    public void ActivateFireRobeAbility() {
+        PlayerEntity player = (PlayerEntity) (Object) this;
+        if (isFireRobeOnBack() && !player.getItemCooldownManager().isCoolingDown(ModItem.FIRE_ROBE)) {
+            this.fireRobeTimer = 200; 
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 200, 0, true, false));
+            player.getItemCooldownManager().set(ModItem.FIRE_ROBE, 300); 
+        }
+    }
 }

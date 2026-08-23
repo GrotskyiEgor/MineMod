@@ -65,8 +65,10 @@ public class ModItemGroup {
                         entries.add(ModItem.LIGHT_AXE);
                         entries.add(ModItem.EARTH_AXE);
 
+                        entries.add(ModItem.AQUA_ROBE);
                         entries.add(ModItem.FIRE_ROBE);
                         entries.add(ModItem.WEED_ROBE);
+                        entries.add(ModItem.EARTH_ROBE);
                         
                         entries.add(ModItem.FIRE_SHOVEL);
                         entries.add(ModItem.AQUA_SHOVEL);
@@ -81,8 +83,16 @@ public class ModItemGroup {
                         entries.add(ModItem.DARK_HOE);
                         entries.add(ModItem.LIGHT_HOE);
                         entries.add(ModItem.EARTH_HOE);
-                        entries.add(ModItem.MAGIC_NECKLACE);
-                        entries.add(ModItem.MAGIC_RING);
+
+                        entries.add(ModItem.AQUA_NECKLACE);
+                        entries.add(ModItem.FIRE_NECKLACE);
+                        entries.add(ModItem.EARTH_NECKLACE);
+                        entries.add(ModItem.WEED_NECKLACE);
+
+                        entries.add(ModItem.AQUA_RING);
+                        entries.add(ModItem.FIRE_RING);
+                        entries.add(ModItem.WEED_RING);
+                        entries.add(ModItem.EARTH_RING);
                     })
                     .build()
     );

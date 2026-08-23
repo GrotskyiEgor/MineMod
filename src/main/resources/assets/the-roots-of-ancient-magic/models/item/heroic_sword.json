@@ -1,6 +1,6 @@
 {
     "parent": "minecraft:item/handheld",
     "textures": {
-        "layer0": "the-roots-of-ancient-magic:item/essence/essence_heroic"
+        "layer0": "the-roots-of-ancient-magic:item/def_tool/sword/heroic_sword"
     }
 }

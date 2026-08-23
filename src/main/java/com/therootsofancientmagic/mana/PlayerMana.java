@@ -1,36 +1,42 @@
-package com.therootsofancientmagic.mana;
+package com.therootsofancientmagic.mana; // Путь к нашей папке mana
 
 import com.therootsofancientmagic.util.IEntityDataSaver;
+import com.therootsofancientmagic.network.ModMessages; // Импортируем нашу сетевую систему
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 
 public class PlayerMana {
-    // Настройки системи мани
-    private static final int MAX_MANA = 100;
-    private static final int MANA_REGEN_TICK_DELAY = 20;
+    private static final int MAX_MANA = 100; 
+    private static final int MANA_REGEN_TICK_DELAY = 200; 
 
-    // Метод добавления мани,например при регенерации или питье зелий
-    public static void addMana(IEntityDataSaver player, int amount) {
+    // Метод добавления мани
+    public static void addMana(IEntityDataSaver player, int amount, ServerPlayerEntity serverPlayer) {
         NbtCompound nbt = player.getPersistentData();
         int currentMana = nbt.getInt("mana");
+        int finalMana;
 
-        // Прибавляем ману но чтоб и она не прев исила максимальний лимит в 100 единиц
+        // Прибавляем ману,но чтоби не било больше 100
         if (currentMana + amount >= MAX_MANA) {
-            nbt.putInt("mana", MAX_MANA);
+            finalMana = MAX_MANA;
         } else {
-            nbt.putInt("mana", currentMana + amount);
+            finalMana = currentMana + amount;
         }
+        
+        nbt.putInt("mana", finalMana);
+        ModMessages.sendToClient(serverPlayer, finalMana);
     }
 
-    // Метод трати мани (этот метод твой тиммейт будет визивать внутри своих посохов!)
-    public static boolean consumeMana(IEntityDataSaver player, int amount) {
+    // Метод трати мани
+    public static boolean consumeMana(IEntityDataSaver player, int amount, ServerPlayerEntity serverPlayer) {
         NbtCompound nbt = player.getPersistentData();
         int currentMana = nbt.getInt("mana");
 
-        // Проверяем, хватает ли вообще мани игроку на заклинание
+
         if (currentMana >= amount) {
-            // Тратит ману на посох
-            nbt.putInt("mana", currentMana - amount); 
+            int finalMana = currentMana - amount;
+            nbt.putInt("mana", finalMana);
+            
+            ModMessages.sendToClient(serverPlayer, finalMana);
             return true;
         }
         return false;
@@ -44,10 +50,10 @@ public class PlayerMana {
         int regenTimer = nbt.getInt("mana_regen_timer");
         int currentMana = nbt.getInt("mana");
 
-        // Проверяет, нужно ли регенить, если мана полная то таймер сбрасиваеться
+        // Проверяем, нужно ли регенить ману
         if (currentMana < MAX_MANA) {
             if (regenTimer >= MANA_REGEN_TICK_DELAY) {
-                addMana(dataSaver, 1);
+                addMana(dataSaver, 10, player); 
                 nbt.putInt("mana_regen_timer", 0);
             } else {
                 nbt.putInt("mana_regen_timer", regenTimer + 1);

@@ -1,9 +1,12 @@
 package com.therootsofancientmagic.item.staff;
 
+import com.therootsofancientmagic.mana.PlayerMana; // Импортируем нашу систему мани
+import com.therootsofancientmagic.util.IEntityDataSaver; // Импортируем кармашек NBT данних
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.FireballEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.network.ServerPlayerEntity; // Добавили серверного игрока для пакетов мани
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
@@ -27,19 +30,33 @@ public class FireStaff extends Item {
         }
 
         if (!world.isClient) {
-            castSpell(world, user);
+            // Принудительно кастим игрока к серверному типу для работи с пакетами мани
+            if (user instanceof ServerPlayerEntity serverPlayer) {
+                
+                // ВЫЗЫВАЕМ СПИСАНИЕ МАНЫ: Тратим ровно 10 единиц (1 кружочек на худ-баре)
+                if (PlayerMana.consumeMana((IEntityDataSaver) serverPlayer, 10, serverPlayer)) {
+                    
+                    // МАНЫ ХВАТИЛО: Спавним огненний шар и запускаем звук
+                    castSpell(world, user);
 
-            world.playSound(
-                    null,
-                    user.getBlockPos(),
-                    SoundEvents.ENTITY_BLAZE_SHOOT,
-                    SoundCategory.PLAYERS,
-                    1.0F,
-                    1.0F
-            );
+                    world.playSound(
+                            null,
+                            user.getBlockPos(),
+                            SoundEvents.ENTITY_BLAZE_SHOOT,
+                            SoundCategory.PLAYERS,
+                            1.0F,
+                            1.0F
+                    );
+
+                    // Устанавливаем кулдаун ТОЛЬКО если посох успешно вистрелил заклинанием
+                    user.getItemCooldownManager().set(this, COOLDOWN_TICKS);
+
+                } else {
+                    // МАНЫ НЕ ХВАТИЛО: Заклинание полностью блокируется, посох выдает осечку
+                    return TypedActionResult.fail(stack);
+                }
+            }
         }
-
-        user.getItemCooldownManager().set(this, COOLDOWN_TICKS);
 
         return TypedActionResult.success(stack, world.isClient);
     }

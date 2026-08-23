@@ -39,7 +39,10 @@ public class TheRootsOfAncientMagic implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        
+        com.therootsofancientmagic.network.ModMessages.registerC2SPackets();
         ModItemGroup.registerItemGroups();
+
 
         ModItem.registerModItems();
         ModBlock.registerModBlocks();
@@ -56,12 +59,21 @@ public class TheRootsOfAncientMagic implements ModInitializer {
         ServerTickEvents.START_SERVER_TICK.register(server -> {
             for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
                 AccessoryHandler.applyAccessoryEffects(player);
+                com.therootsofancientmagic.mana.PlayerMana.regenerateMana(player);
+            }
+        });
+        net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
+            net.minecraft.server.network.ServerPlayerEntity player = handler.getPlayer();
+            if (player instanceof com.therootsofancientmagic.util.IEntityDataSaver dataSaver) {
+                int currentMana = dataSaver.getPersistentData().getInt("mana");
+                com.therootsofancientmagic.network.ModMessages.sendToClient(player, currentMana);
             }
         });
 
         HandledScreens.register(ModScreenHandlers.FURNACE_POWDER_SCREEN_HANDLER, FurnacePowderScreen::new);
         HandledScreens.register(ModScreenHandlers.CRAFT_TABLE_SCREEN_HANDLER, CraftTableScreen::new);
-
+        
+        
 	    registerFlowers();
     }
 

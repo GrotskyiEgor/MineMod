@@ -83,15 +83,6 @@ public class ModItem {
         new Item(new Item.Settings())
     );
 
-    
-    public static final Item FIRE_ROBE = registerItem(
-        "fire_robe", 
-        new ElementalRobeItem(new Item.Settings().maxCount(1)));
-
-    public static final Item WEED_ROBE = registerItem(
-        "weed_robe", 
-        new ElementalRobeItem(new Item.Settings().maxCount(1)));
-
     public static final Item HEROIC_AXE = registerItem("heroic_axe",
             new HeroicAxeItem(ModToolMaturial.ESSENCE_HEROIC, 3.0f, -2.4f, new Item.Settings()));    
         
@@ -108,12 +99,47 @@ public class ModItem {
             new HeroicHoeItem(ModToolMaturial.ESSENCE_HEROIC, 3, -2.4f, new Item.Settings()));
 
 
-    public static final Item MAGIC_NECKLACE = registerItem(
-        "magic_necklace",
+    public static final Item AQUA_NECKLACE = registerItem("aqua_necklace",
         new NecklaceItem(new FabricItemSettings().maxCount(1)));
-    public static final Item MAGIC_RING = registerItem(
-        "magic_ring",
+
+    public static final Item FIRE_NECKLACE = registerItem("fire_necklace",
+        new NecklaceItem(new FabricItemSettings().maxCount(1)));
+
+    public static final Item WEED_NECKLACE = registerItem("weed_necklace",
+        new NecklaceItem(new FabricItemSettings().maxCount(1)));
+
+    public static final Item EARTH_NECKLACE = registerItem("earth_necklace",
+        new NecklaceItem(new FabricItemSettings().maxCount(1)));
+
+
+    public static final Item FIRE_ROBE = registerItem(
+        "fire_robe", 
+        new ElementalRobeItem(new Item.Settings().maxCount(1)));
+
+    public static final Item WEED_ROBE = registerItem(
+        "weed_robe", 
+        new ElementalRobeItem(new Item.Settings().maxCount(1)));
+    
+    public static final Item AQUA_ROBE = registerItem(
+        "aqua_robe", 
+        new ElementalRobeItem(new Item.Settings().maxCount(1)));
+    public static final Item EARTH_ROBE = registerItem(
+        "earth_robe", 
+        new ElementalRobeItem(new Item.Settings().maxCount(1)));
+
+        
+    public static final Item AQUA_RING = registerItem("aqua_ring",
         new RingItem(new FabricItemSettings().maxCount(1)));
+
+    public static final Item FIRE_RING = registerItem("fire_ring",
+        new RingItem(new FabricItemSettings().maxCount(1)));
+
+    public static final Item WEED_RING = registerItem("weed_ring",
+        new RingItem(new FabricItemSettings().maxCount(1)));
+
+    public static final Item EARTH_RING = registerItem("earth_ring",
+        new RingItem(new FabricItemSettings().maxCount(1)));
+        
 
     public static final Item LIGHT_PICKAXE = registerItem("light_pickaxe",
             new ElementalPickaxeItem(ModToolMaturial.ESSENCE_LIGHT, 1, -2.8f, new Item.Settings()));

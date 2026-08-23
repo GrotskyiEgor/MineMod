@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
   "type": "the-roots-of-ancient-magic:craft_table",
-=======
-  "type": "minecraft:crafting_shaped",
->>>>>>> origin/misha
   "pattern": [
     "FFF",
     " P ",

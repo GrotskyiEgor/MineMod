@@ -1,9 +1,12 @@
 package com.therootsofancientmagic.item.staff;
 
+import com.therootsofancientmagic.mana.PlayerMana; // Импортируем нашу систему мани
+import com.therootsofancientmagic.util.IEntityDataSaver; // Импортируем кармашек NBT данних
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.network.ServerPlayerEntity; // Добавили серверного игрока для пакетов
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
@@ -39,31 +42,36 @@ public class AquaStaff extends Item {
 
         ItemStack stack = user.getStackInHand(hand);
 
-        // Проверяем кулдаун
         if (user.getItemCooldownManager().isCoolingDown(this)) {
             return TypedActionResult.fail(stack);
         }
 
         if (!world.isClient) {
+            if (user instanceof ServerPlayerEntity serverPlayer) {
+                
+                if (PlayerMana.consumeMana((IEntityDataSaver) serverPlayer, 10, serverPlayer)) {
+                    
+                    createIceDome(world, user);
 
-            createIceDome(world, user);
+                    world.playSound(
+                            null,
+                            user.getBlockPos(),
+                            SoundEvents.BLOCK_GLASS_PLACE,
+                            SoundCategory.PLAYERS,
+                            1.0F,
+                            1.0F
+                    );
 
-            // Звук создания конструкции
-            world.playSound(
-                    null,
-                    user.getBlockPos(),
-                    SoundEvents.BLOCK_GLASS_PLACE,
-                    SoundCategory.PLAYERS,
-                    1.0F,
-                    1.0F
-            );
+                    user.getItemCooldownManager().set(
+                            this,
+                            COOLDOWN_TICKS
+                    );
+
+                } else {
+                    return TypedActionResult.fail(stack);
+                }
+            }
         }
-
-        // Устанавливаем кулдаун
-        user.getItemCooldownManager().set(
-                this,
-                COOLDOWN_TICKS
-        );
 
         return TypedActionResult.success(
                 stack,
