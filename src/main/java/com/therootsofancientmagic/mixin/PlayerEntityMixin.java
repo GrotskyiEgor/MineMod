@@ -1,8 +1,9 @@
 package com.therootsofancientmagic.mixin;
 
 import com.therootsofancientmagic.component.CustomArmorHolder;
-import com.therootsofancientmagic.item.robe.ElementalRobeItem;
 import com.therootsofancientmagic.item.ModItem;
+import com.therootsofancientmagic.item.magic.robe.ElementalRobeItem;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
@@ -24,6 +25,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.hit.HitResult;
+import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin implements CustomArmorHolder {
@@ -153,6 +158,59 @@ public abstract class PlayerEntityMixin implements CustomArmorHolder {
             this.fireRobeTimer = 200; 
             player.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 200, 0, true, false));
             player.getItemCooldownManager().set(ModItem.FIRE_ROBE, 300); 
+        }
+    }
+
+    @Unique
+    private boolean isFireRingInSlot(int slotIndex) {
+    PlayerEntity player = (PlayerEntity) (Object) this;
+        if (player instanceof CustomArmorHolder holder) {
+            Inventory inv = holder.getCustomArmorInventory();
+            if (inv != null && slotIndex < inv.size()) {
+                ItemStack stack = inv.getStack(slotIndex);
+                return !stack.isEmpty() && stack.isOf(ModItem.FIRE_RING);
+            }
+        }
+        return false;
+    }
+
+    @Unique
+    public void castFireRingSpell() {
+        PlayerEntity player = (PlayerEntity) (Object) this;
+        HitResult hitResult = player.raycast(5.0D, 0.0F, false);
+        if (hitResult.getType() == HitResult.Type.BLOCK) {
+            BlockHitResult blockHit = (BlockHitResult) hitResult;
+            BlockPos targetPos = blockHit.getBlockPos().offset(blockHit.getSide());
+            World world = player.getWorld();
+            if (world.getBlockState(targetPos).isAir()) {
+                world.setBlockState(targetPos, net.minecraft.block.Blocks.FIRE.getDefaultState());
+                world.playSound(null, targetPos, net.minecraft.sound.SoundEvents.ITEM_FLINTANDSTEEL_USE,
+                    net.minecraft.sound.SoundCategory.PLAYERS, 1.0F, 1.0F);
+                if (world instanceof ServerWorld serverWorld) {
+                    serverWorld.spawnParticles(ParticleTypes.FLAME,
+                    targetPos.getX() + 0.5, targetPos.getY() + 0.5, targetPos.getZ() + 0.5,15, 0.2, 0.2, 0.2, 0.05);
+                }
+                player.getItemCooldownManager().set(ModItem.FIRE_RING, 100);
+            }
+        }
+    }
+    
+
+    @Override
+    public void useFirstRingAbility() {
+        PlayerEntity player = (PlayerEntity) (Object) this;
+
+        if (isFireRingInSlot(2) && !player.getItemCooldownManager().isCoolingDown(ModItem.FIRE_RING)) {
+            castFireRingSpell();
+        }
+    }
+
+    @Override
+    public void useSecondRingAbility() {
+        PlayerEntity player = (PlayerEntity) (Object) this;
+
+        if (isFireRingInSlot(3) && !player.getItemCooldownManager().isCoolingDown(ModItem.FIRE_RING)) {
+            castFireRingSpell();
         }
     }
 }

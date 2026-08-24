@@ -1,7 +1,8 @@
 package com.therootsofancientmagic.mixin;
 
 import com.therootsofancientmagic.component.CustomArmorHolder;
-import com.therootsofancientmagic.item.necklace.NecklaceItem;
+import com.therootsofancientmagic.item.magic.necklace.NecklaceItem;
+
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.entity.player.PlayerEntity;

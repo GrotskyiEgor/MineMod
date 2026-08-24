@@ -1,6 +1,7 @@
 package com.therootsofancientmagic.biome;
 
 import com.therootsofancientmagic.TheRootsOfAncientMagic;
+import com.therootsofancientmagic.biome.Earth.EarthBiome;
 
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryEntryLookup;

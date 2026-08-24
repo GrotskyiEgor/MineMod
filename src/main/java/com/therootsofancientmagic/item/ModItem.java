@@ -4,30 +4,40 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.Item;
 // import net.minecraft.item.ItemGroups;
 // import net.minecraft.item.ToolMaterials;
-
-import com.therootsofancientmagic.item.necklace.NecklaceItem;
-import com.therootsofancientmagic.item.ring.RingItem;
-import com.therootsofancientmagic.item.robe.ElementalRobeItem;
 // import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import com.therootsofancientmagic.item.sword.ElementalSwordItem;
-import com.therootsofancientmagic.item.pickaxe.ElementalPickaxeItem;
-import com.therootsofancientmagic.item.shovel.ElementalShovelItem;
-import com.therootsofancientmagic.item.axe.ElementalAxeItem;
-import com.therootsofancientmagic.item.hoe.ElementalHoeItem;
-import com.therootsofancientmagic.item.heroic_tools.HeroicAxeItem;
-import com.therootsofancientmagic.item.heroic_tools.HeroicSwordItem;
-import com.therootsofancientmagic.item.heroic_tools.HeroicPickaxeItem;
-import com.therootsofancientmagic.item.heroic_tools.HeroicShovelItem;
-import com.therootsofancientmagic.item.heroic_tools.HeroicHoeItem;
-import com.therootsofancientmagic.item.staff.AquaStaff;
-import com.therootsofancientmagic.item.staff.EarthStaff;
-import com.therootsofancientmagic.item.staff.FireStaff;
-import com.therootsofancientmagic.item.staff.WeedStaff;
+import com.therootsofancientmagic.item.tools.sword.ElementalSwordItem;
+import com.therootsofancientmagic.item.tools.axe.ElementalAxeItem;
+import com.therootsofancientmagic.item.tools.pickaxe.ElementalPickaxeItem;
+import com.therootsofancientmagic.item.tools.shovel.ElementalShovelItem;
+import com.therootsofancientmagic.item.tools.hoe.ElementalHoeItem;
+import com.therootsofancientmagic.item.armor.boots.FireBoots;
+import com.therootsofancientmagic.item.magic.necklace.NecklaceItem;
+import com.therootsofancientmagic.item.magic.ring.RingItem;
+import com.therootsofancientmagic.item.magic.robe.ElementalRobeItem;
+import com.therootsofancientmagic.item.magic.staff.AquaStaff;
+import com.therootsofancientmagic.item.magic.staff.EarthStaff;
+import com.therootsofancientmagic.item.magic.staff.FireStaff;
+import com.therootsofancientmagic.item.magic.staff.WeedStaff;
+import com.therootsofancientmagic.item.magic.staff.LightStaff;
+import com.therootsofancientmagic.item.magic.staff.DarkStaff;
+import com.therootsofancientmagic.item.tools.heroic_tools.HeroicAxeItem;
+import com.therootsofancientmagic.item.tools.heroic_tools.HeroicSwordItem;
+import com.therootsofancientmagic.item.tools.heroic_tools.HeroicPickaxeItem;
+import com.therootsofancientmagic.item.tools.heroic_tools.HeroicShovelItem;
+import com.therootsofancientmagic.item.tools.heroic_tools.HeroicHoeItem;
+import com.therootsofancientmagic.item.tools.unique_tools.BattleAxeItem;
+
 import net.minecraft.util.Identifier;
 
 public class ModItem {
+    public static final Item FIRE_BOOTS = registerItem(
+        "fire_boots",
+        new FireBoots(new Item.Settings())
+    );
+
+    
     public static final Item FIRE_STAFF = registerItem(
         "fire_staff",
         new FireStaff(new Item.Settings())
@@ -35,8 +45,8 @@ public class ModItem {
 
     public static final Item EARTH_STAFF = registerItem(
                 "earth_staff",
-                new EarthStaff(new Item.Settings())
-        );
+         new EarthStaff(new Item.Settings())
+    );
         
     public static final Item WEED_STAFF = registerItem(
         "weed_staff",
@@ -46,6 +56,11 @@ public class ModItem {
     public static final Item AQUA_STAFF = registerItem(
         "aqua_staff",
         new AquaStaff(new Item.Settings())
+    );
+
+    public static final Item LIGHT_STAFF = registerItem(
+        "light_staff",
+        new LightStaff(new Item.Settings())
     );
 
 
@@ -82,6 +97,9 @@ public class ModItem {
         "essence_heroic",
         new Item(new Item.Settings())
     );
+    
+    public static final Item BATTLE_AXE = registerItem("battle_axe",
+            new BattleAxeItem(ModToolMaturial.ESSENCE_HEROIC, 4, -3.4f, new Item.Settings()));
 
     public static final Item HEROIC_AXE = registerItem("heroic_axe",
             new HeroicAxeItem(ModToolMaturial.ESSENCE_HEROIC, 3.0f, -2.4f, new Item.Settings()));    
@@ -239,8 +257,6 @@ public class ModItem {
 
     public static final Item EARTH_HOE = registerItem("earth_hoe",
             new ElementalHoeItem(ModToolMaturial.ESSENCE_EARTH, 1, -2.8f, new Item.Settings()));
-
-
 
     public static Item registerItem(String name, Item item){
         return Registry.register(

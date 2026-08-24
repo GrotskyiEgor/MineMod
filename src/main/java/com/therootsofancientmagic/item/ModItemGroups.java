@@ -24,8 +24,10 @@ public class ModItemGroups {
                         entries.add(ModItem.FIRE_STAFF);
                         entries.add(ModItem.WEED_STAFF);
                         entries.add(ModItem.EARTH_STAFF);
-                        entries.add(ModItem.AQUA_STAFF);           
-                        
+                        entries.add(ModItem.AQUA_STAFF);    
+                        entries.add(ModItem.LIGHT_STAFF);
+
+                        entries.add(ModItem.BATTLE_AXE);
                         entries.add(ModItem.HEROIC_SWORD);
                         entries.add(ModItem.HEROIC_PICKAXE);
                         entries.add(ModItem.HEROIC_AXE);
@@ -105,6 +107,22 @@ public class ModItemGroups {
                         entries.add(ModFlowerBlock.FLOWER_FIRE);
                         entries.add(ModFlowerBlock.FLOWER_EARTH);
                         entries.add(ModFlowerBlock.FLOWER_WEED);
+                    })
+                    .build()
+    );
+
+    public static final ItemGroup ARMOR_GROUP = Registry.register(
+            Registries.ITEM_GROUP,
+            TheRootsOfAncientMagic.id("roots_of_ancient_magic_armor"),
+            FabricItemGroup.builder()
+                    .displayName(Text.translatable(
+                            "itemGroup.the-roots-of-ancient-magic.armor"
+                    ))
+                    .icon(() -> new ItemStack(ModItem.ESSENCE_FIRE))
+                    .entries((context, entries) -> {
+                                                   entries.add(ModItem.ESSENCE_AQUA);
+
+                       entries.add(ModItem.FIRE_BOOTS);                            
                     })
                     .build()
     );

@@ -13,7 +13,12 @@ import org.lwjgl.glfw.GLFW;
 
 public class TheRootsOfAncientMagicClient implements ClientModInitializer {
     public static final Identifier ROBE_ABILITY_PACKET = new Identifier(TheRootsOfAncientMagic.MOD_ID, "robe_ability");
+    public static final Identifier FIRST_RING_PACKET = new Identifier(TheRootsOfAncientMagic.MOD_ID, "first_ring_ability");
+    public static final Identifier SECOND_RING_PACKET = new Identifier(TheRootsOfAncientMagic.MOD_ID, "second_ring_ability");
     public static KeyBinding robeAbilityKey;
+    public static KeyBinding firstRingKey;
+    public static KeyBinding fsecondRingKey;
+
 
     @Override
     public void onInitializeClient() {
@@ -24,10 +29,21 @@ public class TheRootsOfAncientMagicClient implements ClientModInitializer {
                 "category.therootsofancientmagic.general"
         ));
 
+        firstRingKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+            "key.therootsofancientmagic.ring_ability",
+            InputUtil.Type.KEYSYM,
+            GLFW.GLFW_KEY_Z,
+            "category.therootsofancientmagic.keys"
+        ));
+
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            while (robeAbilityKey.wasPressed()) {
-                if (client.player != null) {
+            if (client.player != null) {
+                while (robeAbilityKey.wasPressed()) {
                     ClientPlayNetworking.send(ROBE_ABILITY_PACKET, PacketByteBufs.create());
+                }
+
+                while (firstRingKey.wasPressed()) {
+                    ClientPlayNetworking.send(FIRST_RING_PACKET, PacketByteBufs.create());
                 }
             }
         });

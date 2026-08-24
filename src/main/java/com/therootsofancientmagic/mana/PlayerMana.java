@@ -7,7 +7,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 
 public class PlayerMana {
     private static final int MAX_MANA = 100; 
-    private static final int MANA_REGEN_TICK_DELAY = 200; 
+    private static final int MANA_REGEN_TICK_DELAY = 20; 
 
     // Метод добавления мани
     public static void addMana(IEntityDataSaver player, int amount, ServerPlayerEntity serverPlayer) {

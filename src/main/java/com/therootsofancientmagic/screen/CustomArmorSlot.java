@@ -1,8 +1,8 @@
 package com.therootsofancientmagic.screen;
 
-import com.therootsofancientmagic.item.necklace.NecklaceItem;
-import com.therootsofancientmagic.item.ring.RingItem;
-import com.therootsofancientmagic.item.robe.ElementalRobeItem;
+import com.therootsofancientmagic.item.magic.necklace.NecklaceItem;
+import com.therootsofancientmagic.item.magic.ring.RingItem;
+import com.therootsofancientmagic.item.magic.robe.ElementalRobeItem;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.inventory.Inventory;

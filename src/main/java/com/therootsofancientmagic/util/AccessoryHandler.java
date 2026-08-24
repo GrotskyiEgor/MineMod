@@ -1,8 +1,9 @@
 package com.therootsofancientmagic.util;
 
 import com.therootsofancientmagic.component.CustomArmorHolder;
-import com.therootsofancientmagic.item.necklace.NecklaceItem;
-import com.therootsofancientmagic.item.ring.RingItem;
+import com.therootsofancientmagic.item.magic.necklace.NecklaceItem;
+import com.therootsofancientmagic.item.magic.ring.RingItem;
+
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;

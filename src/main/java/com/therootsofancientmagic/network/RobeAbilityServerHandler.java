@@ -2,7 +2,6 @@ package com.therootsofancientmagic.network;
 
 import com.therootsofancientmagic.TheRootsOfAncientMagic;
 import com.therootsofancientmagic.component.CustomArmorHolder;
-import com.therootsofancientmagic.item.robe.ElementalRobeItem;
 import com.therootsofancientmagic.mana.PlayerMana;
 import com.therootsofancientmagic.util.IEntityDataSaver;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -17,6 +16,8 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import com.therootsofancientmagic.item.ModItem;
+import com.therootsofancientmagic.item.magic.robe.ElementalRobeItem;
+import com.therootsofancientmagic.client.TheRootsOfAncientMagicClient;
 
 public class RobeAbilityServerHandler {
     public static final Identifier ROBE_ABILITY_PACKET = new Identifier(TheRootsOfAncientMagic.MOD_ID, "robe_ability");
@@ -108,5 +109,13 @@ public class RobeAbilityServerHandler {
                 }
             });
         });
+
+        // ServerPlayNetworking.registerGlobalReceiver(TheRootsOfAncientMagicClient.RING_ABILITY_PACKET, (server, player, handler, buf, responseSender) -> {
+        //     server.execute(() -> {
+        //         if (player instanceof CustomArmorHolder holder) {
+        //             holder.useFireRingAbility();
+        //         }
+        //     });
+        // });
     }
 }
