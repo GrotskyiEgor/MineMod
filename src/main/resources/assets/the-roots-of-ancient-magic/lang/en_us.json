@@ -1,6 +1,75 @@
 {
-    "itemGroup.the-roots-of-ancient-magic": "The Roots of Ancient Magic",
-    "item.the-roots-of-ancient-magic.fire_staff": "Fire Staff",
-    "item.the-roots-of-ancient-magic.earth_staff": "Earth Staff",
-    "item.the-roots-of-ancient-magic.weed_staff": "Wind Staff"
+  "itemGroup.the-roots-of-ancient-magic": "The Roots of Ancient Magic",
+
+  "item.the-roots-of-ancient-magic.fire_staff": "Fire Staff",
+  "item.the-roots-of-ancient-magic.weed_staff": "Weed Staff",
+  "item.the-roots-of-ancient-magic.earth_staff": "Earth Staff",
+  "item.the-roots-of-ancient-magic.aqua_staff": "Aqua Staff",
+
+  "item.the-roots-of-ancient-magic.heroic_sword": "Heroic Sword",
+  "item.the-roots-of-ancient-magic.heroic_pickaxe": "Heroic Pickaxe",
+  "item.the-roots-of-ancient-magic.heroic_axe": "Heroic Axe",
+  "item.the-roots-of-ancient-magic.heroic_shovel": "Heroic Shovel",
+  "item.the-roots-of-ancient-magic.heroic_hoe": "Heroic Hoe",
+
+  "item.the-roots-of-ancient-magic.essence_aqua": "Aqua Essence",
+  "item.the-roots-of-ancient-magic.essence_fire": "Fire Essence",
+  "item.the-roots-of-ancient-magic.essence_weed": "Weed Essence",
+  "item.the-roots-of-ancient-magic.essence_earth": "Earth Essence",
+  "item.the-roots-of-ancient-magic.essence_light": "Light Essence",
+  "item.the-roots-of-ancient-magic.essence_dark": "Dark Essence",
+  "item.the-roots-of-ancient-magic.essence_heroic": "Heroic Essence",
+
+  "block.the-roots-of-ancient-magic.furnace_powder": "Furnace Powder",
+  "block.the-roots-of-ancient-magic.craft_table": "Craft Table",
+
+  "block.the-roots-of-ancient-magic.flower_dark": "Dark Flower",
+  "block.the-roots-of-ancient-magic.flower_light": "Light Flower",
+  "block.the-roots-of-ancient-magic.flower_aqua": "Aqua Flower",
+  "block.the-roots-of-ancient-magic.flower_fire": "Fire Flower",
+  "block.the-roots-of-ancient-magic.flower_earth": "Earth Flower",
+  "block.the-roots-of-ancient-magic.flower_weed": "Weed Flower",
+
+  "item.the-roots-of-ancient-magic.fire_pickaxe": "Fire Pickaxe",
+  "item.the-roots-of-ancient-magic.aqua_pickaxe": "Aqua Pickaxe",
+  "item.the-roots-of-ancient-magic.weed_pickaxe": "Weed Pickaxe",
+  "item.the-roots-of-ancient-magic.dark_pickaxe": "Dark Pickaxe",
+  "item.the-roots-of-ancient-magic.light_pickaxe": "Light Pickaxe",
+  "item.the-roots-of-ancient-magic.earth_pickaxe": "Earth Pickaxe",
+
+  "item.the-roots-of-ancient-magic.fire_axe": "Fire Axe",
+  "item.the-roots-of-ancient-magic.aqua_axe": "Aqua Axe",
+  "item.the-roots-of-ancient-magic.weed_axe": "Weed Axe",
+  "item.the-roots-of-ancient-magic.dark_axe": "Dark Axe",
+  "item.the-roots-of-ancient-magic.light_axe": "Light Axe",
+  "item.the-roots-of-ancient-magic.earth_axe": "Earth Axe",
+
+  "item.the-roots-of-ancient-magic.aqua_robe": "Aqua Robe",
+  "item.the-roots-of-ancient-magic.fire_robe": "Fire Robe",
+  "item.the-roots-of-ancient-magic.weed_robe": "Weed Robe",
+  "item.the-roots-of-ancient-magic.earth_robe": "Earth Robe",
+
+  "item.the-roots-of-ancient-magic.fire_shovel": "Fire Shovel",
+  "item.the-roots-of-ancient-magic.aqua_shovel": "Aqua Shovel",
+  "item.the-roots-of-ancient-magic.weed_shovel": "Weed Shovel",
+  "item.the-roots-of-ancient-magic.dark_shovel": "Dark Shovel",
+  "item.the-roots-of-ancient-magic.light_shovel": "Light Shovel",
+  "item.the-roots-of-ancient-magic.earth_shovel": "Earth Shovel",
+
+  "item.the-roots-of-ancient-magic.fire_hoe": "Fire Hoe",
+  "item.the-roots-of-ancient-magic.aqua_hoe": "Aqua Hoe",
+  "item.the-roots-of-ancient-magic.weed_hoe": "Weed Hoe",
+  "item.the-roots-of-ancient-magic.dark_hoe": "Dark Hoe",
+  "item.the-roots-of-ancient-magic.light_hoe": "Light Hoe",
+  "item.the-roots-of-ancient-magic.earth_hoe": "Earth Hoe",
+
+  "item.the-roots-of-ancient-magic.aqua_necklace": "Aqua Necklace",
+  "item.the-roots-of-ancient-magic.fire_necklace": "Fire Necklace",
+  "item.the-roots-of-ancient-magic.earth_necklace": "Earth Necklace",
+  "item.the-roots-of-ancient-magic.weed_necklace": "Weed Necklace",
+
+  "item.the-roots-of-ancient-magic.aqua_ring": "Aqua Ring",
+  "item.the-roots-of-ancient-magic.fire_ring": "Fire Ring",
+  "item.the-roots-of-ancient-magic.weed_ring": "Weed Ring",
+  "item.the-roots-of-ancient-magic.earth_ring": "Earth Ring"
 }

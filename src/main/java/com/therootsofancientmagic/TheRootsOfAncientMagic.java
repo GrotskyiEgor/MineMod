@@ -10,7 +10,7 @@ import com.therootsofancientmagic.block.entity.ModBlockEntities;
 import com.therootsofancientmagic.entity.ModEntities;
 import com.therootsofancientmagic.init.worldgen.PlacedFeatureInit;
 import com.therootsofancientmagic.item.ModItem;
-import com.therootsofancientmagic.item.ModItemGroup;
+import com.therootsofancientmagic.item.ModItemGroups;
 import com.therootsofancientmagic.network.RobeAbilityServerHandler;
 import com.therootsofancientmagic.recipe.ModRecipes;
 import com.therootsofancientmagic.screen.CraftTableScreen;
@@ -41,7 +41,7 @@ public class TheRootsOfAncientMagic implements ModInitializer {
     public void onInitialize() {
         
         com.therootsofancientmagic.network.ModMessages.registerC2SPackets();
-        ModItemGroup.registerItemGroups();
+        ModItemGroups.registerItemGroups();
 
 
         ModItem.registerModItems();

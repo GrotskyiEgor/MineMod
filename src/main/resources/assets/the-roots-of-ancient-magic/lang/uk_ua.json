@@ -1,0 +1,75 @@
+{
+  "itemGroup.the-roots-of-ancient-magic": "Коріння давньої магії",
+
+  "item.the-roots-of-ancient-magic.fire_staff": "Вогняний посох",
+  "item.the-roots-of-ancient-magic.weed_staff": "Посох природи",
+  "item.the-roots-of-ancient-magic.earth_staff": "Земляний посох",
+  "item.the-roots-of-ancient-magic.aqua_staff": "Водяний посох",
+
+  "item.the-roots-of-ancient-magic.heroic_sword": "Героїчний меч",
+  "item.the-roots-of-ancient-magic.heroic_pickaxe": "Героїчна кирка",
+  "item.the-roots-of-ancient-magic.heroic_axe": "Героїчна сокира",
+  "item.the-roots-of-ancient-magic.heroic_shovel": "Героїчна лопата",
+  "item.the-roots-of-ancient-magic.heroic_hoe": "Героїчна мотика",
+
+  "item.the-roots-of-ancient-magic.essence_aqua": "Водна есенція",
+  "item.the-roots-of-ancient-magic.essence_fire": "Вогняна есенція",
+  "item.the-roots-of-ancient-magic.essence_weed": "Есенція природи",
+  "item.the-roots-of-ancient-magic.essence_earth": "Земляна есенція",
+  "item.the-roots-of-ancient-magic.essence_light": "Світла есенція",
+  "item.the-roots-of-ancient-magic.essence_dark": "Темна есенція",
+  "item.the-roots-of-ancient-magic.essence_heroic": "Героїчна есенція",
+
+  "block.the-roots-of-ancient-magic.furnace_powder": "Порошок печі",
+  "block.the-roots-of-ancient-magic.craft_table": "Верстак",
+
+  "block.the-roots-of-ancient-magic.flower_dark": "Темна квітка",
+  "block.the-roots-of-ancient-magic.flower_light": "Світла квітка",
+  "block.the-roots-of-ancient-magic.flower_aqua": "Водяна квітка",
+  "block.the-roots-of-ancient-magic.flower_fire": "Вогняна квітка",
+  "block.the-roots-of-ancient-magic.flower_earth": "Земляна квітка",
+  "block.the-roots-of-ancient-magic.flower_weed": "Квітка природи",
+
+  "item.the-roots-of-ancient-magic.fire_pickaxe": "Вогняна кирка",
+  "item.the-roots-of-ancient-magic.aqua_pickaxe": "Водяна кирка",
+  "item.the-roots-of-ancient-magic.weed_pickaxe": "Кирка природи",
+  "item.the-roots-of-ancient-magic.dark_pickaxe": "Темна кирка",
+  "item.the-roots-of-ancient-magic.light_pickaxe": "Світла кирка",
+  "item.the-roots-of-ancient-magic.earth_pickaxe": "Земляна кирка",
+
+  "item.the-roots-of-ancient-magic.fire_axe": "Вогняна сокира",
+  "item.the-roots-of-ancient-magic.aqua_axe": "Водяна сокира",
+  "item.the-roots-of-ancient-magic.weed_axe": "Сокира природи",
+  "item.the-roots-of-ancient-magic.dark_axe": "Темна сокира",
+  "item.the-roots-of-ancient-magic.light_axe": "Світла сокира",
+  "item.the-roots-of-ancient-magic.earth_axe": "Земляна сокира",
+
+  "item.the-roots-of-ancient-magic.aqua_robe": "Водяна мантія",
+  "item.the-roots-of-ancient-magic.fire_robe": "Вогняна мантія",
+  "item.the-roots-of-ancient-magic.weed_robe": "Мантія природи",
+  "item.the-roots-of-ancient-magic.earth_robe": "Земляна мантія",
+
+  "item.the-roots-of-ancient-magic.fire_shovel": "Вогняна лопата",
+  "item.the-roots-of-ancient-magic.aqua_shovel": "Водяна лопата",
+  "item.the-roots-of-ancient-magic.weed_shovel": "Лопата природи",
+  "item.the-roots-of-ancient-magic.dark_shovel": "Темна лопата",
+  "item.the-roots-of-ancient-magic.light_shovel": "Світла лопата",
+  "item.the-roots-of-ancient-magic.earth_shovel": "Земляна лопата",
+
+  "item.the-roots-of-ancient-magic.fire_hoe": "Вогняна мотика",
+  "item.the-roots-of-ancient-magic.aqua_hoe": "Водяна мотика",
+  "item.the-roots-of-ancient-magic.weed_hoe": "Мотика природи",
+  "item.the-roots-of-ancient-magic.dark_hoe": "Темна мотика",
+  "item.the-roots-of-ancient-magic.light_hoe": "Світла мотика",
+  "item.the-roots-of-ancient-magic.earth_hoe": "Земляна мотика",
+
+  "item.the-roots-of-ancient-magic.aqua_necklace": "Водяне намисто",
+  "item.the-roots-of-ancient-magic.fire_necklace": "Вогняне намисто",
+  "item.the-roots-of-ancient-magic.earth_necklace": "Земляне намисто",
+  "item.the-roots-of-ancient-magic.weed_necklace": "Намисто природи",
+
+  "item.the-roots-of-ancient-magic.aqua_ring": "Водяне кільце",
+  "item.the-roots-of-ancient-magic.fire_ring": "Вогняне кільце",
+  "item.the-roots-of-ancient-magic.weed_ring": "Кільце природи",
+  "item.the-roots-of-ancient-magic.earth_ring": "Земляне кільце"
+}
