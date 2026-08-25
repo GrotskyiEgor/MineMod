@@ -1,4 +1,4 @@
-package com.therootsofancientmagic.biome.Earth;
+package com.therootsofancientmagic.biome;
 
 import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKey;
@@ -36,10 +36,16 @@ public class EarthBiome {
                 "earth_dark_oak"
         );
 
-        addVanillaFeature(
+        addModFeature(
                 generationSettings,
                 featureLookup,
-                "brown_mushroom_normal"
+                "earth_brown_mushroom"
+        );
+
+        addModFeature(
+                generationSettings,
+                featureLookup,
+                "earth_huge_brown_mushroom"
         );
 
         DefaultBiomeFeatures.addSprings(generationSettings);
@@ -51,22 +57,22 @@ public class EarthBiome {
         DefaultBiomeFeatures.addBatsAndMonsters(spawnSettings);
 
         return new Biome.Builder()
-                .precipitation(true)
-                .temperature(0.5F)
-                .downfall(1.0F)
-                .effects(
-                        new BiomeEffects.Builder()
-                                .waterColor(0x4FC3F7)
-                                .waterFogColor(0x0288D1)
-                                .fogColor(0xEFEBE9)
-                                .skyColor(0xD7CCC8)
-                                .grassColor(0xEFEBE9)
-                                .foliageColor(0x6D4C41)
-                                .build()
-                )
-                .spawnSettings(spawnSettings.build())
-                .generationSettings(generationSettings.build())
-                .build();
+            .precipitation(true)
+            .temperature(0.5F)
+            .downfall(1.0F)
+            .effects(
+                new BiomeEffects.Builder()
+                    .waterColor(0x3F7180)
+                    .waterFogColor(0x304F58)
+                    .fogColor(0x777A78)
+                    .skyColor(0x777A7D)
+                    .grassColor(0x77786E)
+                    .foliageColor(0x5F6259)
+                    .build()
+            )
+            .spawnSettings(spawnSettings.build())
+            .generationSettings(generationSettings.build())
+            .build();
     }
 
     private static void addVanillaFeature(

@@ -4,70 +4,97 @@ import java.util.List;
 
 import com.therootsofancientmagic.TheRootsOfAncientMagic;
 
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.MiscConfiguredFeatures;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.PlacedFeatures;
+import net.minecraft.world.gen.feature.TreeConfiguredFeatures;
 import net.minecraft.world.gen.placementmodifier.BiomePlacementModifier;
+import net.minecraft.world.gen.placementmodifier.BlockFilterPlacementModifier;
+import net.minecraft.world.gen.placementmodifier.CountPlacementModifier;
 import net.minecraft.world.gen.placementmodifier.PlacementModifier;
 import net.minecraft.world.gen.placementmodifier.RarityFilterPlacementModifier;
 import net.minecraft.world.gen.placementmodifier.SquarePlacementModifier;
+import net.minecraft.world.gen.placementmodifier.EnvironmentScanPlacementModifier;
+import net.minecraft.world.gen.placementmodifier.PlacementModifier;
 
 
 public class PlacedFeatureInit {
 
     public static final RegistryKey<PlacedFeature> FLOWER_DARK_PLACED_KEY =
-            RegistryKey.of(
-                    RegistryKeys.PLACED_FEATURE,
-                    TheRootsOfAncientMagic.id("flower_dark_placed")
-            );
+    RegistryKey.of(
+            RegistryKeys.PLACED_FEATURE,
+            TheRootsOfAncientMagic.id("flower_dark_placed")
+    );
 
     public static final RegistryKey<PlacedFeature> FLOWER_LIGHT_PLACED_KEY =
-            RegistryKey.of(
-                    RegistryKeys.PLACED_FEATURE,
-                    TheRootsOfAncientMagic.id("flower_light_placed")
-            );
+        RegistryKey.of(
+                RegistryKeys.PLACED_FEATURE,
+                TheRootsOfAncientMagic.id("flower_light_placed")
+        );
 
     public static final RegistryKey<PlacedFeature> FLOWER_WEED_PLACED_KEY =
-            RegistryKey.of(
-                    RegistryKeys.PLACED_FEATURE,
-                    TheRootsOfAncientMagic.id("flower_weed_placed")
-            );
+        RegistryKey.of(
+                RegistryKeys.PLACED_FEATURE,
+                TheRootsOfAncientMagic.id("flower_weed_placed")
+        );
 
     public static final RegistryKey<PlacedFeature> FLOWER_EARTH_PLACED_KEY =
-            RegistryKey.of(
-                    RegistryKeys.PLACED_FEATURE,
-                    TheRootsOfAncientMagic.id("flower_earth_placed")
-            );
+        RegistryKey.of(
+                RegistryKeys.PLACED_FEATURE,
+                TheRootsOfAncientMagic.id("flower_earth_placed")
+        );
 
 
     public static final RegistryKey<PlacedFeature> FLOWER_FIRE_PLACED_KEY =
-            RegistryKey.of(
-                    RegistryKeys.PLACED_FEATURE,
-                    TheRootsOfAncientMagic.id("flower_fire_placed")
-            );
+        RegistryKey.of(
+                RegistryKeys.PLACED_FEATURE,
+                TheRootsOfAncientMagic.id("flower_fire_placed")
+        );
 
     public static final RegistryKey<PlacedFeature> FLOWER_AQUA_PLACED_KEY =
-            RegistryKey.of(
-                    RegistryKeys.PLACED_FEATURE,
-                    TheRootsOfAncientMagic.id("flower_aqua_placed")
-            );
+        RegistryKey.of(
+                RegistryKeys.PLACED_FEATURE,
+                TheRootsOfAncientMagic.id("flower_aqua_placed")
+        );
 
-//     public static final RegistryKey<PlacedFeature> EARTH_DARK_OAK_KEY =
-//             RegistryKey.of(
-//                 RegistryKey.PLACED_FEATURE,
-//                 TheRootsOfAncientMagic.id("earth_dark_oak")
-//             )
+
+
+    public static final RegistryKey<PlacedFeature> EARTH_DARK_OAK_KEY =
+        RegistryKey.of(
+                RegistryKeys.PLACED_FEATURE,
+                TheRootsOfAncientMagic.id("earth_dark_oak")
+        );
+
+    public static final RegistryKey<PlacedFeature> EARTH_BROWN_MUSHROOM_PLACED_KEY =
+        RegistryKey.of(
+                RegistryKeys.PLACED_FEATURE,
+                TheRootsOfAncientMagic.id("earth_brown_mushroom")
+        );
+
+    public static final RegistryKey<PlacedFeature> EARTH_HUGE_BROWN_MUSHROOM_PLACED_KEY =
+        RegistryKey.of(
+                RegistryKeys.PLACED_FEATURE,
+                TheRootsOfAncientMagic.id("earth_huge_brown_mushroom")
+        );
+
+    public static final RegistryKey<PlacedFeature> FIRE_LAVA_LAKE_KEY =
+        RegistryKey.of(
+            RegistryKeys.PLACED_FEATURE,
+            TheRootsOfAncientMagic.id("fire_lava_lake")
+        );
 
     public static final List<RegistryKey<PlacedFeature>> FLOWERS_KEYS = List.of(
         FLOWER_DARK_PLACED_KEY, 
         FLOWER_LIGHT_PLACED_KEY, 
         FLOWER_WEED_PLACED_KEY, 
-        FLOWER_EARTH_PLACED_KEY, 
-        FLOWER_FIRE_PLACED_KEY, 
+        FLOWER_EARTH_PLACED_KEY,
         FLOWER_AQUA_PLACED_KEY
     );
 
@@ -95,10 +122,10 @@ public class PlacedFeatureInit {
 
     private static List<PlacementModifier> getModifiers() {
         List<PlacementModifier> modifiers = List.of(
-                RarityFilterPlacementModifier.of(16),
-                SquarePlacementModifier.of(),
-                PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
-                BiomePlacementModifier.of()
+            RarityFilterPlacementModifier.of(4),
+            SquarePlacementModifier.of(),
+            PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+            BiomePlacementModifier.of()
         ); 
 
         return modifiers;
@@ -120,5 +147,93 @@ public class PlacedFeatureInit {
                         )
                 );
         }
+
+        context.register(
+            FLOWER_FIRE_PLACED_KEY,
+            new PlacedFeature(
+                getConfiguredFeatureEntry(
+                    context,
+                    ConfigureFeatureInit.FLOWER_FIRE_KEY
+                ),
+                List.of(
+                    RarityFilterPlacementModifier.of(2),
+                    SquarePlacementModifier.of(),
+                    PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+                    BiomePlacementModifier.of()
+                )
+            )
+        );
+
+        RegistryEntry<ConfiguredFeature<?, ?>> darkOak = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE).getOrThrow(TreeConfiguredFeatures.DARK_OAK);
+
+        context.register(
+            EARTH_DARK_OAK_KEY,
+            new PlacedFeature(
+                darkOak,
+                List.of(
+                    CountPlacementModifier.of(4),
+                    SquarePlacementModifier.of(),
+                    PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+                    BlockFilterPlacementModifier.of(
+                        BlockPredicate.wouldSurvive(
+                            Blocks.DARK_OAK_SAPLING.getDefaultState(),
+                            net.minecraft.util.math.Vec3i.ZERO
+                        )
+                    ),
+                    BiomePlacementModifier.of()
+                )
+            )
+        );
+
+        RegistryEntry<ConfiguredFeature<?, ?>> brownMushroom =
+            context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE)
+                    .getOrThrow(ConfigureFeatureInit.EARTH_BROWN_MUSHROOM_KEY);
+
+        context.register(
+                EARTH_BROWN_MUSHROOM_PLACED_KEY,
+                new PlacedFeature(
+                        brownMushroom,
+                        List.of(
+                            CountPlacementModifier.of(2),
+                            SquarePlacementModifier.of(),
+                            PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+                            BiomePlacementModifier.of()
+                    )
+                )
+        );
+
+        RegistryEntry<ConfiguredFeature<?, ?>> hugeBrownMushroom =
+            context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE)
+                    .getOrThrow(TreeConfiguredFeatures.HUGE_BROWN_MUSHROOM);
+
+        context.register(
+                EARTH_HUGE_BROWN_MUSHROOM_PLACED_KEY,
+                new PlacedFeature(
+                        hugeBrownMushroom,
+                        List.of(
+                                RarityFilterPlacementModifier.of(2),
+                                SquarePlacementModifier.of(),
+                                PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+                                BiomePlacementModifier.of()
+                        )
+                )
+        );
+
+        RegistryEntry<ConfiguredFeature<?, ?>> lavaLake =
+            context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE)
+                    .getOrThrow(MiscConfiguredFeatures.LAKE_LAVA);
+
+        context.register(
+            FIRE_LAVA_LAKE_KEY,
+            new PlacedFeature(
+                lavaLake,
+                List.of(
+                    RarityFilterPlacementModifier.of(2),
+                    SquarePlacementModifier.of(),
+                    PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+                    BiomePlacementModifier.of()
+                )
+            )
+        );
     }
 }

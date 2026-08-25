@@ -2,6 +2,8 @@ package com.therootsofancientmagic.block;
 
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.FlowerBlock;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.block.AbstractBlock;
@@ -12,6 +14,8 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.BlockView;
 import net.minecraft.entity.effect.StatusEffects;
 
 // import net.minecraft.item.ItemStack;
@@ -70,10 +74,21 @@ public class ModFlowerBlock {
             StatusEffects.LUCK,
             0,
             AbstractBlock.Settings.create()
-                .noCollision()      
-                .breakInstantly()   
+                .noCollision()
+                .breakInstantly()
                 .nonOpaque()
-        )
+        ) {
+            @Override
+            protected boolean canPlantOnTop(
+                    BlockState floor,
+                    BlockView world,
+                    BlockPos pos
+            ) {
+                return floor.isOf(Blocks.SAND)
+                        || floor.isOf(Blocks.RED_SAND)
+                        || super.canPlantOnTop(floor, world, pos);
+            }
+        }
     );
 
     public static final Block FLOWER_EARTH = registerBlock(

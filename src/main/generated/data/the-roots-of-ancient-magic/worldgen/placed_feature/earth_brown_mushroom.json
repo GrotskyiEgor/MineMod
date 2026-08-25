@@ -1,9 +1,9 @@
 {
-  "feature": "the-roots-of-ancient-magic:flower_weed_patch",
+  "feature": "the-roots-of-ancient-magic:earth_brown_mushroom",
   "placement": [
     {
-      "type": "minecraft:rarity_filter",
-      "chance": 4
+      "type": "minecraft:count",
+      "count": 2
     },
     {
       "type": "minecraft:in_square"

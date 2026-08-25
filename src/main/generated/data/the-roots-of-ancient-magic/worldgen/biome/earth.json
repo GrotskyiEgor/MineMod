@@ -8,12 +8,12 @@
   },
   "downfall": 1.0,
   "effects": {
-    "fog_color": 15723497,
-    "foliage_color": 7162945,
-    "grass_color": 15723497,
-    "sky_color": 14142664,
-    "water_color": 5227511,
-    "water_fog_color": 166097
+    "fog_color": 7830136,
+    "foliage_color": 6251097,
+    "grass_color": 7829614,
+    "sky_color": 7830141,
+    "water_color": 4157824,
+    "water_fog_color": 3166040
   },
   "features": [
     [],
@@ -51,7 +51,9 @@
       "minecraft:spring_lava"
     ],
     [
-      "minecraft:brown_mushroom_normal"
+      "the-roots-of-ancient-magic:earth_dark_oak",
+      "the-roots-of-ancient-magic:earth_brown_mushroom",
+      "the-roots-of-ancient-magic:earth_huge_brown_mushroom"
     ]
   ],
   "has_precipitation": true,

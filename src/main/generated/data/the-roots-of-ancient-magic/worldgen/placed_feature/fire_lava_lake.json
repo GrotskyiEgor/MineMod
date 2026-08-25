@@ -1,9 +1,9 @@
 {
-  "feature": "the-roots-of-ancient-magic:flower_weed_patch",
+  "feature": "minecraft:lake_lava",
   "placement": [
     {
       "type": "minecraft:rarity_filter",
-      "chance": 4
+      "chance": 2
     },
     {
       "type": "minecraft:in_square"

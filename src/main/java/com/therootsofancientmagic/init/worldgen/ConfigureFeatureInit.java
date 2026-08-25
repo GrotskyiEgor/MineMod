@@ -6,54 +6,81 @@ import com.therootsofancientmagic.TheRootsOfAncientMagic;
 import com.therootsofancientmagic.block.ModFlowerBlock;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.HugeMushroomFeatureConfig;
+import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.PlacedFeatures;
 import net.minecraft.world.gen.feature.RandomPatchFeatureConfig;
 import net.minecraft.world.gen.feature.SimpleBlockFeatureConfig;
+import net.minecraft.world.gen.feature.TreeConfiguredFeatures;
+import net.minecraft.world.gen.placementmodifier.BiomePlacementModifier;
+import net.minecraft.world.gen.placementmodifier.RarityFilterPlacementModifier;
+import net.minecraft.world.gen.placementmodifier.SquarePlacementModifier;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 
 
 public class ConfigureFeatureInit {
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> FLOWER_DARK_KEY =
-            RegistryKey.of(
-                    RegistryKeys.CONFIGURED_FEATURE,
-                    TheRootsOfAncientMagic.id("flower_dark_patch")
-            );
+        RegistryKey.of(
+                RegistryKeys.CONFIGURED_FEATURE,
+                TheRootsOfAncientMagic.id("flower_dark_patch")
+        );
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> FLOWER_LIGHT_KEY =
-            RegistryKey.of(
-                    RegistryKeys.CONFIGURED_FEATURE,
-                    TheRootsOfAncientMagic.id("flower_light_patch")
-            );
+        RegistryKey.of(
+                RegistryKeys.CONFIGURED_FEATURE,
+                TheRootsOfAncientMagic.id("flower_light_patch")
+        );
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> FLOWER_WEED_KEY =
-            RegistryKey.of(
-                    RegistryKeys.CONFIGURED_FEATURE,
-                    TheRootsOfAncientMagic.id("flower_weed_patch")
-            );
+        RegistryKey.of(
+                RegistryKeys.CONFIGURED_FEATURE,
+                TheRootsOfAncientMagic.id("flower_weed_patch")
+        );
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> FLOWER_EARTH_KEY =
-            RegistryKey.of(
-                    RegistryKeys.CONFIGURED_FEATURE,
-                    TheRootsOfAncientMagic.id("flower_earth_patch")
-            );
+        RegistryKey.of(
+                RegistryKeys.CONFIGURED_FEATURE,
+                TheRootsOfAncientMagic.id("flower_earth_patch")
+        );
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> FLOWER_FIRE_KEY =
-            RegistryKey.of(
-                    RegistryKeys.CONFIGURED_FEATURE,
-                    TheRootsOfAncientMagic.id("flower_fire_patch")
-            );
+        RegistryKey.of(
+                RegistryKeys.CONFIGURED_FEATURE,
+                TheRootsOfAncientMagic.id("flower_fire_patch")
+        );
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> FLOWER_AQUA_KEY =
+        RegistryKey.of(
+                RegistryKeys.CONFIGURED_FEATURE,
+                TheRootsOfAncientMagic.id("flower_aqua_patch")
+        );
+    
+
+    
+    public static final RegistryKey<ConfiguredFeature<?, ?>> EARTH_DARK_OAK_KEY =
             RegistryKey.of(
                     RegistryKeys.CONFIGURED_FEATURE,
-                    TheRootsOfAncientMagic.id("flower_aqua_patch")
+                    TheRootsOfAncientMagic.id("earth_dark_oak")
             );
+    
+    public static final RegistryKey<ConfiguredFeature<?, ?>> EARTH_BROWN_MUSHROOM_KEY =
+        RegistryKey.of(
+                RegistryKeys.CONFIGURED_FEATURE,
+                TheRootsOfAncientMagic.id("earth_brown_mushroom")
+        );
+    
+    public static final RegistryKey<ConfiguredFeature<?, ?>> EARTH_HUGE_BROWN_MUSHROOM_KEY =
+        RegistryKey.of(
+                RegistryKeys.CONFIGURED_FEATURE,
+                TheRootsOfAncientMagic.id("earth_huge_brown_mushroom")
+        );
 
     public static final List<RegistryKey<ConfiguredFeature<?, ?>>> FLOWERS = List.of(FLOWER_DARK_KEY, FLOWER_LIGHT_KEY, FLOWER_WEED_KEY, FLOWER_EARTH_KEY, FLOWER_FIRE_KEY, FLOWER_AQUA_KEY);
 
@@ -99,6 +126,42 @@ public class ConfigureFeatureInit {
                         getPatchConfig(context, flower)
                 )
             );
-        }
+        };
+
+        context.register(
+                EARTH_BROWN_MUSHROOM_KEY,
+                new ConfiguredFeature<>(
+                        Feature.RANDOM_PATCH,
+                        new RandomPatchFeatureConfig(
+                                64,
+                                7,
+                                3,
+                                PlacedFeatures.createEntry(
+                                        Feature.SIMPLE_BLOCK,
+                                        new SimpleBlockFeatureConfig(
+                                                BlockStateProvider.of(
+                                                        Blocks.BROWN_MUSHROOM.getDefaultState()
+                                                )
+                                        )
+                                )
+                        )
+                )
+        );
+
+        context.register(
+                EARTH_HUGE_BROWN_MUSHROOM_KEY,
+                new ConfiguredFeature<>(
+                        Feature.HUGE_BROWN_MUSHROOM,
+                        new HugeMushroomFeatureConfig(
+                                BlockStateProvider.of(
+                                        Blocks.BROWN_MUSHROOM_BLOCK.getDefaultState()
+                                ),
+                                BlockStateProvider.of(
+                                        Blocks.MUSHROOM_STEM.getDefaultState()
+                                ),
+                                4
+                        )
+                )
+        );
     }
 }

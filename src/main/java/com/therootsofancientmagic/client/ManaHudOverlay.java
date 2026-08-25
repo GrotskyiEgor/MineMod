@@ -1,4 +1,4 @@
-package com.therootsofancientmagic.client; // Убедись, что путь совпадает с твоей клиентской папкой
+package com.therootsofancientmagic.client;
 
 import com.therootsofancientmagic.util.IEntityDataSaver;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
@@ -8,8 +8,6 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Identifier;
 
 public class ManaHudOverlay implements HudRenderCallback {
-    // Файл должен лежать по пути: assets/the-roots-of-ancient-magic/textures/hud/mana.png
-    // Убедись, что строчка с текстурой выглядит вот так:
     private static final Identifier MANA_TEXTURE = new Identifier("the-roots-of-ancient-magic", "textures/hud/mana.png");
 
 

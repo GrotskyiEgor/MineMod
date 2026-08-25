@@ -1,6 +1,9 @@
 package com.therootsofancientmagic.client;
 
 import com.therootsofancientmagic.TheRootsOfAncientMagic;
+import com.therootsofancientmagic.client.biomes.earth.EarthBiomeParticles;
+import com.therootsofancientmagic.client.biomes.earth.EarthWindOverlay;
+
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
@@ -22,6 +25,9 @@ public class TheRootsOfAncientMagicClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        EarthBiomeParticles.register();
+        EarthWindOverlay.register();
+
         robeAbilityKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
                 "key.therootsofancientmagic.robe_ability",
                 InputUtil.Type.KEYSYM,
