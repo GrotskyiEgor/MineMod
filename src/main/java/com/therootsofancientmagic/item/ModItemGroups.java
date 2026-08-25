@@ -25,7 +25,8 @@ public class ModItemGroups {
                         entries.add(ModItem.WEED_STAFF);
                         entries.add(ModItem.EARTH_STAFF);
                         entries.add(ModItem.AQUA_STAFF);    
-                        entries.add(ModItem.LIGHT_STAFF);
+                        entries.add(ModItem.LIGHT_STAFF); 
+                        entries.add(ModItem.DARK_STAFF); 
 
                         entries.add(ModItem.BATTLE_AXE);
                         entries.add(ModItem.HEROIC_SWORD);
@@ -89,8 +90,7 @@ public class ModItemGroups {
                     ))
                     .icon(() -> new ItemStack(ModItem.ESSENCE_FIRE))
                     .entries((context, entries) -> {
-                                                   entries.add(ModItem.ESSENCE_AQUA);
-
+                        entries.add(ModItem.ESSENCE_AQUA);
                         entries.add(ModItem.ESSENCE_FIRE);
                         entries.add(ModItem.ESSENCE_WEED);
                         entries.add(ModItem.ESSENCE_EARTH);
@@ -118,10 +118,8 @@ public class ModItemGroups {
                     .displayName(Text.translatable(
                             "itemGroup.the-roots-of-ancient-magic.armor"
                     ))
-                    .icon(() -> new ItemStack(ModItem.ESSENCE_FIRE))
-                    .entries((context, entries) -> {
-                                                   entries.add(ModItem.ESSENCE_AQUA);
-
+                    .icon(() -> new ItemStack(ModItem.FIRE_BOOTS))
+                    .entries((context, entries) -> {                                             
                        entries.add(ModItem.FIRE_BOOTS);                            
                     })
                     .build()

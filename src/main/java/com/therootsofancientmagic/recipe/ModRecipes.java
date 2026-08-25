@@ -2,6 +2,7 @@ package com.therootsofancientmagic.recipe;
 
 import com.therootsofancientmagic.TheRootsOfAncientMagic;
 import net.minecraft.recipe.CraftingRecipe;
+import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.RecipeType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -18,6 +19,12 @@ public class ModRecipes {
                 return "craft_table";
             }
         }
+    );
+
+    public static final RecipeSerializer<CraftTableRecipe> CRAFT_TABLE_SERIALIZER = Registry.register(
+        Registries.RECIPE_SERIALIZER,
+        new Identifier(TheRootsOfAncientMagic.MOD_ID, "craft_table"),
+        new CraftTableRecipe.Serializer()
     );
 
     public static void registerRecipes() {

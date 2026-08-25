@@ -4,7 +4,9 @@ import com.therootsofancientmagic.TheRootsOfAncientMagic;
 import com.therootsofancientmagic.component.CustomArmorHolder;
 import com.therootsofancientmagic.mana.PlayerMana;
 import com.therootsofancientmagic.util.IEntityDataSaver;
+import com.therootsofancientmagic.item.ModItem;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.inventory.Inventory;
@@ -35,11 +37,25 @@ public class RobeAbilityServerHandler {
 
                 if (player instanceof CustomArmorHolder holder) {
                     Inventory inventory = holder.getCustomArmorInventory();
-                    for (int i = 0; i < 4; i++) {
-                        ItemStack stack = inventory.getStack(i);
-                        if (!stack.isEmpty() && stack.getItem() instanceof ElementalRobeItem) {
-                            equippedRobeStack = stack;
-                            break;
+                    if (inventory != null) {
+                        ItemStack backStack = inventory.getStack(0);
+
+                        if (!backStack.isEmpty() && backStack.isOf(ModItem.FIRE_ROBE)) {
+                            if (!player.getItemCooldownManager().isCoolingDown(ModItem.FIRE_ROBE)) {
+                                
+                                holder.activateFireRobeAbility();
+
+                                player.getItemCooldownManager().set(ModItem.FIRE_ROBE, 240);
+
+                                player.getServerWorld().playSound(
+                                    null, 
+                                    player.getBlockPos(),
+                                    SoundEvents.ITEM_FIRECHARGE_USE, 
+                                    SoundCategory.PLAYERS, 
+                                    1.0F, 
+                                    1.0F
+                                );
+                            }
                         }
                     }
                 }

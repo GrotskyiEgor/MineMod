@@ -39,7 +39,7 @@ public class TheRootsOfAncientMagicClient implements ClientModInitializer {
         secondRingKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
             "key.therootsofancientmagic.second_ring_ability",
             InputUtil.Type.KEYSYM,
-            GLFW.GLFW_KEY_X,
+            GLFW.GLFW_KEY_V,
             "category.therootsofancientmagic.keys"
         ));
 

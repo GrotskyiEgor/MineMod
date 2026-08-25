@@ -56,6 +56,12 @@ public class PlacedFeatureInit {
                     TheRootsOfAncientMagic.id("flower_aqua_placed")
             );
 
+//     public static final RegistryKey<PlacedFeature> EARTH_DARK_OAK_KEY =
+//             RegistryKey.of(
+//                 RegistryKey.PLACED_FEATURE,
+//                 TheRootsOfAncientMagic.id("earth_dark_oak")
+//             )
+
     public static final List<RegistryKey<PlacedFeature>> FLOWERS_KEYS = List.of(
         FLOWER_DARK_PLACED_KEY, 
         FLOWER_LIGHT_PLACED_KEY, 

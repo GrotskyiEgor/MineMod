@@ -17,6 +17,7 @@ import com.therootsofancientmagic.screen.CraftTableScreen;
 import com.therootsofancientmagic.screen.FurnacePowderScreen;
 import com.therootsofancientmagic.screen.ModScreenHandlers;
 import com.therootsofancientmagic.util.AccessoryHandler;
+// import com.therootsofancientmagic.block.entity.ModBlockEntities;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;

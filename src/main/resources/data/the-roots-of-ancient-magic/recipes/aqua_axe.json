@@ -1,0 +1,16 @@
+{
+  "type": "the-roots-of-ancient-magic:craft_table",
+  "pattern": [
+    "FF ",
+    "FP ",
+    " P "
+  ],
+  "key": {
+    "F": { "item": "the-roots-of-ancient-magic:essence_aqua" },
+    "P": { "item": "minecraft:stick" }
+  },
+  "result": {
+    "item": "the-roots-of-ancient-magic:aqua_axe",
+    "count": 1
+  }
+}

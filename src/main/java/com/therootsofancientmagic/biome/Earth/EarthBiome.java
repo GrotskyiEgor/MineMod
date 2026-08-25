@@ -30,11 +30,11 @@ public class EarthBiome {
         DefaultBiomeFeatures.addAmethystGeodes(generationSettings);
         DefaultBiomeFeatures.addDefaultOres(generationSettings);
         
-        // addModFeature(
-        //         generationSettings,
-        //         featureLookup,
-        //         "earth_dark_oak"
-        // );
+        addModFeature(
+                generationSettings,
+                featureLookup,
+                "earth_dark_oak"
+        );
 
         addVanillaFeature(
                 generationSettings,
@@ -83,6 +83,22 @@ public class EarthBiome {
                                         "minecraft",
                                         featureId
                                 )
+                        )
+                )
+        );
+    }
+
+    private static void addModFeature(
+        GenerationSettings.LookupBackedBuilder gen,
+        RegistryEntryLookup<PlacedFeature> featureLookup,
+        String featureId
+    ) {
+        gen.feature(
+                GenerationStep.Feature.VEGETAL_DECORATION,
+                featureLookup.getOrThrow(
+                        RegistryKey.of(
+                                RegistryKeys.PLACED_FEATURE,
+                                TheRootsOfAncientMagic.id(featureId) 
                         )
                 )
         );

@@ -1,0 +1,16 @@
+{
+  "type": "the-roots-of-ancient-magic:craft_table",
+  "pattern": [
+    "F",
+    "F",
+    "P"
+  ],
+  "key": {
+    "F": { "item": "the-roots-of-ancient-magic:essence_light" },
+    "P": { "item": "minecraft:stick" }
+  },
+  "result": {
+    "item": "the-roots-of-ancient-magic:light_sword",
+    "count": 1
+  }
+}

@@ -26,7 +26,7 @@ public abstract class InventoryScreenMixin extends AbstractInventoryScreen<Playe
 
     @Inject(method = "isClickOutsideBounds", at = @At("HEAD"), cancellable = true)
     private void allowCustomSlotClick(double mouseX, double mouseY, int left, int top, int button, CallbackInfoReturnable<Boolean> cir) {
-        if (mouseX >= left - 30 && mouseX <= left && mouseY >= top && mouseY <= top + 80) {
+        if (mouseX >= left - 30 && mouseX <= left && mouseY >= top && mouseY <= top + 81) {
             cir.setReturnValue(false);
         }
     }
@@ -36,7 +36,7 @@ public abstract class InventoryScreenMixin extends AbstractInventoryScreen<Playe
         int panelX1 = this.x - 29;
         int panelY1 = this.y + 4;
         int panelX2 = this.x - 1;
-        int panelY2 = this.y + 80;
+        int panelY2 = this.y + 83;
 
         context.fill(panelX1, panelY1, panelX2, panelY2, 0xFFFFFFFF);
 
@@ -50,5 +50,8 @@ public abstract class InventoryScreenMixin extends AbstractInventoryScreen<Playe
         for (int i = 0; i < 4; i++) {
             context.drawTexture(INVENTORY_TEXTURE, startX, startY + (i * 18), 7, 7, 18, 18);
         }
+
+        int lastSlotY = startY + (3 * 18);
+        context.fill(startX, lastSlotY + 17, startX + 18, lastSlotY + 18, 0xFF373737);
     }
 }

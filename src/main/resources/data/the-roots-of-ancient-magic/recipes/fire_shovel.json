@@ -1,0 +1,16 @@
+{
+  "type": "the-roots-of-ancient-magic:craft_table",
+  "pattern": [
+    "F",
+    "P",
+    "P"
+  ],
+  "key": {
+    "F": { "item": "the-roots-of-ancient-magic:essence_fire" },
+    "P": { "item": "minecraft:stick" }
+  },
+  "result": {
+    "item": "the-roots-of-ancient-magic:fire_shovel",
+    "count": 1
+  }
+}

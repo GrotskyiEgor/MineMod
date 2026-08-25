@@ -2,9 +2,6 @@ package com.therootsofancientmagic.item;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.Item;
-// import net.minecraft.item.ItemGroups;
-// import net.minecraft.item.ToolMaterials;
-// import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import com.therootsofancientmagic.item.tools.sword.ElementalSwordItem;
@@ -63,6 +60,11 @@ public class ModItem {
         new LightStaff(new Item.Settings())
     );
 
+    public static final Item DARK_STAFF = registerItem(
+        "dark_staff",
+        new DarkStaff(new Item.Settings())
+    );
+
 
     public static final Item ESSENCE_AQUA = registerItem(
         "essence_aqua",
@@ -100,21 +102,6 @@ public class ModItem {
     
     public static final Item BATTLE_AXE = registerItem("battle_axe",
             new BattleAxeItem(ModToolMaturial.ESSENCE_HEROIC, 4, -3.4f, new Item.Settings()));
-
-    public static final Item HEROIC_AXE = registerItem("heroic_axe",
-            new HeroicAxeItem(ModToolMaturial.ESSENCE_HEROIC, 3.0f, -2.4f, new Item.Settings()));    
-        
-    public static final Item HEROIC_SWORD = registerItem("heroic_sword",
-            new HeroicSwordItem(ModToolMaturial.ESSENCE_HEROIC, -3, -3.0f, new Item.Settings()));
-
-    public static final Item HEROIC_PICKAXE= registerItem("heroic_pickaxe",
-            new HeroicPickaxeItem(ModToolMaturial.ESSENCE_HEROIC, 3, -2.4f, new Item.Settings()));
-
-    public static final Item HEROIC_SHOVEL = registerItem("heroic_shovel",
-            new HeroicShovelItem(ModToolMaturial.ESSENCE_HEROIC, 3, -2.4f, new Item.Settings()));
-            
-    public static final Item HEROIC_HOE = registerItem("heroic_hoe",
-            new HeroicHoeItem(ModToolMaturial.ESSENCE_HEROIC, 3, -2.4f, new Item.Settings()));
 
 
     public static final Item AQUA_NECKLACE = registerItem("aqua_necklace",
@@ -157,7 +144,9 @@ public class ModItem {
 
     public static final Item EARTH_RING = registerItem("earth_ring",
         new RingItem(new FabricItemSettings().maxCount(1)));
-        
+    
+    public static final Item HEROIC_PICKAXE = registerItem("heroic_pickaxe",
+        new ElementalPickaxeItem(ModToolMaturial.ESSENCE_HEROIC, 1, -2.8f, new Item.Settings()));
 
     public static final Item LIGHT_PICKAXE = registerItem("light_pickaxe",
             new ElementalPickaxeItem(ModToolMaturial.ESSENCE_LIGHT, 1, -2.8f, new Item.Settings()));
@@ -165,6 +154,7 @@ public class ModItem {
     public static final Item DARK_PICKAXE = registerItem("dark_pickaxe",
             new ElementalPickaxeItem(ModToolMaturial.ESSENCE_LIGHT, 1, -2.8f, new Item.Settings()));
             
+   
     public static final Item FIRE_PICKAXE = registerItem("fire_pickaxe",
             new ElementalPickaxeItem(ModToolMaturial.ESSENCE_LIGHT, 1, -2.8f, new Item.Settings()));
             
@@ -177,7 +167,10 @@ public class ModItem {
     public static final Item WEED_PICKAXE = registerItem("weed_pickaxe",
             new ElementalPickaxeItem(ModToolMaturial.ESSENCE_LIGHT, 1, -2.8f, new Item.Settings()));
             
-            
+    
+    public static final Item HEROIC_AXE = registerItem("heroic_axe",
+        new ElementalAxeItem(ModToolMaturial.ESSENCE_HEROIC, 5.0f, -3.0f, new Item.Settings()));
+
     public static final Item FIRE_AXE = registerItem("fire_axe",
             new ElementalAxeItem(ModToolMaturial.ESSENCE_FIRE, 5.0f, -3.0f, new Item.Settings()));
     
@@ -196,7 +189,11 @@ public class ModItem {
     public static final Item EARTH_AXE = registerItem("earth_axe",
             new ElementalAxeItem(ModToolMaturial.ESSENCE_EARTH, 5.0f, -3.0f, new Item.Settings()));
     
-        
+    
+    // поджигает противника.
+    public static final Item HEROIC_SWORD = registerItem("heroic_sword",
+            new ElementalSwordItem(ModToolMaturial.ESSENCE_HEROIC, 3, -2.4f, new Item.Settings()));
+
     // поджигает противника.
     public static final Item FIRE_SWORD = registerItem("fire_sword",
             new ElementalSwordItem(ModToolMaturial.ESSENCE_FIRE, 3, -2.4f, new Item.Settings()));
@@ -221,6 +218,9 @@ public class ModItem {
     public static final Item LIGHT_SWORD = registerItem("light_sword",
             new ElementalSwordItem(ModToolMaturial.ESSENCE_LIGHT, 3, -2.4f, new Item.Settings()));
 
+    
+    public static final Item HEROIC_SHOVEL = registerItem("heroic_shovel",
+            new ElementalShovelItem(ModToolMaturial.ESSENCE_HEROIC, 1, -2.8f, new Item.Settings()));
 
     public static final Item FIRE_SHOVEL = registerItem("fire_shovel",
             new ElementalShovelItem(ModToolMaturial.ESSENCE_FIRE, 1, -2.8f, new Item.Settings()));
@@ -239,6 +239,9 @@ public class ModItem {
 
     public static final Item EARTH_SHOVEL = registerItem("earth_shovel",
             new ElementalShovelItem(ModToolMaturial.ESSENCE_EARTH, 1, -2.8f, new Item.Settings()));
+
+    public static final Item HEROIC_HOE = registerItem("heroic_hoe",
+            new ElementalHoeItem(ModToolMaturial.ESSENCE_HEROIC, 1, -2.8f, new Item.Settings()));
 
     public static final Item FIRE_HOE = registerItem("fire_hoe",
             new ElementalHoeItem(ModToolMaturial.ESSENCE_FIRE, 1, -2.8f, new Item.Settings()));

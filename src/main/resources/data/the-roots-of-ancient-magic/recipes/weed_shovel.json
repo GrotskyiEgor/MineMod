@@ -1,0 +1,16 @@
+{
+  "type": "the-roots-of-ancient-magic:craft_table",
+  "pattern": [
+    "F",
+    "P",
+    "P"
+  ],
+  "key": {
+    "F": { "item": "the-roots-of-ancient-magic:essence_weed" },
+    "P": { "item": "minecraft:stick" }
+  },
+  "result": {
+    "item": "the-roots-of-ancient-magic:weed_shovel",
+    "count": 1
+  }
+}

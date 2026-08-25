@@ -1,6 +1,6 @@
 package com.therootsofancientmagic.item.armor;
 
-import net.minecraft.entity.EquipmentSlot;
+// import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.recipe.Ingredient;

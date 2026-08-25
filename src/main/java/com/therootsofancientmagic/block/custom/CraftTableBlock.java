@@ -1,12 +1,16 @@
 package com.therootsofancientmagic.block.custom;
 
 import com.therootsofancientmagic.screen.CraftTableScreenHandler;
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerContext;
-import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -34,9 +38,21 @@ public class CraftTableBlock extends Block {
 
     @Override
     public NamedScreenHandlerFactory createScreenHandlerFactory(BlockState state, World world, BlockPos pos) {
-        return new SimpleNamedScreenHandlerFactory(
-            (syncId, playerInventory, player) -> new CraftTableScreenHandler(syncId, playerInventory, ScreenHandlerContext.create(world, pos)),
-            TITLE
-        );
+        return new ExtendedScreenHandlerFactory() {
+            @Override
+            public void writeScreenOpeningData(ServerPlayerEntity player, PacketByteBuf buf) {
+                buf.writeBlockPos(pos);
+            }
+
+            @Override
+            public Text getDisplayName() {
+                return TITLE;
+            }
+
+            @Override
+            public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
+                return new CraftTableScreenHandler(syncId, playerInventory, ScreenHandlerContext.create(world, pos));
+            }
+        };
     }
 }
