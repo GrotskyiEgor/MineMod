@@ -110,12 +110,21 @@ public class RobeAbilityServerHandler {
             });
         });
 
-        // ServerPlayNetworking.registerGlobalReceiver(TheRootsOfAncientMagicClient.RING_ABILITY_PACKET, (server, player, handler, buf, responseSender) -> {
-        //     server.execute(() -> {
-        //         if (player instanceof CustomArmorHolder holder) {
-        //             holder.useFireRingAbility();
-        //         }
-        //     });
-        // });
+
+        ServerPlayNetworking.registerGlobalReceiver(TheRootsOfAncientMagicClient.FIRST_RING_PACKET, (server, player, handler, buf, responseSender) -> {
+            server.execute(() -> {
+                if (player instanceof CustomArmorHolder holder) {
+                    holder.useFirstRingAbility();
+                }
+            });
+        });
+
+        ServerPlayNetworking.registerGlobalReceiver(TheRootsOfAncientMagicClient.SECOND_RING_PACKET, (server, player, handler, buf, responseSender) -> {
+            server.execute(() -> {
+                if (player instanceof CustomArmorHolder holder) {
+                    holder.useSecondRingAbility();
+                }
+            });
+        });
     }
 }

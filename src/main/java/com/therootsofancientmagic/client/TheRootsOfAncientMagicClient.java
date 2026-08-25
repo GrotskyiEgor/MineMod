@@ -17,7 +17,7 @@ public class TheRootsOfAncientMagicClient implements ClientModInitializer {
     public static final Identifier SECOND_RING_PACKET = new Identifier(TheRootsOfAncientMagic.MOD_ID, "second_ring_ability");
     public static KeyBinding robeAbilityKey;
     public static KeyBinding firstRingKey;
-    public static KeyBinding fsecondRingKey;
+    public static KeyBinding secondRingKey;
 
 
     @Override
@@ -30,9 +30,16 @@ public class TheRootsOfAncientMagicClient implements ClientModInitializer {
         ));
 
         firstRingKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-            "key.therootsofancientmagic.ring_ability",
+            "key.therootsofancientmagic.first_ring_ability",
             InputUtil.Type.KEYSYM,
             GLFW.GLFW_KEY_Z,
+            "category.therootsofancientmagic.keys"
+        ));
+
+        secondRingKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+            "key.therootsofancientmagic.second_ring_ability",
+            InputUtil.Type.KEYSYM,
+            GLFW.GLFW_KEY_X,
             "category.therootsofancientmagic.keys"
         ));
 
@@ -44,6 +51,10 @@ public class TheRootsOfAncientMagicClient implements ClientModInitializer {
 
                 while (firstRingKey.wasPressed()) {
                     ClientPlayNetworking.send(FIRST_RING_PACKET, PacketByteBufs.create());
+                }
+
+                while (secondRingKey.wasPressed()) {
+                    ClientPlayNetworking.send(SECOND_RING_PACKET, PacketByteBufs.create());
                 }
             }
         });

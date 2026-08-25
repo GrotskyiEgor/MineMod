@@ -175,6 +175,19 @@ public abstract class PlayerEntityMixin implements CustomArmorHolder {
     }
 
     @Unique
+    private boolean isAquaRingInSlot(int slotIndex) {
+    PlayerEntity player = (PlayerEntity) (Object) this;
+        if (player instanceof CustomArmorHolder holder) {
+            Inventory inv = holder.getCustomArmorInventory();
+            if (inv != null && slotIndex < inv.size()) {
+                ItemStack stack = inv.getStack(slotIndex);
+                return !stack.isEmpty() && stack.isOf(ModItem.AQUA_RING);
+            }
+        }
+        return false;
+    }
+
+    @Unique
     public void castFireRingSpell() {
         PlayerEntity player = (PlayerEntity) (Object) this;
         HitResult hitResult = player.raycast(5.0D, 0.0F, false);

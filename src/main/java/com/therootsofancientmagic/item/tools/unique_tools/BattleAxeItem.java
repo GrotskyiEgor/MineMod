@@ -111,7 +111,7 @@ public class BattleAxeItem extends SwordItem {
                 if (ticksUsed % 10 == 0) {
                     Vec3d playerPos = player.getPos();
                     
-                    // Создает 3д куб в котором наноситься урон при обнаружения мобов в нем
+                    // Создает 5д куб в котором наноситься урон при обнаружения мобов в нем
                     Box searchBox = new Box(
                             playerPos.x - SPIN_RADIUS, playerPos.y - 1.0D, playerPos.z - SPIN_RADIUS,
                             playerPos.x + SPIN_RADIUS, playerPos.y + 2.0D, playerPos.z + SPIN_RADIUS
@@ -148,7 +148,6 @@ public class BattleAxeItem extends SwordItem {
     public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTime) {
         if (world.isClient() && user instanceof PlayerEntity) {
             MinecraftClient client = MinecraftClient.getInstance();
-            // Если мы всё еще находимся в режиме обзора со спины — плавно возвращаем первое лицо назад
             if (client.options.getPerspective() == Perspective.THIRD_PERSON_BACK) {
                 client.options.setPerspective(Perspective.FIRST_PERSON);
             }
