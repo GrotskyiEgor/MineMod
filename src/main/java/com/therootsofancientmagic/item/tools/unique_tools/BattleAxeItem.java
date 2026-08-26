@@ -10,8 +10,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.option.Perspective;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -25,11 +23,12 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import java.util.List;
 
-
 public class BattleAxeItem extends SwordItem {
 
     // Радиус абилки(как торнадо)
     private static final double SPIN_RADIUS = 3.5D;
+    // Кулдаун в тиках: 10 секунд * 20 тиков = 200
+    private static final int COOLDOWN_TICKS = 200;
 
     public BattleAxeItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, attackDamage, attackSpeed, settings);
@@ -51,6 +50,11 @@ public class BattleAxeItem extends SwordItem {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack stack = user.getStackInHand(hand);
+
+        // Проверяем кулдаун перед активацией
+        if (user.getItemCooldownManager().isCoolingDown(this)) {
+            return TypedActionResult.fail(stack);
+        }
 
         if (user instanceof ServerPlayerEntity serverPlayer) {
             // Проверяет, если есть 20 мани
@@ -75,13 +79,6 @@ public class BattleAxeItem extends SwordItem {
             player.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 2, 0, false, false, false));
             player.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 2, 0, false, false, false));
 
-            if (world.isClient()) {
-                MinecraftClient client = MinecraftClient.getInstance();
-                if (client.options.getPerspective() == Perspective.FIRST_PERSON) {
-                    client.options.setPerspective(Perspective.THIRD_PERSON_BACK);
-                }
-            }
-
             // Расщитивает сколько секунд/тиков осталось до завершения абилки
             int ticksUsed = getMaxUseTime(stack) - remainingUseTime;
 
@@ -90,23 +87,23 @@ public class BattleAxeItem extends SwordItem {
             player.setBodyYaw(currentBodyYaw);
             player.setHeadYaw(currentBodyYaw);
 
-            // Вращение частиц
-            double angle = ticksUsed * 0.4D; 
-            double px = player.getX() + Math.cos(angle) * 2.5D;
-            double pz = player.getZ() + Math.sin(angle) * 2.5D;
-            world.addParticle(ParticleTypes.SWEEP_ATTACK, px, player.getY() + 0.8D, pz, 0, 0, 0);
-
-
+            // Вращение частиц (Выполняется только на стороне клиента для безопасности)
+            if (world.isClient()) {
+                double angle = ticksUsed * 0.4D; 
+                double px = player.getX() + Math.cos(angle) * 2.5D;
+                double pz = player.getZ() + Math.sin(angle) * 2.5D;
+                world.addParticle(ParticleTypes.SWEEP_ATTACK, px, player.getY() + 0.8D, pz, 0, 0, 0);
+            }
+            
             if (!world.isClient() && player instanceof ServerPlayerEntity serverPlayer) {
                 // Каждую секунду абилки, списивает 10 мани
-                if (ticksUsed % 20 == 0) {
+                if (ticksUsed % 20 == 0 && ticksUsed > 0) {
                     if (!serverPlayer.isCreative() && !PlayerMana.consumeMana((IEntityDataSaver) serverPlayer, 10, serverPlayer)) {
                         // Если мани нет, абилка прекращаеться
                         player.clearActiveItem();
                         return;
                     }
                 }
-
 
                 if (ticksUsed % 10 == 0) {
                     Vec3d playerPos = player.getPos();
@@ -144,15 +141,21 @@ public class BattleAxeItem extends SwordItem {
             }
         }
     }
+
     @Override
     public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTime) {
-        if (world.isClient() && user instanceof PlayerEntity) {
-            MinecraftClient client = MinecraftClient.getInstance();
-            if (client.options.getPerspective() == Perspective.THIRD_PERSON_BACK) {
-                client.options.setPerspective(Perspective.FIRST_PERSON);
-            }
+        if (user instanceof PlayerEntity player) {
+            player.getItemCooldownManager().set(this, COOLDOWN_TICKS);
         }
         super.onStoppedUsing(stack, world, user, remainingUseTime);
     }
-}
 
+    @Override
+    public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
+        if (user instanceof PlayerEntity player) {
+            // 10 секунд кд для топора, если способность полностью завершилась
+            player.getItemCooldownManager().set(this, COOLDOWN_TICKS);
+        }
+        return super.finishUsing(stack, world, user);
+    }
+}

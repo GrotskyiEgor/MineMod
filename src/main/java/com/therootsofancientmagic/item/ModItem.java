@@ -1,6 +1,7 @@
 package com.therootsofancientmagic.item;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -9,7 +10,6 @@ import com.therootsofancientmagic.item.tools.axe.ElementalAxeItem;
 import com.therootsofancientmagic.item.tools.pickaxe.ElementalPickaxeItem;
 import com.therootsofancientmagic.item.tools.shovel.ElementalShovelItem;
 import com.therootsofancientmagic.item.tools.hoe.ElementalHoeItem;
-import com.therootsofancientmagic.item.armor.boots.FireBoots;
 import com.therootsofancientmagic.item.magic.necklace.NecklaceItem;
 import com.therootsofancientmagic.item.magic.ring.RingItem;
 import com.therootsofancientmagic.item.magic.robe.ElementalRobeItem;
@@ -25,13 +25,263 @@ import com.therootsofancientmagic.item.tools.heroic_tools.HeroicPickaxeItem;
 import com.therootsofancientmagic.item.tools.heroic_tools.HeroicShovelItem;
 import com.therootsofancientmagic.item.tools.heroic_tools.HeroicHoeItem;
 import com.therootsofancientmagic.item.tools.unique_tools.BattleAxeItem;
+import com.therootsofancientmagic.item.tools.unique_tools.LightningHammerItem;
 
 import net.minecraft.util.Identifier;
 
-public class ModItem {
+public class ModItem {    
+    public static final Item FIRE_HELMET = registerItem(
+        "fire_helmet", 
+        new ArmorItem(
+            ModArmorMaterial.ESSENCE_FIRE, 
+            ArmorItem.Type.HELMET,
+            new Item.Settings()
+        )
+    );
+    
+    public static final Item FIRE_CHESTPLATE = registerItem(
+        "fire_chestplate", 
+        new ArmorItem(
+            ModArmorMaterial.ESSENCE_FIRE, 
+            ArmorItem.Type.CHESTPLATE,
+            new Item.Settings()
+        )
+    );
+
+    public static final Item FIRE_LEGGINGS= registerItem(
+        "fire_leggings", 
+        new ArmorItem(
+            ModArmorMaterial.ESSENCE_FIRE, 
+            ArmorItem.Type.LEGGINGS,
+            new Item.Settings()
+        )
+    );
+
     public static final Item FIRE_BOOTS = registerItem(
-        "fire_boots",
-        new FireBoots(new Item.Settings())
+        "fire_boots", 
+        new ArmorItem(
+            ModArmorMaterial.ESSENCE_FIRE, 
+            ArmorItem.Type.BOOTS,
+            new Item.Settings()
+        )
+    );
+
+    public static final Item WEED_HELMET = registerItem(
+        "weed_helmet", 
+        new ArmorItem(
+            ModArmorMaterial.ESSENCE_WEED, 
+            ArmorItem.Type.HELMET,
+            new Item.Settings()
+        )
+    );
+    
+    public static final Item WEED_CHESTPLATE = registerItem(
+        "weed_chestplate", 
+        new ArmorItem(
+            ModArmorMaterial.ESSENCE_WEED, 
+            ArmorItem.Type.CHESTPLATE,
+            new Item.Settings()
+        )
+    );
+
+    public static final Item WEED_LEGGINGS= registerItem(
+        "weed_leggings", 
+        new ArmorItem(
+            ModArmorMaterial.ESSENCE_WEED, 
+            ArmorItem.Type.LEGGINGS,
+            new Item.Settings()
+        )
+    );
+
+    public static final Item WEED_BOOTS = registerItem(
+        "weed_boots", 
+        new ArmorItem(
+            ModArmorMaterial.ESSENCE_WEED, 
+            ArmorItem.Type.BOOTS,
+            new Item.Settings()
+        )
+    );
+
+
+    public static final Item AQUA_HELMET = registerItem(
+        "aqua_helmet", 
+        new ArmorItem(
+            ModArmorMaterial.ESSENCE_AQUA, 
+            ArmorItem.Type.HELMET,
+            new Item.Settings()
+        )
+    );
+    
+    public static final Item AQUA_CHESTPLATE = registerItem(
+        "aqua_chestplate", 
+        new ArmorItem(
+            ModArmorMaterial.ESSENCE_AQUA, 
+            ArmorItem.Type.CHESTPLATE,
+            new Item.Settings()
+        )
+    );
+
+    public static final Item AQUA_LEGGINGS= registerItem(
+        "aqua_leggings", 
+        new ArmorItem(
+            ModArmorMaterial.ESSENCE_AQUA, 
+            ArmorItem.Type.LEGGINGS,
+            new Item.Settings()
+        )
+    );
+
+    public static final Item AQUA_BOOTS = registerItem(
+        "aqua_boots", 
+        new ArmorItem(
+            ModArmorMaterial.ESSENCE_AQUA, 
+            ArmorItem.Type.BOOTS,
+            new Item.Settings()
+        )
+    );
+
+    public static final Item EARTH_HELMET = registerItem(
+        "earth_helmet", 
+        new ArmorItem(
+            ModArmorMaterial.ESSENCE_EARTH, 
+            ArmorItem.Type.HELMET,
+            new Item.Settings()
+        )
+    );
+    
+    public static final Item EARTH_CHESTPLATE = registerItem(
+        "earth_chestplate", 
+        new ArmorItem(
+            ModArmorMaterial.ESSENCE_EARTH, 
+            ArmorItem.Type.CHESTPLATE,
+            new Item.Settings()
+        )
+    );
+
+    public static final Item EARTH_LEGGINGS= registerItem(
+        "earth_leggings", 
+        new ArmorItem(
+            ModArmorMaterial.ESSENCE_EARTH, 
+            ArmorItem.Type.LEGGINGS,
+            new Item.Settings()
+        )
+    );
+
+    public static final Item EARTH_BOOTS = registerItem(
+        "earth_boots", 
+        new ArmorItem(
+            ModArmorMaterial.ESSENCE_EARTH, 
+            ArmorItem.Type.BOOTS,
+            new Item.Settings()
+        )
+    );
+
+    public static final Item LIGHT_HELMET = registerItem(
+        "light_helmet", 
+        new ArmorItem(
+            ModArmorMaterial.ESSENCE_LIGHT, 
+            ArmorItem.Type.HELMET,
+            new Item.Settings()
+        )
+    );
+    
+    public static final Item LIGHT_CHESTPLATE = registerItem(
+        "light_chestplate", 
+        new ArmorItem(
+            ModArmorMaterial.ESSENCE_LIGHT, 
+            ArmorItem.Type.CHESTPLATE,
+            new Item.Settings()
+        )
+    );
+
+    public static final Item LIGHT_LEGGINGS= registerItem(
+        "light_leggings", 
+        new ArmorItem(
+            ModArmorMaterial.ESSENCE_LIGHT, 
+            ArmorItem.Type.LEGGINGS,
+            new Item.Settings()
+        )
+    );
+
+    public static final Item LIGHT_BOOTS = registerItem(
+        "light_boots", 
+        new ArmorItem(
+            ModArmorMaterial.ESSENCE_LIGHT, 
+            ArmorItem.Type.BOOTS,
+            new Item.Settings()
+        )
+    );
+
+    public static final Item DARK_HELMET = registerItem(
+        "dark_helmet", 
+        new ArmorItem(
+            ModArmorMaterial.ESSENCE_DARK, 
+            ArmorItem.Type.HELMET,
+            new Item.Settings()
+        )
+    );
+    
+    public static final Item DARK_CHESTPLATE = registerItem(
+        "dark_chestplate", 
+        new ArmorItem(
+            ModArmorMaterial.ESSENCE_DARK, 
+            ArmorItem.Type.CHESTPLATE,
+            new Item.Settings()
+        )
+    );
+
+    public static final Item DARK_LEGGINGS= registerItem(
+        "dark_leggings", 
+        new ArmorItem(
+            ModArmorMaterial.ESSENCE_DARK, 
+            ArmorItem.Type.LEGGINGS,
+            new Item.Settings()
+        )
+    );
+
+    public static final Item DARK_BOOTS = registerItem(
+        "dark_boots", 
+        new ArmorItem(
+            ModArmorMaterial.ESSENCE_DARK, 
+            ArmorItem.Type.BOOTS,
+            new Item.Settings()
+        )
+    );
+
+    
+    public static final Item HEROIC_HELMET = registerItem(
+        "heroic_helmet", 
+        new ArmorItem(
+            ModArmorMaterial.ESSENCE_HEROIC, 
+            ArmorItem.Type.HELMET,
+            new Item.Settings()
+        )
+    );  
+    
+    public static final Item HEROIC_CHESTPLATE = registerItem(
+        "heroic_chestplate", 
+        new ArmorItem(
+            ModArmorMaterial.ESSENCE_HEROIC, 
+            ArmorItem.Type.CHESTPLATE,
+            new Item.Settings()
+        )
+    );
+
+    public static final Item HEROIC_LEGGINGS= registerItem(
+        "heroic_leggings", 
+        new ArmorItem(
+            ModArmorMaterial.ESSENCE_HEROIC, 
+            ArmorItem.Type.LEGGINGS,
+            new Item.Settings()
+        )
+    );
+
+    public static final Item HEROIC_BOOTS = registerItem(
+        "heroic_boots", 
+        new ArmorItem(
+            ModArmorMaterial.ESSENCE_HEROIC, 
+            ArmorItem.Type.BOOTS,
+            new Item.Settings()
+        )
     );
 
     
@@ -102,6 +352,10 @@ public class ModItem {
     
     public static final Item BATTLE_AXE = registerItem("battle_axe",
             new BattleAxeItem(ModToolMaturial.ESSENCE_HEROIC, 4, -3.4f, new Item.Settings()));
+
+    public static final Item LIGHTNING_HAMMER = registerItem("lightning_hammer",
+        new LightningHammerItem(ModToolMaturial.ESSENCE_HEROIC, 6, -3.0f, new Item.Settings()));
+
 
 
     public static final Item AQUA_NECKLACE = registerItem("aqua_necklace",

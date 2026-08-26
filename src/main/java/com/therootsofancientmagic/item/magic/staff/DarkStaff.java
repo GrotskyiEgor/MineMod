@@ -144,10 +144,6 @@ public class DarkStaff extends Item {
         world.spawnEntity(rightSkeleton);
     }
 
-    /**
-     * Находим ближайшую подходящую цель
-     * и заставляем скелета атаковать её.
-     */
     private void setTargetForSkeleton(
             WitherSkeletonEntity skeleton,
             PlayerEntity summoner

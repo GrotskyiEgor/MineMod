@@ -1,4 +1,4 @@
-package com.therootsofancientmagic.client;
+package com.therootsofancientmagic.client; 
 
 import com.therootsofancientmagic.util.IEntityDataSaver;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
@@ -8,8 +8,8 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Identifier;
 
 public class ManaHudOverlay implements HudRenderCallback {
-    private static final Identifier MANA_TEXTURE = new Identifier("the-roots-of-ancient-magic", "textures/hud/mana.png");
 
+    private static final Identifier MANA_TEXTURE = new Identifier("the-roots-of-ancient-magic", "textures/hud/mana.png");
 
     @Override
     public void onHudRender(DrawContext drawContext, float tickDelta) {
@@ -26,22 +26,23 @@ public class ManaHudOverlay implements HudRenderCallback {
                 currentMana = nbt.getInt("mana");
             }
 
-            // Рассчитывает стартовую позицию над полоской голода
-            int xStart = width / 2 + 10; 
-            int yStart = height - 49;
 
-            // Перебирает ровно 10 кружочков на экране
+            int xStart = width - 24; 
+            int yStart = height - 25; 
+
             for (int i = 0; i < 10; i++) {
-                // Каждый кружочек отвечает за 10 единиц мани
                 int threshold = i * 10;
 
-                int xPos = xStart + (i * 8);
+
+                int yPos = yStart - (i * 18);
+
 
                 if (currentMana > threshold) {
-                    // если есть мана то кружок стает фиолетовим
-                    drawContext.drawTexture(MANA_TEXTURE, xPos, yStart, 0, 0, 9, 9, 18, 9);
+                    // Рисует заполнений орб
+                    drawContext.drawTexture(MANA_TEXTURE, xStart, yPos, 0, 0, 16, 16, 32, 16);
                 } else {
-                    drawContext.drawTexture(MANA_TEXTURE, xPos, yStart, 9, 0, 9, 9, 18, 9);
+                    // Рисует пустой орб
+                    drawContext.drawTexture(MANA_TEXTURE, xStart, yPos, 16, 0, 16, 16, 32, 16);
                 }
             }
         }

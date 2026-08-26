@@ -17,6 +17,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.particle.ItemStackParticleEffect;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
@@ -125,10 +126,34 @@ public class FurnacePowderBlockEntity extends BlockEntity implements ExtendedScr
     }
 
     private void craftItem() {
-        this.removeStack(INPUT_SLOT, 1);
-        ItemStack result = new ItemStack(ModItem.ESSENCE_FIRE);
+        ItemStack result = getRecipeResult();
+
+        if (!result.isEmpty()) {
+            this.removeStack(INPUT_SLOT, 1);
+            this.setStack(OUTPUT_SLOT, new ItemStack(result.getItem(), getStack(OUTPUT_SLOT).getCount() + result.getCount()));
+        }
 
         this.setStack(OUTPUT_SLOT, new ItemStack(result.getItem(), getStack(OUTPUT_SLOT).getCount() + result.getCount()));
+    }
+
+    private ItemStack getRecipeResult() {
+        Item input = getStack(INPUT_SLOT).getItem();
+
+        if (input == ModFlowerBlock.FLOWER_FIRE.asItem()) {
+            return new ItemStack(ModItem.ESSENCE_FIRE);
+        } else if (input == ModFlowerBlock.FLOWER_AQUA.asItem()) {
+            return new ItemStack(ModItem.ESSENCE_AQUA);
+        } else if (input == ModFlowerBlock.FLOWER_WEED.asItem()) {
+            return new ItemStack(ModItem.ESSENCE_WEED);
+        } else if (input == ModFlowerBlock.FLOWER_EARTH.asItem()) {
+            return new ItemStack(ModItem.ESSENCE_EARTH);
+        } else if (input == ModFlowerBlock.FLOWER_DARK.asItem()) {
+            return new ItemStack(ModItem.ESSENCE_DARK);
+        } else if (input == ModFlowerBlock.FLOWER_LIGHT.asItem()) {
+            return new ItemStack(ModItem.ESSENCE_LIGHT);
+        }
+
+        return ItemStack.EMPTY;
     }
 
     private boolean hasCraftingFinished() {
@@ -141,6 +166,7 @@ public class FurnacePowderBlockEntity extends BlockEntity implements ExtendedScr
 
     private boolean hasRecipe() {
         ItemStack result = new ItemStack(ModItem.ESSENCE_FIRE);
+
         boolean hasInput = getStack(INPUT_SLOT).getItem() == ModFlowerBlock.FLOWER_FIRE.asItem()
             || getStack(INPUT_SLOT).getItem() == ModFlowerBlock.FLOWER_AQUA.asItem()
             || getStack(INPUT_SLOT).getItem() == ModFlowerBlock.FLOWER_WEED.asItem()
@@ -172,6 +198,7 @@ public class FurnacePowderBlockEntity extends BlockEntity implements ExtendedScr
     }
 
     private boolean isOutputSlotEmptyOrReceivable() {
-        return this.getStack(OUTPUT_SLOT).isEmpty() || this.getStack(OUTPUT_SLOT).getCount() < this.getStack(OUTPUT_SLOT).getMaxCount();
+        return this.getStack(OUTPUT_SLOT).isEmpty() 
+                || this.getStack(OUTPUT_SLOT).getCount() < this.getStack(OUTPUT_SLOT).getMaxCount();
     }
 }

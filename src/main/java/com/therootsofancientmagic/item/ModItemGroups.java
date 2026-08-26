@@ -29,6 +29,8 @@ public class ModItemGroups {
                         entries.add(ModItem.DARK_STAFF); 
 
                         entries.add(ModItem.BATTLE_AXE);
+                        entries.add(ModItem.LIGHTNING_HAMMER);
+                        
                         entries.add(ModItem.HEROIC_SWORD);
                         entries.add(ModItem.HEROIC_PICKAXE);
                         entries.add(ModItem.HEROIC_AXE);
@@ -120,7 +122,40 @@ public class ModItemGroups {
                     ))
                     .icon(() -> new ItemStack(ModItem.FIRE_BOOTS))
                     .entries((context, entries) -> {                                             
-                       entries.add(ModItem.FIRE_BOOTS);                            
+                        entries.add(ModItem.FIRE_HELMET); 
+                        entries.add(ModItem.FIRE_CHESTPLATE);                       
+                        entries.add(ModItem.FIRE_LEGGINGS);                      
+                        entries.add(ModItem.FIRE_BOOTS);
+
+                        entries.add(ModItem.AQUA_HELMET);
+                        entries.add(ModItem.AQUA_CHESTPLATE);
+                        entries.add(ModItem.AQUA_LEGGINGS);
+                        entries.add(ModItem.AQUA_BOOTS);
+
+                        entries.add(ModItem.WEED_HELMET); 
+                        entries.add(ModItem.WEED_CHESTPLATE);                       
+                        entries.add(ModItem.WEED_LEGGINGS);                      
+                        entries.add(ModItem.WEED_BOOTS);
+
+                        entries.add(ModItem.EARTH_HELMET); 
+                        entries.add(ModItem.EARTH_CHESTPLATE);                       
+                        entries.add(ModItem.EARTH_LEGGINGS);                      
+                        entries.add(ModItem.EARTH_BOOTS);
+
+                        entries.add(ModItem.LIGHT_HELMET); 
+                        entries.add(ModItem.LIGHT_CHESTPLATE);                       
+                        entries.add(ModItem.LIGHT_LEGGINGS);                      
+                        entries.add(ModItem.LIGHT_BOOTS);
+
+                        entries.add(ModItem.DARK_HELMET); 
+                        entries.add(ModItem.DARK_CHESTPLATE);                       
+                        entries.add(ModItem.DARK_LEGGINGS);                      
+                        entries.add(ModItem.DARK_BOOTS);
+
+                        entries.add(ModItem.HEROIC_HELMET); 
+                        entries.add(ModItem.HEROIC_CHESTPLATE);                       
+                        entries.add(ModItem.HEROIC_LEGGINGS);                      
+                        entries.add(ModItem.HEROIC_BOOTS);
                     })
                     .build()
     );

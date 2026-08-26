@@ -14,6 +14,8 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.Shadow;
+import net.minecraft.registry.tag.FluidTags;
 
 @Mixin(InGameHud.class)
 public class InGameHudMixin {
@@ -56,4 +58,21 @@ public class InGameHudMixin {
             }
         }
     }
+
+    // @Shadow private int scaledWidth;
+    // @Shadow private int scaledHeight;
+
+    // @Inject(method = "renderAir", at = @At("HEAD"), cancellable = true)
+    // private void renderExtraAirBubbles(DrawContext context, CallbackInfo ci) {
+    //     // PlayerEntity player = MinecraftClient.getInstance().player;
+
+    //     // if (player != null && player.getMaxAir() > 300) {
+    //            int air = player.getAir();
+    //            int maxAir = player.getMaxAir();
+
+    //            if (player.isSubmergedIn(FluidTags.WATER)) {
+    //            ci.cancel();
+    //            }
+    //        }
+    // } 
 }

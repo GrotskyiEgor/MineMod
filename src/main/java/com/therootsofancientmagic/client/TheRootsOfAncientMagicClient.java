@@ -3,6 +3,7 @@ package com.therootsofancientmagic.client;
 import com.therootsofancientmagic.TheRootsOfAncientMagic;
 import com.therootsofancientmagic.client.biomes.earth.EarthBiomeParticles;
 import com.therootsofancientmagic.client.biomes.earth.EarthWindOverlay;
+import com.therootsofancientmagic.entity.ModEntities;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -13,6 +14,8 @@ import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.util.Identifier;
 import org.lwjgl.glfw.GLFW;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 
 public class TheRootsOfAncientMagicClient implements ClientModInitializer {
     public static final Identifier ROBE_ABILITY_PACKET = new Identifier(TheRootsOfAncientMagic.MOD_ID, "robe_ability");
@@ -27,6 +30,8 @@ public class TheRootsOfAncientMagicClient implements ClientModInitializer {
     public void onInitializeClient() {
         EarthBiomeParticles.register();
         EarthWindOverlay.register();
+
+        // EntityRendererRegistry.register(ModEntities.WIND_CHARGE, FlyingItemEntityRender::new);
 
         robeAbilityKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
                 "key.therootsofancientmagic.robe_ability",
