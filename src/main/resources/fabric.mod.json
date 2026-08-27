@@ -13,6 +13,7 @@
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/the-roots-of-ancient-magic/icon.png",
+	"accessWidener": "the-roots-of-ancient-magic.accesswidener",
 	"environment": "*",
 	"entrypoints": {
 		"main": [

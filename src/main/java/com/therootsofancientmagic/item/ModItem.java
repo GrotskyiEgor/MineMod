@@ -16,7 +16,7 @@ import com.therootsofancientmagic.item.magic.robe.ElementalRobeItem;
 import com.therootsofancientmagic.item.magic.staff.AquaStaff;
 import com.therootsofancientmagic.item.magic.staff.EarthStaff;
 import com.therootsofancientmagic.item.magic.staff.FireStaff;
-import com.therootsofancientmagic.item.magic.staff.WeedStaff;
+import com.therootsofancientmagic.item.magic.staff.AirStaff;
 import com.therootsofancientmagic.item.magic.staff.LightStaff;
 import com.therootsofancientmagic.item.magic.staff.DarkStaff;
 import com.therootsofancientmagic.item.tools.heroic_tools.HeroicAxeItem;
@@ -26,6 +26,7 @@ import com.therootsofancientmagic.item.tools.heroic_tools.HeroicShovelItem;
 import com.therootsofancientmagic.item.tools.heroic_tools.HeroicHoeItem;
 import com.therootsofancientmagic.item.tools.unique_tools.BattleAxeItem;
 import com.therootsofancientmagic.item.tools.unique_tools.LightningHammerItem;
+import com.therootsofancientmagic.item.tools.unique_tools.NecromancerScytheItem;
 
 import net.minecraft.util.Identifier;
 
@@ -297,7 +298,7 @@ public class ModItem {
         
     public static final Item WEED_STAFF = registerItem(
         "weed_staff",
-        new WeedStaff(new Item.Settings())
+        new AirStaff(new Item.Settings())
     );
 
     public static final Item AQUA_STAFF = registerItem(
@@ -355,8 +356,9 @@ public class ModItem {
 
     public static final Item LIGHTNING_HAMMER = registerItem("lightning_hammer",
         new LightningHammerItem(ModToolMaturial.ESSENCE_HEROIC, 6, -3.0f, new Item.Settings()));
-
-
+        
+    public static final Item NECROMANCER_SCYTHE = registerItem("necromancer_scythe",
+        new NecromancerScytheItem(ModToolMaturial.ESSENCE_HEROIC, 5, -2.4f, new Item.Settings()));
 
     public static final Item AQUA_NECKLACE = registerItem("aqua_necklace",
         new NecklaceItem(new FabricItemSettings().maxCount(1)));

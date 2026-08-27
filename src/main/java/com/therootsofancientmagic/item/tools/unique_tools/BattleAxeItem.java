@@ -64,9 +64,10 @@ public class BattleAxeItem extends SwordItem {
                 return TypedActionResult.fail(stack);
             }
         }
-
         // Похоже с типом анимации, но ета функция удерживает топор в руке
         user.setCurrentHand(hand);
+
+        
         return TypedActionResult.success(stack, world.isClient());
     }
 

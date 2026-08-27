@@ -22,7 +22,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 
 import java.util.List;
 
-public class WeedStaff extends Item {
+public class AirStaff extends Item {
 
     // Радиус, в котором притягиваются сущности
     private static final double PULL_RADIUS = 3.0D;
@@ -33,7 +33,7 @@ public class WeedStaff extends Item {
     // Сила притяжения к центральной точке
     private static final double PULL_STRENGTH = 0.6D;
 
-    public WeedStaff(Settings settings) {
+    public AirStaff(Settings settings) {
         super(settings);
     }
 

@@ -30,6 +30,7 @@ public class ModItemGroups {
 
                         entries.add(ModItem.BATTLE_AXE);
                         entries.add(ModItem.LIGHTNING_HAMMER);
+                        entries.add(ModItem.NECROMANCER_SCYTHE);
                         
                         entries.add(ModItem.HEROIC_SWORD);
                         entries.add(ModItem.HEROIC_PICKAXE);

@@ -4,6 +4,9 @@ import com.therootsofancientmagic.TheRootsOfAncientMagic;
 import com.therootsofancientmagic.client.biomes.earth.EarthBiomeParticles;
 import com.therootsofancientmagic.client.biomes.earth.EarthWindOverlay;
 import com.therootsofancientmagic.entity.ModEntities;
+import com.therootsofancientmagic.item.tools.unique_tools.BattleAxeItem;
+import net.minecraft.client.option.Perspective;
+import com.therootsofancientmagic.network.ModMessages;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -15,6 +18,7 @@ import net.minecraft.client.util.InputUtil;
 import net.minecraft.util.Identifier;
 import org.lwjgl.glfw.GLFW;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 
 public class TheRootsOfAncientMagicClient implements ClientModInitializer {
@@ -25,13 +29,14 @@ public class TheRootsOfAncientMagicClient implements ClientModInitializer {
     public static KeyBinding firstRingKey;
     public static KeyBinding secondRingKey;
 
+    private static boolean wasUsingBattleAxe = false;
 
     @Override
     public void onInitializeClient() {
         EarthBiomeParticles.register();
         EarthWindOverlay.register();
 
-        // EntityRendererRegistry.register(ModEntities.WIND_CHARGE, FlyingItemEntityRender::new);
+        // EntityRendererRegistry.register(ModEntities.WIND_CHARGE, FlyingItemEntityRenderer::new);
 
         robeAbilityKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
                 "key.therootsofancientmagic.robe_ability",
@@ -56,6 +61,25 @@ public class TheRootsOfAncientMagicClient implements ClientModInitializer {
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (client.player != null) {
+                
+                // Проверяет, держит ли игрок чтото и если етот предмет боевой топор
+                boolean isCurrentlyUsingBattleAxe = client.player.isUsingItem() && 
+                        client.player.getActiveItem().getItem() instanceof BattleAxeItem;
+
+                if (isCurrentlyUsingBattleAxe && !wasUsingBattleAxe) {
+                    // Если абилку нажали то переводит игрока в 3 лицо
+                    if (client.options.getPerspective() == Perspective.FIRST_PERSON) {
+                        client.options.setPerspective(Perspective.THIRD_PERSON_BACK);
+                    }
+                    wasUsingBattleAxe = true;
+                } else if (!isCurrentlyUsingBattleAxe && wasUsingBattleAxe) {
+                    // Если абилка завершилась то переводит игрока в 1 лицо
+                    if (client.options.getPerspective() == Perspective.THIRD_PERSON_BACK) {
+                        client.options.setPerspective(Perspective.FIRST_PERSON);
+                    }
+                    wasUsingBattleAxe = false;
+                }
+
                 while (robeAbilityKey.wasPressed()) {
                     ClientPlayNetworking.send(ROBE_ABILITY_PACKET, PacketByteBufs.create());
                 }
@@ -70,8 +94,9 @@ public class TheRootsOfAncientMagicClient implements ClientModInitializer {
             }
         });
         
-        com.therootsofancientmagic.network.ModMessages.registerS2CPackets();
+        ModMessages.registerS2CPackets();
 
-        net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback.EVENT.register(new ManaHudOverlay());
+        HudRenderCallback.EVENT.register(new ManaHudOverlay());
+
     }
 }
