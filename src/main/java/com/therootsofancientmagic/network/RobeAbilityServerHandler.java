@@ -77,7 +77,7 @@ public class RobeAbilityServerHandler {
                             world.playSound(null, player.getBlockPos(), SoundEvents.ITEM_BUCKET_EMPTY_FISH, SoundCategory.PLAYERS, 1.0F, 1.0F);
 
                             player.getItemCooldownManager().set(robeItem, 700);
-                        } else if (equippedRobeStack.isOf(ModItem.WEED_ROBE)) {
+                        } else if (equippedRobeStack.isOf(ModItem.AIR_ROBE)) {
 
                             player.addStatusEffect(new StatusEffectInstance(StatusEffects.LEVITATION, 40, 2, true, false, true));
                             player.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOW_FALLING, 140, 0, true, false, true));

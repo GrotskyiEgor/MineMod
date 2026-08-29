@@ -209,13 +209,13 @@ public abstract class PlayerEntityMixin implements CustomArmorHolder {
     }
 
     @Unique
-    private boolean isWeedRingInSlot(int slotIndex) {
+    private boolean isAirRingInSlot(int slotIndex) {
     PlayerEntity player = (PlayerEntity) (Object) this;
         if (player instanceof CustomArmorHolder holder) {
             Inventory inv = holder.getCustomArmorInventory();
             if (inv != null && slotIndex < inv.size()) {
                 ItemStack stack = inv.getStack(slotIndex);
-                return !stack.isEmpty() && stack.isOf(ModItem.WEED_RING);
+                return !stack.isEmpty() && stack.isOf(ModItem.AIR_RING);
             }
         }
         return false;
@@ -296,7 +296,7 @@ public abstract class PlayerEntityMixin implements CustomArmorHolder {
     }
 
     @Unique
-    public void castWeedRingSpell() {
+    public void castAirRingSpell() {
         PlayerEntity player = (PlayerEntity) (Object) this;
         World world = player.getWorld();
         Vec3d look = player.getRotationVector();
@@ -306,7 +306,7 @@ public abstract class PlayerEntityMixin implements CustomArmorHolder {
             serverWorld.spawnParticles(ParticleTypes.CLOUD, player.getX(), player.getY(), player.getZ(), 20, 0.5, 0.5, 0.5, 0.1);
             world.playSound(null, player.getBlockPos(), net.minecraft.sound.SoundEvents.ENTITY_PHANTOM_FLAP,
                 net.minecraft.sound.SoundCategory.PLAYERS, 1.0F, 1.4F);
-            player.getItemCooldownManager().set(ModItem.WEED_RING, 100);
+            player.getItemCooldownManager().set(ModItem.AIR_RING, 100);
         }
     }
 
@@ -320,8 +320,8 @@ public abstract class PlayerEntityMixin implements CustomArmorHolder {
             castAquaRingSpell();
         } else if (isEarthRingInSlot(2) && !player.getItemCooldownManager().isCoolingDown(ModItem.EARTH_RING)) {
             castEarthRingSpell();
-        } else if (isWeedRingInSlot(2) && !player.getItemCooldownManager().isCoolingDown(ModItem.WEED_RING)) {
-            castWeedRingSpell();
+        } else if (isAirRingInSlot(2) && !player.getItemCooldownManager().isCoolingDown(ModItem.AIR_RING)) {
+            castAirRingSpell();
         }
 
         
@@ -337,8 +337,8 @@ public abstract class PlayerEntityMixin implements CustomArmorHolder {
             castAquaRingSpell();
         } else if (isEarthRingInSlot(3) && !player.getItemCooldownManager().isCoolingDown(ModItem.EARTH_RING)) {
             castEarthRingSpell();
-        } else if (isWeedRingInSlot(3) && !player.getItemCooldownManager().isCoolingDown(ModItem.WEED_RING)) {
-            castWeedRingSpell();
+        } else if (isAirRingInSlot(3) && !player.getItemCooldownManager().isCoolingDown(ModItem.AIR_RING)) {
+            castAirRingSpell();
         }
     }
 
@@ -355,12 +355,12 @@ public abstract class PlayerEntityMixin implements CustomArmorHolder {
     }
 
     @Unique
-    private boolean isWeedNecklaceInSlot(int slotIndex) {
+    private boolean isAirNecklaceInSlot(int slotIndex) {
         PlayerEntity player = (PlayerEntity) (Object) this;
         if (player instanceof CustomArmorHolder holder) {
             Inventory inv = holder.getCustomArmorInventory();
             if (inv != null && slotIndex >= 0 && slotIndex < inv.size()) {
-                return inv.getStack(slotIndex).isOf(ModItem.WEED_NECKLACE);
+                return inv.getStack(slotIndex).isOf(ModItem.AIR_NECKLACE);
             }
         }
         return false;
@@ -409,12 +409,12 @@ public abstract class PlayerEntityMixin implements CustomArmorHolder {
     }
 
     @Inject(method = "tick", at = @At("HEAD"))
-    private void WeedNecklacePassive(CallbackInfo ci) {
+    private void AirNecklacePassive(CallbackInfo ci) {
         PlayerEntity player = (PlayerEntity) (Object) this;
         World world = player.getWorld();
 
         if (!world.isClient() && player.age % 10 == 0) {
-            if (isWeedNecklaceInSlot(1)) {
+            if (isAirNecklaceInSlot(1)) {
                 if (!player.hasStatusEffect(StatusEffects.SPEED)) {
                     player.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 210, 0, true, false, true));
                 }

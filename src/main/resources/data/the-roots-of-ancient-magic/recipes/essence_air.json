@@ -7,14 +7,14 @@
   ],
   "key": {
     "F": {
-      "item": "the-roots-of-ancient-magic:flower_weed"
+      "item": "the-roots-of-ancient-magic:flower_air"
     },
     "P": {
       "item": "minecraft:bone_meal"
     }
   },
   "result": {
-    "item": "the-roots-of-ancient-magic:essence_weed",
+    "item": "the-roots-of-ancient-magic:essence_air",
     "count": 1
   }
 }

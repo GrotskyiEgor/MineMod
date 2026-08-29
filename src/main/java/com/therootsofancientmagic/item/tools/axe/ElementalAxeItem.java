@@ -29,7 +29,7 @@ public class ElementalAxeItem extends AxeItem {
             // Получаем случайное число для расчета 5% шанса баффов
             float effectChance = player.getRandom().nextFloat();
             if (effectChance < 0.05F) {
-                if (this.getMaterial() == ModToolMaturial.ESSENCE_WEED) {
+                if (this.getMaterial() == ModToolMaturial.ESSENCE_AIR) {
                     player.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 600, 0));
                 }
                 else if (this.getMaterial() == ModToolMaturial.ESSENCE_AQUA) {

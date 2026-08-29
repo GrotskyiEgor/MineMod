@@ -29,7 +29,7 @@ public class ElementalSwordItem extends SwordItem {
             target.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 80, 1));
         }
         // Проверяем что рукав в руках воздушний меч и случайно срабатывает эффект отбрасывания с шансом 30%
-        if (this.getMaterial() == ModToolMaturial.ESSENCE_WEED && randomChance < 0.3F) {
+        if (this.getMaterial() == ModToolMaturial.ESSENCE_AIR && randomChance < 0.3F) {
             // Мы передаем направление взгляда игрока(как raycast)
             target.takeKnockback(1.2F, attacker.getX() - target.getX(), attacker.getZ() - target.getZ());
         }

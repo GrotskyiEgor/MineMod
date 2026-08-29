@@ -3,15 +3,16 @@ package com.therootsofancientmagic.item.magic.staff;
 import com.therootsofancientmagic.mana.PlayerMana;
 import com.therootsofancientmagic.util.IEntityDataSaver;
 
+import net.minecraft.entity.AreaEffectCloudEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
@@ -25,13 +26,10 @@ import java.util.Random;
 
 public class DarkStaff extends Item {
 
-    private static final int COOLDOWN_TICKS = 400;      // 20 сек
-    private static final double WAVE_RADIUS = 5.0;       // радиус отбрасывания
-    private static final double KNOCKBACK_STRENGTH = 2.5;
-    private static final int EFFECT_DURATION = 400;      // 20 сек
-    private static final int BLACK_SPAM_COUNT = 600;     // сколько чёрных частиц спамим при касте
-    private static final int DECOY_PARTICLE_COUNT = 250; // частиц-обманок на месте каста
-    private static final double DECOY_RADIUS = 1.8;
+    private static final int COOLDOWN_TICKS = 400;
+    private static final double WAVE_RADIUS = 5.0;
+    private static final double KNOCKBACK_STRENGTH = 10.0;
+    private static final int EFFECT_DURATION = 400;
 
     private static final Random RANDOM = new Random();
 
@@ -48,22 +46,42 @@ public class DarkStaff extends Item {
         }
 
         if (!world.isClient && user instanceof ServerPlayerEntity serverPlayer) {
+
             if (!PlayerMana.consumeMana((IEntityDataSaver) serverPlayer, 6, serverPlayer)) {
                 return TypedActionResult.fail(stack);
             }
 
-            Vec3d castPos = user.getPos();
+            knockbackNearbyEntities(world, user);
 
-            castDarkWave(world, user);
-            spawnBlackWaveSpam(world, castPos);
+            ServerWorld serverWorld = (ServerWorld) world;
 
-            user.addStatusEffect(new StatusEffectInstance(StatusEffects.INVISIBILITY, EFFECT_DURATION, 0, false, false, true));
-            user.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, EFFECT_DURATION, 1, false, false, true));
+            // МНОГО ФИОЛЕТОВЫХ ЧАСТИЦ
+            spawnDarkParticles(serverWorld, user.getPos());
 
-            spawnDecoyBurst(world, castPos);
+            // НЕВИДИМОСТЬ
+            user.addStatusEffect(new StatusEffectInstance(
+                    StatusEffects.INVISIBILITY,
+                    EFFECT_DURATION,
+                    0,
+                    false,
+                    false,
+                    true
+            ));
 
-            world.playSound(null, user.getBlockPos(), SoundEvents.ENTITY_WITHER_SHOOT, SoundCategory.PLAYERS, 1.0F, 0.6F);
-            world.playSound(null, user.getBlockPos(), SoundEvents.ENTITY_ENDERMAN_TELEPORT, SoundCategory.PLAYERS, 0.8F, 0.5F);
+            // СКОРОСТЬ
+            user.addStatusEffect(new StatusEffectInstance(
+                    StatusEffects.SPEED,
+                    EFFECT_DURATION,
+                    1,
+                    false,
+                    false,
+                    true
+            ));
+
+            // СПАВН ОБЛАКА ДЫХАНИЯ ДРАКОНА
+            spawnDragonBreathCloud(serverWorld, user);
+
+            playSoundBarrage(world, user);
 
             user.getItemCooldownManager().set(this, COOLDOWN_TICKS);
         }
@@ -71,92 +89,206 @@ public class DarkStaff extends Item {
         return TypedActionResult.success(stack, world.isClient);
     }
 
-    /** Отбрасывает существ в радиусе WAVE_RADIUS вокруг игрока. */
-    private void castDarkWave(World world, PlayerEntity user) {
-        Box box = user.getBoundingBox().expand(WAVE_RADIUS);
-        List<LivingEntity> entities = world.getEntitiesByClass(LivingEntity.class, box, e -> e != user);
+    /**
+     * Создает спавнящееся облако Дыхания Дракона, наносящее урон.
+     */
+    private void spawnDragonBreathCloud(ServerWorld world, PlayerEntity user) {
+        AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(world, user.getX(), user.getY(), user.getZ());
+        
+        cloud.setOwner(user);
+        cloud.setParticleType(ParticleTypes.DRAGON_BREATH);
+        cloud.setRadius((float) WAVE_RADIUS);
+        cloud.setRadiusOnUse(-0.5F);
+        cloud.setWaitTime(0);
+        cloud.setDuration(100); // Облако висит 5 секунд (100 тиков)
+        cloud.setRadiusGrowth(-0.05F); // Постепенно сужается
+        
+        // Накладывает Иссушение II на врагов внутри облака
+        cloud.addEffect(new StatusEffectInstance(StatusEffects.WITHER, 100, 1)); 
 
-        for (LivingEntity entity : entities) {
-            double dx = entity.getX() - user.getX();
-            double dz = entity.getZ() - user.getZ();
-            double distance = Math.max(Math.sqrt(dx * dx + dz * dz), 0.1);
-            dx /= distance;
-            dz /= distance;
-
-            entity.takeKnockback(KNOCKBACK_STRENGTH, -dx, -dz);
-
-            Vec3d velocity = entity.getVelocity();
-            entity.setVelocity(velocity.x, 0.5, velocity.z);
-            entity.velocityModified = true;
-        }
+        world.spawnEntity(cloud);
     }
 
     /**
-     * Взрыв в стиле фейерверка, только чёрный: из одной точки
-     * над игроком чёрные искры разлетаются равномерно во все
-     * стороны сферой (а не просто по кругу вокруг ног).
+     * Много фиолетовых частиц вокруг игрока.
      */
-    private void spawnBlackWaveSpam(World world, Vec3d center) {
-        Vec3d origin = center.add(0, 1.2, 0);
+    private void spawnDarkParticles(ServerWorld world, Vec3d center) {
 
-        for (int i = 0; i < BLACK_SPAM_COUNT; i++) {
+        // Фиолетовые частицы WITCH
+        world.spawnParticles(
+                ParticleTypes.WITCH,
+                center.x,
+                center.y + 1.0,
+                center.z,
+                300,
+                2.5,
+                1.5,
+                2.5,
+                0.15
+        );
 
-            // случайная точка на сфере (равномерное распределение)
-            double u = RANDOM.nextDouble() * 2.0 - 1.0;
-            double theta = RANDOM.nextDouble() * Math.PI * 2.0;
-            double sqrtTerm = Math.sqrt(1.0 - u * u);
+        // Фиолетовые частицы портала
+        world.spawnParticles(
+                ParticleTypes.PORTAL,
+                center.x,
+                center.y + 1.0,
+                center.z,
+                300,
+                3.0,
+                2.0,
+                3.0,
+                0.5
+        );
 
-            double dirX = sqrtTerm * Math.cos(theta);
-            double dirY = u;
-            double dirZ = sqrtTerm * Math.sin(theta);
+        // Тёмное фиолетовое облако
+        world.spawnParticles(
+                ParticleTypes.DRAGON_BREATH,
+                center.x,
+                center.y + 1.0,
+                center.z,
+                200,
+                2.5,
+                1.5,
+                2.5,
+                0.08
+        );
 
-            double speed = 0.15 + RANDOM.nextDouble() * 0.25;
+        // Ещё фиолетовые частицы вокруг ног
+        world.spawnParticles(
+                ParticleTypes.PORTAL,
+                center.x,
+                center.y + 0.2,
+                center.z,
+                150,
+                2.5,
+                0.2,
+                2.5,
+                0.3
+        );
 
-            world.addParticle(
-                    ParticleTypes.SQUID_INK,
-                    origin.x,
-                    origin.y,
-                    origin.z,
-                    dirX * speed,
-                    dirY * speed,
-                    dirZ * speed
+        // Столб частиц вверх
+        for (int i = 0; i < 50; i++) {
+
+            double x = center.x + (RANDOM.nextDouble() - 0.5) * 2.0;
+            double y = center.y + RANDOM.nextDouble() * 3.0;
+            double z = center.z + (RANDOM.nextDouble() - 0.5) * 2.0;
+
+            world.spawnParticles(
+                    ParticleTypes.WITCH,
+                    x,
+                    y,
+                    z,
+                    2,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.05
             );
         }
     }
 
     /**
-     * Плотное белое облако-обманка на месте каста.
-     * Игрок уходит в невидимость, а враги видят яркую вспышку
-     * там, где он был.
+     * Отбрасывает существ вокруг игрока.
      */
-    private void spawnDecoyBurst(World world, Vec3d castPos) {
-        spawnSphereBurst(world, castPos, DECOY_RADIUS, DECOY_PARTICLE_COUNT, ParticleTypes.END_ROD, 1.0);
-        spawnSphereBurst(world, castPos, DECOY_RADIUS, DECOY_PARTICLE_COUNT / 2, ParticleTypes.CLOUD, 0.5);
-        spawnRing(world, castPos.add(0, 0.1, 0), DECOY_RADIUS * 0.6, 60, ParticleTypes.END_ROD, 0.08);
-    }
+    private void knockbackNearbyEntities(World world, PlayerEntity user) {
 
-    /** Рисует кольцо частиц радиусом radius вокруг center. */
-    private void spawnRing(World world, Vec3d center, double radius, int count, ParticleEffect particle, double velY) {
-        for (int i = 0; i < count; i++) {
-            double angle = (Math.PI * 2.0 * i) / count;
-            double x = center.x + Math.cos(angle) * radius;
-            double z = center.z + Math.sin(angle) * radius;
-            world.addParticle(particle, x, center.y, z, 0, velY, 0);
+        Box box = user.getBoundingBox().expand(WAVE_RADIUS);
+
+        List<LivingEntity> entities =
+                world.getEntitiesByClass(
+                        LivingEntity.class,
+                        box,
+                        e -> e != user
+                );
+
+        for (LivingEntity entity : entities) {
+
+            double dx = entity.getX() - user.getX();
+            double dz = entity.getZ() - user.getZ();
+
+            double distance =
+                    Math.max(Math.sqrt(dx * dx + dz * dz), 0.1);
+
+            dx /= distance;
+            dz /= distance;
+
+            entity.takeKnockback(
+                    KNOCKBACK_STRENGTH,
+                    -dx,
+                    -dz
+            );
+
+            Vec3d velocity = entity.getVelocity();
+
+            entity.setVelocity(
+                    velocity.x,
+                    0.5,
+                    velocity.z
+                );
+
+            entity.velocityModified = true;
         }
     }
 
-    /** Разбрасывает count частиц случайно внутри сферы радиусом radius вокруг center. */
-    private void spawnSphereBurst(World world, Vec3d center, double radius, int count, ParticleEffect particle, double velScale) {
-        for (int i = 0; i < count; i++) {
-            double x = center.x + (RANDOM.nextDouble() * 2.0 - 1.0) * radius;
-            double y = center.y + RANDOM.nextDouble() * 2.2;
-            double z = center.z + (RANDOM.nextDouble() * 2.0 - 1.0) * radius;
+    /**
+     * Звуки.
+     */
+    private void playSoundBarrage(World world, PlayerEntity user) {
 
-            double velX = (RANDOM.nextDouble() - 0.5) * 0.05 * velScale;
-            double velY = RANDOM.nextDouble() * 0.05 * velScale;
-            double velZ = (RANDOM.nextDouble() - 0.5) * 0.05 * velScale;
+        var pos = user.getBlockPos();
 
-            world.addParticle(particle, x, y, z, velX, velY, velZ);
-        }
+        world.playSound(
+                null,
+                pos,
+                SoundEvents.ENTITY_WITHER_SHOOT,
+                SoundCategory.PLAYERS,
+                1.0F,
+                0.6F
+        );
+
+        world.playSound(
+                null,
+                pos,
+                SoundEvents.ENTITY_ENDERMAN_TELEPORT,
+                SoundCategory.PLAYERS,
+                0.8F,
+                0.5F
+        );
+
+        world.playSound(
+                null,
+                pos,
+                SoundEvents.ENTITY_GENERIC_EXPLODE,
+                SoundCategory.PLAYERS,
+                0.7F,
+                1.6F
+        );
+
+        world.playSound(
+                null,
+                pos,
+                SoundEvents.ENTITY_ENDER_DRAGON_GROWL,
+                SoundCategory.PLAYERS,
+                0.4F,
+                1.8F
+        );
+
+        world.playSound(
+                null,
+                pos,
+                SoundEvents.PARTICLE_SOUL_ESCAPE,
+                SoundCategory.PLAYERS,
+                0.6F,
+                0.5F
+        );
+
+        world.playSound(
+                null,
+                pos,
+                SoundEvents.ENTITY_ELDER_GUARDIAN_CURSE,
+                SoundCategory.PLAYERS,
+                0.5F,
+                1.4F
+        );
     }
 }

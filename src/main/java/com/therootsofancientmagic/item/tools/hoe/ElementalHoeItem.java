@@ -49,7 +49,7 @@ public class ElementalHoeItem extends HoeItem {
                 }
 
                 // Смотрит на материал мотиги и вибирает нужний сбор, типо если aqua мотига то 3 блока вперед собирает, если огненная то 3 на 3
-                if (this.getMaterial() == ModToolMaturial.ESSENCE_WEED || this.getMaterial() == ModToolMaturial.ESSENCE_AQUA) {
+                if (this.getMaterial() == ModToolMaturial.ESSENCE_AIR || this.getMaterial() == ModToolMaturial.ESSENCE_AQUA) {
                     Direction playerFacing = serverPlayer.getHorizontalFacing();
 
                     // Собирает по прямой линии на 3 блока вперед
@@ -77,7 +77,7 @@ public class ElementalHoeItem extends HoeItem {
 
     // Налаживаем ефект в зависимости от мотиги
     private void applyElementalBuff(ServerPlayerEntity player) {
-        if (this.getMaterial() == ModToolMaturial.ESSENCE_WEED) {
+        if (this.getMaterial() == ModToolMaturial.ESSENCE_AIR) {
             player.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 600, 0));
         } else if (this.getMaterial() == ModToolMaturial.ESSENCE_AQUA) {
             player.addStatusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING, 600, 0));

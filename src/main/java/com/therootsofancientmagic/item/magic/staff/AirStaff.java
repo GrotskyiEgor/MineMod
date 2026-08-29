@@ -76,8 +76,15 @@ public class AirStaff extends Item {
 
                     world.playSound(null, user.getBlockPos(), SoundEvents.ENTITY_ILLUSIONER_CAST_SPELL,
                             SoundCategory.PLAYERS, 1.0F, 1.0F);
+                    world.playSound(null, user.getBlockPos(), SoundEvents.ENTITY_PHANTOM_FLAP,
+                            SoundCategory.PLAYERS, 1.2F, 0.6F);
+                    world.playSound(null, user.getBlockPos(), SoundEvents.ITEM_TRIDENT_RIPTIDE_1,
+                            SoundCategory.PLAYERS, 1.0F, 1.4F);
 
                     if (world instanceof ServerWorld serverWorld) {
+                        spawnVortexParticles(serverWorld, targetPoint);
+                        spawnGustBurst(serverWorld, targetPoint);
+
                         serverWorld.spawnParticles(ParticleTypes.EXPLOSION_EMITTER,
                                 targetPoint.x, targetPoint.y, targetPoint.z,
                                 1, 0.2, 0.2, 0.2, 0.0);
@@ -94,8 +101,29 @@ public class AirStaff extends Item {
          return TypedActionResult.success(stack, world.isClient);
     }
 
-        
+    /** Вихрь из частиц, закручивающийся к центральной точке — визуализация притяжения. */
+    private void spawnVortexParticles(ServerWorld world, Vec3d center) {
+        int arms = 30;
+        for (int i = 0; i < arms; i++) {
+            double angle = (Math.PI * 2.0 * i) / arms;
+            double radius = PULL_RADIUS;
 
+            double x = center.x + Math.cos(angle) * radius;
+            double z = center.z + Math.sin(angle) * radius;
+            double y = center.y + (Math.random() - 0.5) * PULL_RADIUS;
+
+            Vec3d toCenter = center.subtract(x, y, z).normalize().multiply(0.15);
+            world.spawnParticles(ParticleTypes.CLOUD, x, y, z, 0, toCenter.x, toCenter.y, toCenter.z, 0.02);
+            world.spawnParticles(ParticleTypes.END_ROD, x, y, z, 0, toCenter.x, toCenter.y, toCenter.z, 0.01);
+        }
+    }
+
+    /** Всплеск воздушных частиц вверх в момент подброса сущностей. */
+    private void spawnGustBurst(ServerWorld world, Vec3d center) {
+        world.spawnParticles(ParticleTypes.CLOUD, center.x, center.y, center.z, 25, 0.6, 0.2, 0.6, 0.08);
+        world.spawnParticles(ParticleTypes.SWEEP_ATTACK, center.x, center.y + 0.3, center.z, 3, 0.3, 0.1, 0.3, 0.0);
+        world.spawnParticles(ParticleTypes.CRIT, center.x, center.y, center.z, 20, 0.8, 0.4, 0.8, 0.15);
+    }
 
     private Vec3d getTargetPoint(World world, PlayerEntity player) {
         Vec3d start = player.getCameraPosVec(1.0F);

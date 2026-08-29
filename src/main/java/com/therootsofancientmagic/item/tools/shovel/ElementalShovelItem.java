@@ -91,8 +91,8 @@ public class ElementalShovelItem extends ShovelItem {
             // Получаем случайное число для расчета 5% шанса баффов
             float effectChance = player.getRandom().nextFloat();
             
-            // 1. WEED ABILITY (1x1x3 mining)
-            if (this.getMaterial() == ModToolMaturial.ESSENCE_WEED) {
+            // 1. AIR ABILITY (1x1x3 mining)
+            if (this.getMaterial() == ModToolMaturial.ESSENCE_AIR) {
                 breakTunnel(world, pos, player, stack, 2);
                 if (effectChance < 0.05F) {
                     player.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 600, 0));

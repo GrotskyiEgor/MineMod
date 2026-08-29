@@ -22,7 +22,7 @@ public class ModItemGroups {
                     .icon(() -> new ItemStack(ModItem.HEROIC_SWORD))
                     .entries((context, entries) -> {
                         entries.add(ModItem.FIRE_STAFF);
-                        entries.add(ModItem.WEED_STAFF);
+                        entries.add(ModItem.AIR_STAFF);
                         entries.add(ModItem.EARTH_STAFF);
                         entries.add(ModItem.AQUA_STAFF);    
                         entries.add(ModItem.LIGHT_STAFF); 
@@ -40,33 +40,33 @@ public class ModItemGroups {
 
                         entries.add(ModItem.FIRE_PICKAXE);
                         entries.add(ModItem.AQUA_PICKAXE);
-                        entries.add(ModItem.WEED_PICKAXE);
+                        entries.add(ModItem.AIR_PICKAXE);
                         entries.add(ModItem.DARK_PICKAXE);
                         entries.add(ModItem.LIGHT_PICKAXE);
                         entries.add(ModItem.EARTH_PICKAXE);
 
                         entries.add(ModItem.FIRE_AXE);
                         entries.add(ModItem.AQUA_AXE);
-                        entries.add(ModItem.WEED_AXE);
+                        entries.add(ModItem.AIR_AXE);
                         entries.add(ModItem.DARK_AXE);
                         entries.add(ModItem.LIGHT_AXE);
                         entries.add(ModItem.EARTH_AXE);
 
                         entries.add(ModItem.AQUA_ROBE);
                         entries.add(ModItem.FIRE_ROBE);
-                        entries.add(ModItem.WEED_ROBE);
+                        entries.add(ModItem.AIR_ROBE);
                         entries.add(ModItem.EARTH_ROBE);
                         
                         entries.add(ModItem.FIRE_SHOVEL);
                         entries.add(ModItem.AQUA_SHOVEL);
-                        entries.add(ModItem.WEED_SHOVEL);
+                        entries.add(ModItem.AIR_SHOVEL);
                         entries.add(ModItem.DARK_SHOVEL);
                         entries.add(ModItem.LIGHT_SHOVEL);
                         entries.add(ModItem.EARTH_SHOVEL);
 
                         entries.add(ModItem.FIRE_HOE);
                         entries.add(ModItem.AQUA_HOE);
-                        entries.add(ModItem.WEED_HOE);
+                        entries.add(ModItem.AIR_HOE);
                         entries.add(ModItem.DARK_HOE);
                         entries.add(ModItem.LIGHT_HOE);
                         entries.add(ModItem.EARTH_HOE);
@@ -74,11 +74,11 @@ public class ModItemGroups {
                         entries.add(ModItem.AQUA_NECKLACE);
                         entries.add(ModItem.FIRE_NECKLACE);
                         entries.add(ModItem.EARTH_NECKLACE);
-                        entries.add(ModItem.WEED_NECKLACE);
+                        entries.add(ModItem.AIR_NECKLACE);
 
                         entries.add(ModItem.AQUA_RING);
                         entries.add(ModItem.FIRE_RING);
-                        entries.add(ModItem.WEED_RING);
+                        entries.add(ModItem.AIR_RING);
                         entries.add(ModItem.EARTH_RING);
                     })
                     .build()
@@ -95,7 +95,7 @@ public class ModItemGroups {
                     .entries((context, entries) -> {
                         entries.add(ModItem.ESSENCE_AQUA);
                         entries.add(ModItem.ESSENCE_FIRE);
-                        entries.add(ModItem.ESSENCE_WEED);
+                        entries.add(ModItem.ESSENCE_AIR);
                         entries.add(ModItem.ESSENCE_EARTH);
                         entries.add(ModItem.ESSENCE_LIGHT);
                         entries.add(ModItem.ESSENCE_DARK);
@@ -109,7 +109,7 @@ public class ModItemGroups {
                         entries.add(ModFlowerBlock.FLOWER_AQUA);
                         entries.add(ModFlowerBlock.FLOWER_FIRE);
                         entries.add(ModFlowerBlock.FLOWER_EARTH);
-                        entries.add(ModFlowerBlock.FLOWER_WEED);
+                        entries.add(ModFlowerBlock.FLOWER_AIR);
                     })
                     .build()
     );
@@ -133,10 +133,10 @@ public class ModItemGroups {
                         entries.add(ModItem.AQUA_LEGGINGS);
                         entries.add(ModItem.AQUA_BOOTS);
 
-                        entries.add(ModItem.WEED_HELMET); 
-                        entries.add(ModItem.WEED_CHESTPLATE);                       
-                        entries.add(ModItem.WEED_LEGGINGS);                      
-                        entries.add(ModItem.WEED_BOOTS);
+                        entries.add(ModItem.AIR_HELMET); 
+                        entries.add(ModItem.AIR_CHESTPLATE);                       
+                        entries.add(ModItem.AIR_LEGGINGS);                      
+                        entries.add(ModItem.AIR_BOOTS);
 
                         entries.add(ModItem.EARTH_HELMET); 
                         entries.add(ModItem.EARTH_CHESTPLATE);                       

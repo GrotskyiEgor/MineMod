@@ -88,8 +88,8 @@ public class ElementalPickaxeItem extends PickaxeItem {
             // Генерируем случайное число от 0.0 до 1.0 для шанса на наложение эффекта, если видает 0.05(5%),то накладивает эффект
             float effectChance = player.getRandom().nextFloat();
 
-            // 1. WEED ABILITY (1x1x3 mining)
-            if (this.getMaterial() == ModToolMaturial.ESSENCE_WEED && isSuitableFor(state)) {
+            // 1. AIR ABILITY (1x1x3 mining)
+            if (this.getMaterial() == ModToolMaturial.ESSENCE_AIR && isSuitableFor(state)) {
                 breakTunnel(world, pos, player, stack, 2);
                 // 5% шанс на накладивание эффекта Скорость I на 30 секунд при ломание блока воздушной киркой
                 if (effectChance < 0.05F) {

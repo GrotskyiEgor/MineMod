@@ -1,20 +1,27 @@
 package com.therootsofancientmagic.item.magic.staff;
 
-import com.therootsofancientmagic.mana.PlayerMana; // Импортируем нашу систему мани
-import com.therootsofancientmagic.util.IEntityDataSaver; // Импортируем кармашек NBT данних
+import com.therootsofancientmagic.mana.PlayerMana;
+import com.therootsofancientmagic.util.IEntityDataSaver;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.FireballEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.server.network.ServerPlayerEntity; // Добавили серверного игрока для пакетов мани
+import net.minecraft.particle.ParticleEffect;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+
+import java.util.Random;
 
 public class FireStaff extends Item {
     private static final int COOLDOWN_TICKS = 15;
+
+    private static final Random RANDOM = new Random();
 
     public FireStaff(Settings settings) {
         super(settings);
@@ -47,6 +54,22 @@ public class FireStaff extends Item {
                             1.0F,
                             1.0F
                     );
+                    world.playSound(
+                            null,
+                            user.getBlockPos(),
+                            SoundEvents.ITEM_FIRECHARGE_USE,
+                            SoundCategory.PLAYERS,
+                            1.2F,
+                            0.8F
+                    );
+                    world.playSound(
+                            null,
+                            user.getBlockPos(),
+                            SoundEvents.ENTITY_GHAST_SHOOT,
+                            SoundCategory.PLAYERS,
+                            0.6F,
+                            1.5F
+                    );
 
                     // Устанавливаем кулдаун ТОЛЬКО если посох успешно вистрелил заклинанием
                     user.getItemCooldownManager().set(this, COOLDOWN_TICKS);
@@ -74,12 +97,43 @@ public class FireStaff extends Item {
                 3 // сила взрыва
         );
 
-        fireball.setPos(
+        Vec3d spawnPos = new Vec3d(
                 user.getX() + lookVec.x,
                 user.getEyeY() - 0.1,
                 user.getZ() + lookVec.z
         );
 
+        fireball.setPos(spawnPos.x, spawnPos.y, spawnPos.z);
         world.spawnEntity(fireball);
+
+        spawnMuzzleEffects(world, spawnPos, lookVec);
+    }
+
+    /** Огненный "хлопок" частиц и дымный шлейф в точке вылета шара. */
+    private void spawnMuzzleEffects(World world, Vec3d origin, Vec3d direction) {
+        sphereBurst(world, origin, 40, ParticleTypes.FLAME, 0.35);
+        sphereBurst(world, origin, 15, ParticleTypes.LAVA, 0.2);
+        sphereBurst(world, origin, 25, ParticleTypes.LARGE_SMOKE, 0.15);
+
+        for (int i = 1; i <= 8; i++) {
+            Vec3d point = origin.add(direction.multiply(i * 0.4));
+            world.addParticle(ParticleTypes.SMOKE, point.x, point.y, point.z, 0, 0.02, 0);
+        }
+    }
+
+    /** Разлёт count частиц равномерно по сфере из одной точки. */
+    private void sphereBurst(World world, Vec3d origin, int count, ParticleEffect particle, double maxSpeed) {
+        for (int i = 0; i < count; i++) {
+            double u = RANDOM.nextDouble() * 2.0 - 1.0;
+            double theta = RANDOM.nextDouble() * Math.PI * 2.0;
+            double sqrtTerm = Math.sqrt(1.0 - u * u);
+
+            double dirX = sqrtTerm * Math.cos(theta);
+            double dirY = u;
+            double dirZ = sqrtTerm * Math.sin(theta);
+            double speed = RANDOM.nextDouble() * maxSpeed;
+
+            world.addParticle(particle, origin.x, origin.y, origin.z, dirX * speed, dirY * speed, dirZ * speed);
+        }
     }
 }

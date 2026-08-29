@@ -9,7 +9,7 @@ import net.minecraft.world.gen.carver.ConfiguredCarver;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.feature.PlacedFeature;
 
-public class WeedBiome {
+public class AirBiome {
 
     public static Biome create(
             RegistryEntryLookup<PlacedFeature> featureLookup,

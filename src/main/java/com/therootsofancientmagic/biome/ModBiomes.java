@@ -14,7 +14,7 @@ public class ModBiomes {
 
     public static final RegistryKey<Biome> DARK = key("dark");
     public static final RegistryKey<Biome> LIGHT = key("light");
-    public static final RegistryKey<Biome> WEED = key("weed");
+    public static final RegistryKey<Biome> AIR = key("air");
     public static final RegistryKey<Biome> EARTH = key("earth");
     public static final RegistryKey<Biome> FIRE = key("fire");
     public static final RegistryKey<Biome> AQUA = key("aqua");
@@ -45,8 +45,8 @@ public class ModBiomes {
         );
 
         context.register(
-                WEED,
-                WeedBiome.create(featureLookup, carverLookup)
+                AIR,
+                AirBiome.create(featureLookup, carverLookup)
         );
 
         context.register(

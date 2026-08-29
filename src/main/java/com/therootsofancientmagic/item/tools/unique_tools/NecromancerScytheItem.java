@@ -2,11 +2,11 @@ package com.therootsofancientmagic.item.tools.unique_tools;
 
 import com.therootsofancientmagic.mana.PlayerMana;
 import com.therootsofancientmagic.util.IEntityDataSaver;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.goal.ActiveTargetGoal;
-import net.minecraft.entity.ai.goal.GoalSelector;
 import net.minecraft.entity.ai.goal.RevengeGoal;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.PathAwareEntity;
@@ -27,7 +27,8 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import java.lang.reflect.Field;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 
 public class NecromancerScytheItem extends SwordItem {
 
@@ -40,6 +41,24 @@ public class NecromancerScytheItem extends SwordItem {
         super(toolMaterial, attackDamage, attackSpeed, settings);
     }
 
+    // Накладывает пассивние эффекти каждие 20 тиков, пока коса находится в руках
+    @Override
+    public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+        if (!world.isClient() && entity instanceof net.minecraft.entity.LivingEntity livingEntity) {
+            
+            // Проверяет активний слот хотбара или левую руку
+            boolean isHoldingInMainHand = selected;
+            boolean isHoldingInOffHand = livingEntity.getOffHandStack() == stack;
+
+            if (isHoldingInMainHand || isHoldingInOffHand) {
+                // Обновляет Ночное зрение и Скорость I на 2 тика для мгновенного снятия при свапе слота
+                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 2, 0, false, false, true));
+                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 2, 0, false, false, true));
+            }
+        }
+        super.inventoryTick(stack, world, entity, slot, selected);
+    }
+
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack stack = user.getStackInHand(hand);
@@ -49,12 +68,19 @@ public class NecromancerScytheItem extends SwordItem {
             return TypedActionResult.fail(stack);
         }
 
+        // Запускает руку и ставит локальний кулдаун на клиенте для синхронизации слотов
+        if (world.isClient()) {
+            user.getItemCooldownManager().set(this, COOLDOWN_TICKS);
+            return TypedActionResult.success(stack);
+        }
 
         if (!world.isClient() && user instanceof ServerPlayerEntity serverPlayer) {
             
            // Тратит 50 мани при использовании абилки
             if (!serverPlayer.isCreative() 
                     && !PlayerMana.consumeMana((IEntityDataSaver) serverPlayer, MANA_COST, serverPlayer)) {
+                // Снимает кд на клиенте, если мани не хватило для запуска
+                serverPlayer.getItemCooldownManager().remove(this);
                 return TypedActionResult.fail(stack);
             }
 
@@ -80,18 +106,19 @@ public class NecromancerScytheItem extends SwordItem {
             // Призивает 1 скелета 
             SkeletonEntity skeleton = EntityType.SKELETON.create(world);
             if (skeleton != null) {
-
                 skeleton.equipStack(EquipmentSlot.MAINHAND, new ItemStack(Items.BOW));
                 setupSummon(skeleton, serverPlayer, serverWorld, playerPos);
             }
+            
             world.playSound(null, playerPos, SoundEvents.ENTITY_WITHER_AMBIENT, SoundCategory.PLAYERS, 1.0F, 0.5F);
             serverWorld.spawnParticles(ParticleTypes.WITCH, serverPlayer.getX(), serverPlayer.getY() + 1.0D, serverPlayer.getZ(), 30, 1.5D, 0.5D, 1.5D, 0.1D);
+            
             // Активирует кд
             serverPlayer.getItemCooldownManager().set(this, COOLDOWN_TICKS);
-            return TypedActionResult.success(stack, false);
+            return TypedActionResult.consume(stack);
         }
 
-        return TypedActionResult.success(stack, world.isClient());
+        return TypedActionResult.pass(stack);
     }
 
     // Главний ии у мобов, чтоби они не атаковали игрока которий их призвал
@@ -107,29 +134,45 @@ public class NecromancerScytheItem extends SwordItem {
         summon.setTarget(null);
         
         try {
-
-            Field targetSelectorField = MobEntity.class.getDeclaredField("targetSelector");
+            java.lang.reflect.Field targetSelectorField = MobEntity.class.getDeclaredField("targetSelector");
             targetSelectorField.setAccessible(true);
-            GoalSelector targetSelector = (GoalSelector) targetSelectorField.get(summon);
+            net.minecraft.entity.ai.goal.GoalSelector targetSelector = (net.minecraft.entity.ai.goal.GoalSelector) targetSelectorField.get(summon);
 
             if (targetSelector != null) {
-                // Очищает все цели у моба
+                // Очищает базовий селектор целей через полученний селектор
                 targetSelector.clear(goal -> true);
 
                 // Моб будет атаковать тех кто его ударил(только не игрока)
-                targetSelector.add(1, new RevengeGoal(summon).setGroupRevenge(PlayerEntity.class));
+                targetSelector.add(1, new RevengeGoal(summon) {
+                    @Override
+                    public boolean shouldContinue() {
+                        if (summon.getAttacker() == master) {
+                            summon.setAttacker(null);
+                            return false;
+                        }
+                        return super.shouldContinue();
+                    }
+
+                    @Override
+                    public void start() {
+                        if (summon.getAttacker() == master) {
+                            summon.setAttacker(null);
+                            return;
+                        }
+                        super.start();
+                    }
+                }.setGroupRevenge(PlayerEntity.class));
+                
                 // Моб будет атаковать тех кого ударил игрок(которий их призвал)
                 targetSelector.add(2, new ActiveTargetGoal<>(summon, MobEntity.class, true, (entity) -> {
                     if (entity == master || entity == summon) return false;
-
                     return entity.getAttacker() == master || master.getAttacking() == entity;
                 }));
             }
         } catch (Exception e) {
-            // Виводит ошибку если чтото пошло не так
+            // Логирует ошибку в консоль
             e.printStackTrace();
         }
-
 
         world.spawnEntity(summon);
     }

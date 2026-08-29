@@ -6,11 +6,11 @@
     "P"
   ],
   "key": {
-    "F": { "item": "the-roots-of-ancient-magic:essence_weed" },
+    "F": { "item": "the-roots-of-ancient-magic:essence_air" },
     "P": { "item": "minecraft:stick" }
   },
   "result": {
-    "item": "the-roots-of-ancient-magic:weed_shovel",
+    "item": "the-roots-of-ancient-magic:air_shovel",
     "count": 1
   }
 }

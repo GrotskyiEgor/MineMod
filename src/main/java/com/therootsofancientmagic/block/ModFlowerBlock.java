@@ -18,8 +18,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 import net.minecraft.entity.effect.StatusEffects;
 
-// import net.minecraft.item.ItemStack;
-
 public class ModFlowerBlock {
     public static void RenderFlowers() {
         BlockRenderLayerMap.INSTANCE.putBlock(ModFlowerBlock.FLOWER_DARK, RenderLayer.getCutout());
@@ -27,7 +25,7 @@ public class ModFlowerBlock {
 		BlockRenderLayerMap.INSTANCE.putBlock(ModFlowerBlock.FLOWER_AQUA, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(ModFlowerBlock.FLOWER_FIRE, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(ModFlowerBlock.FLOWER_EARTH, RenderLayer.getCutout());
-		BlockRenderLayerMap.INSTANCE.putBlock(ModFlowerBlock.FLOWER_WEED, RenderLayer.getCutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(ModFlowerBlock.FLOWER_AIR, RenderLayer.getCutout());
     }
 
     public static final Block FLOWER_DARK = registerBlock(
@@ -103,8 +101,8 @@ public class ModFlowerBlock {
         )
     );
 
-    public static final Block FLOWER_WEED = registerBlock(
-        "flower_weed",
+    public static final Block FLOWER_AIR = registerBlock(
+        "flower_air",
         new FlowerBlock(
             StatusEffects.LUCK,
             0,
@@ -131,18 +129,6 @@ public class ModFlowerBlock {
         return block;
     }
 
-    /*private static void createSuspiciousStew(StatusEffects effect, int durationInTicks){
-        System.err.println("createSuspiciousStew");
-    }*/
-
     public static void registerModBlocks(){
-        // ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register((entries) -> {
-        //     entries.add(FLOWER_DARK);
-        //     entries.add(FLOWER_LIGHT);
-        //     entries.add(FLOWER_AQUA);
-        //     entries.add(FLOWER_FIRE);
-        //     entries.add(FLOWER_EARTH);
-        //     entries.add(FLOWER_WEED);
-        // });
     }
 }

@@ -1,6 +1,6 @@
 {
     "parent": "minecraft:item/handheld",
     "textures": {
-        "layer0": "the-roots-of-ancient-magic:item/mod_tool/staff/fire_staff"
+        "layer0": "the-roots-of-ancient-magic:item/mod_tool/staff/light_staff"
     }
 }

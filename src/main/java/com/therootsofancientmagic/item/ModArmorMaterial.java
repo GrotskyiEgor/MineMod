@@ -33,15 +33,15 @@ public enum ModArmorMaterial implements ArmorMaterial {
             () -> Ingredient.ofItems(ModItem.ESSENCE_AQUA)
     ),
 
-    ESSENCE_WEED(
-            "essence_weed",
+    ESSENCE_AIR(
+            "essence_air",
             25,
             new int[]{3, 7, 6, 3},
             20,
             SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
             1.0f,
             0.0f,
-            () -> Ingredient.ofItems(ModItem.ESSENCE_WEED)
+            () -> Ingredient.ofItems(ModItem.ESSENCE_AIR)
     ),
 
     ESSENCE_DARK(

@@ -1,8 +1,12 @@
 {
   "itemGroup.the-roots-of-ancient-magic": "Корни Древней Магии",
 
+  "itemGroup.the-roots-of-ancient-magic.tools": "Инструменты Древней Магии",
+  "itemGroup.the-roots-of-ancient-magic.magic": "Древняя Магия",
+  "itemGroup.the-roots-of-ancient-magic.armor": "Броня Древней Магии",
+
   "item.the-roots-of-ancient-magic.fire_staff": "Огненный посох",
-  "item.the-roots-of-ancient-magic.weed_staff": "Посох воздуха",
+  "item.the-roots-of-ancient-magic.air_staff": "Посох воздуха",
   "item.the-roots-of-ancient-magic.earth_staff": "Земляной посох",
   "item.the-roots-of-ancient-magic.aqua_staff": "Водный посох",
   "item.the-roots-of-ancient-magic.light_staff": "Светлый посох",
@@ -11,7 +15,7 @@
   "item.the-roots-of-ancient-magic.heroic_sword": "Героический меч",
   "item.the-roots-of-ancient-magic.fire_sword": "Огненный меч",
   "item.the-roots-of-ancient-magic.aqua_sword": "Водный меч",
-  "item.the-roots-of-ancient-magic.weed_sword": "Меч воздуха",
+  "item.the-roots-of-ancient-magic.air_sword": "Меч воздуха",
   "item.the-roots-of-ancient-magic.earth_sword": "Земляной меч",
   "item.the-roots-of-ancient-magic.light_sword": "Светлый меч",
   "item.the-roots-of-ancient-magic.dark_sword": "Тёмный меч",
@@ -19,7 +23,7 @@
   "item.the-roots-of-ancient-magic.heroic_pickaxe": "Героическая кирка",
   "item.the-roots-of-ancient-magic.fire_pickaxe": "Огненная кирка",
   "item.the-roots-of-ancient-magic.aqua_pickaxe": "Водная кирка",
-  "item.the-roots-of-ancient-magic.weed_pickaxe": "Кирка воздуха",
+  "item.the-roots-of-ancient-magic.air_pickaxe": "Кирка воздуха",
   "item.the-roots-of-ancient-magic.dark_pickaxe": "Тёмная кирка",
   "item.the-roots-of-ancient-magic.light_pickaxe": "Светлая кирка",
   "item.the-roots-of-ancient-magic.earth_pickaxe": "Земляная кирка",
@@ -27,7 +31,7 @@
   "item.the-roots-of-ancient-magic.heroic_axe": "Героический топор",
   "item.the-roots-of-ancient-magic.fire_axe": "Огненный топор",
   "item.the-roots-of-ancient-magic.aqua_axe": "Водный топор",
-  "item.the-roots-of-ancient-magic.weed_axe": "Топор воздуха",
+  "item.the-roots-of-ancient-magic.air_axe": "Топор воздуха",
   "item.the-roots-of-ancient-magic.dark_axe": "Тёмный топор",
   "item.the-roots-of-ancient-magic.light_axe": "Светлый топор",
   "item.the-roots-of-ancient-magic.earth_axe": "Земляной топор",
@@ -35,7 +39,7 @@
   "item.the-roots-of-ancient-magic.heroic_shovel": "Героическая лопата",
   "item.the-roots-of-ancient-magic.fire_shovel": "Огненная лопата",
   "item.the-roots-of-ancient-magic.aqua_shovel": "Водная лопата",
-  "item.the-roots-of-ancient-magic.weed_shovel": "Лопата воздуха",
+  "item.the-roots-of-ancient-magic.air_shovel": "Лопата воздуха",
   "item.the-roots-of-ancient-magic.dark_shovel": "Тёмная лопата",
   "item.the-roots-of-ancient-magic.light_shovel": "Светлая лопата",
   "item.the-roots-of-ancient-magic.earth_shovel": "Земляная лопата",
@@ -43,7 +47,7 @@
   "item.the-roots-of-ancient-magic.heroic_hoe": "Героическая мотыга",
   "item.the-roots-of-ancient-magic.fire_hoe": "Огненная мотыга",
   "item.the-roots-of-ancient-magic.aqua_hoe": "Водная мотыга",
-  "item.the-roots-of-ancient-magic.weed_hoe": "Мотыга воздуха",
+  "item.the-roots-of-ancient-magic.air_hoe": "Мотыга воздуха",
   "item.the-roots-of-ancient-magic.dark_hoe": "Тёмная мотыга",
   "item.the-roots-of-ancient-magic.light_hoe": "Светлая мотыга",
   "item.the-roots-of-ancient-magic.earth_hoe": "Земляная мотыга",
@@ -53,10 +57,10 @@
   "item.the-roots-of-ancient-magic.fire_leggings": "Огненные поножи",
   "item.the-roots-of-ancient-magic.fire_boots": "Огненные ботинки",
 
-  "item.the-roots-of-ancient-magic.weed_helmet": "Шлем воздуха",
-  "item.the-roots-of-ancient-magic.weed_chestplate": "Нагрудник воздуха",
-  "item.the-roots-of-ancient-magic.weed_leggings": "Поножи воздуха",
-  "item.the-roots-of-ancient-magic.weed_boots": "Ботинки воздуха",
+  "item.the-roots-of-ancient-magic.air_helmet": "Шлем воздуха",
+  "item.the-roots-of-ancient-magic.air_chestplate": "Нагрудник воздуха",
+  "item.the-roots-of-ancient-magic.air_leggings": "Поножи воздуха",
+  "item.the-roots-of-ancient-magic.air_boots": "Ботинки воздуха",
 
   "item.the-roots-of-ancient-magic.aqua_helmet": "Водный шлем",
   "item.the-roots-of-ancient-magic.aqua_chestplate": "Водный нагрудник",
@@ -85,7 +89,7 @@
 
   "item.the-roots-of-ancient-magic.essence_aqua": "Водная эссенция",
   "item.the-roots-of-ancient-magic.essence_fire": "Огненная эссенция",
-  "item.the-roots-of-ancient-magic.essence_weed": "Эссенция воздуха",
+  "item.the-roots-of-ancient-magic.essence_air": "Эссенция воздуха",
   "item.the-roots-of-ancient-magic.essence_earth": "Земляная эссенция",
   "item.the-roots-of-ancient-magic.essence_light": "Светлая эссенция",
   "item.the-roots-of-ancient-magic.essence_dark": "Тёмная эссенция",
@@ -93,17 +97,17 @@
 
   "item.the-roots-of-ancient-magic.aqua_robe": "Водная мантия",
   "item.the-roots-of-ancient-magic.fire_robe": "Огненная мантия",
-  "item.the-roots-of-ancient-magic.weed_robe": "Мантия воздуха",
+  "item.the-roots-of-ancient-magic.air_robe": "Мантия воздуха",
   "item.the-roots-of-ancient-magic.earth_robe": "Земляная мантия",
 
   "item.the-roots-of-ancient-magic.aqua_necklace": "Водное ожерелье",
   "item.the-roots-of-ancient-magic.fire_necklace": "Огненное ожерелье",
-  "item.the-roots-of-ancient-magic.weed_necklace": "Ожерелье воздуха",
+  "item.the-roots-of-ancient-magic.air_necklace": "Ожерелье воздуха",
   "item.the-roots-of-ancient-magic.earth_necklace": "Земляное ожерелье",
 
   "item.the-roots-of-ancient-magic.aqua_ring": "Водное кольцо",
   "item.the-roots-of-ancient-magic.fire_ring": "Огненное кольцо",
-  "item.the-roots-of-ancient-magic.weed_ring": "Кольцо воздуха",
+  "item.the-roots-of-ancient-magic.air_ring": "Кольцо воздуха",
   "item.the-roots-of-ancient-magic.earth_ring": "Земляное кольцо",
 
   "item.the-roots-of-ancient-magic.battle_axe": "Боевой топор",
@@ -118,5 +122,36 @@
   "block.the-roots-of-ancient-magic.flower_aqua": "Водный цветок",
   "block.the-roots-of-ancient-magic.flower_fire": "Огненный цветок",
   "block.the-roots-of-ancient-magic.flower_earth": "Земляной цветок",
-  "block.the-roots-of-ancient-magic.flower_weed": "Цветок воздуха"
+  "block.the-roots-of-ancient-magic.flower_air": "Воздушный цветок",
+
+  "item.the-roots-of-ancient-magic.furnace_powder.description": "Магическая печь, способная перерабатывать мистические материалы.",
+  "item.the-roots-of-ancient-magic.craft_table.description": "Особый верстак для создания магического снаряжения.",
+
+  "item.the-roots-of-ancient-magic.flower_dark.description": "Таинственный цветок, наполненный силой тьмы.",
+  "item.the-roots-of-ancient-magic.flower_light.description": "Сияющий цветок, наполненный силой света.",
+  "item.the-roots-of-ancient-magic.flower_aqua.description": "Редкий цветок, несущий в себе силу воды.",
+  "item.the-roots-of-ancient-magic.flower_fire.description": "Огненный цветок, способный расти даже на песке.",
+  "item.the-roots-of-ancient-magic.flower_earth.description": "Крепкий цветок, связанный с силой земли.",
+  "item.the-roots-of-ancient-magic.flower_air.description": "Нежный цветок, которого коснулась сила воздуха.",
+
+  "item.the-roots-of-ancient-magic.air_staff.description": "Создаёт мощный вихрь, притягивающий существ к выбранной точке и подбрасывающий их вверх. Стоимость: 10 маны.",
+  "item.the-roots-of-ancient-magic.aqua_staff.description": "Создаёт сферу воды, окружённую льдом, в выбранном месте. Стоимость: 10 маны.",
+  "item.the-roots-of-ancient-magic.dark_staff.description": "Выпускает волну тьмы, отбрасывает врагов и дарует невидимость и скорость. Стоимость: 6 маны.",
+  "item.the-roots-of-ancient-magic.earth_staff.description": "Создаёт защитную каменную сферу в выбранном месте. Стоимость: 10 маны.",
+  "item.the-roots-of-ancient-magic.fire_staff.description": "Запускает мощный огненный шар, взрывающийся при столкновении. Стоимость: 10 маны.",
+  "item.the-roots-of-ancient-magic.light_staff.description": "Телепортирует вас на расстояние до 50 блоков в направлении взгляда. Стоимость: 10 маны.",
+
+  "item.the-roots-of-ancient-magic.necklace.description": "Таинственное магическое ожерелье, истинная сила которого ещё не раскрыта.",
+  "item.the-roots-of-ancient-magic.ring.description": "Зачарованное кольцо, способное хранить магическую силу.",
+  "item.the-roots-of-ancient-magic.elemental_robe.description": "Магическая мантия, связанная с силами стихий.",
+
+  "item.the-roots-of-ancient-magic.elemental_sword.description": "Оружие, наполненное силой стихии. Каждая стихия с определённым шансом вызывает уникальный эффект.",
+  "item.the-roots-of-ancient-magic.elemental_hoe.description": "Собирает и пересаживает урожай, используя силу своей стихии.",
+  "item.the-roots-of-ancient-magic.elemental_axe.description": "Магический топор, способный срубать целые участки деревьев и иногда дарующий стихийное усиление.",
+
+  "item.the-roots-of-ancient-magic.heroic_sword.description": "Легендарный меч, дарующий Силу и Огнестойкость. Удары поджигают и замедляют врагов.",
+  "item.the-roots-of-ancient-magic.heroic_axe.description": "Могучий топор, дарующий Скорость и Сопротивление. Обычные удары подбрасывают врагов, а критические оглушают их.",
+  "item.the-roots-of-ancient-magic.heroic_pickaxe.description": "Мощная кирка, дарующая Спешку и Ночное зрение. Разрушает большую область и прокладывает туннель.",
+  "item.the-roots-of-ancient-magic.heroic_shovel.description": "Мощная лопата, дарующая Спешку и Прыгучесть. Очищает большую область и прокапывает туннель.",
+  "item.the-roots-of-ancient-magic.heroic_hoe.description": "Легендарная мотыга, дарующая Удачу и дополнительное поглощение урона. Собирает и пересаживает урожай на большой площади."
 }

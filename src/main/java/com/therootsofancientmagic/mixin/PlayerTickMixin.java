@@ -1,144 +1,242 @@
-// package com.therootsofancientmagic.mixin;
+package com.therootsofancientmagic.mixin;
 
-// import com.therootsofancientmagic.item.ModItem;
-// import net.minecraft.entity.EquipmentSlot;
-// import net.minecraft.entity.effect.StatusEffect;
-// import net.minecraft.entity.effect.StatusEffects;
-// import net.minecraft.entity.player.PlayerEntity;
-// import net.minecraft.item.Item;
-// import org.spongepowered.asm.mixin.Mixin;
-// import org.spongepowered.asm.mixin.injection.At;
-// import org.spongepowered.asm.mixin.injection.Inject;
-// import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import com.therootsofancientmagic.item.ModItem;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-// @Mixin(PlayerEntity.class)
-// public class PlayerTickMixin {
+@Mixin(PlayerEntity.class)
+public class PlayerTickMixin {
 
-//     @Inject(method = "tick", at = @At("TAIL"))
-//     private void checkPlayerArmor(CallbackInfo ci) {
+    @Inject(method = "tick", at = @At("TAIL"))
+    private void checkPlayerArmor(CallbackInfo ci) {
 
-//         PlayerEntity player = (PlayerEntity) (Object) this;
+        PlayerEntity player = (PlayerEntity) (Object) this;
 
-//         // Проверяем броню раз в секунду
-//         if (player.age % 20 != 0) {
-//             return;
-//         }
+        // Проверяем броню один раз в секунду
+        if (player.age % 20 != 0) {
+            return;
+        }
 
-//         // +2 золотых 
-        
-//         // FIRE
-//         if (hasFullSet(
-//                 player,
-//                 ModItem.FIRE_HELMET,
-//                 ModItem.FIRE_CHESTPLATE,
-//                 ModItem.FIRE_LEGGINGS,
-//                 ModItem.FIRE_BOOTS
-//         )) {
-//             // Фаир резист
-//             addEffect(player,StatusEffects.FIRE_RESISTANCE, 1);
-            
-            
-            
-//         } 
+        // =========================
+        // 🔥 FIRE ARMOR
+        // =========================
+        if (hasFullSet(
+                player,
+                ModItem.FIRE_HELMET,
+                ModItem.FIRE_CHESTPLATE,
+                ModItem.FIRE_LEGGINGS,
+                ModItem.FIRE_BOOTS
+        )) {
 
-//         // AQUA
-//         else if (hasFullSet(
-//                 player,
-//                 ModItem.AQUA_HELMET,
-//                 ModItem.AQUA_CHESTPLATE,
-//                 ModItem.AQUA_LEGGINGS,
-//                 ModItem.AQUA_BOOTS
-//         )) {
-//             // Ефект дельфина
-//            addEffect(player, StatusEffects.DOLPHINS_GRACE, 1);;
-//         }
+            player.addStatusEffect(new StatusEffectInstance(
+                    StatusEffects.FIRE_RESISTANCE,
+                    40,
+                    0,
+                    false,
+                    true,
+                    true
+            ));
+        }
 
-//         // WEED
-//         else if (hasFullSet(
-//                 player,
-//                 ModItem.WEED_HELMET,
-//                 ModItem.WEED_CHESTPLATE,
-//                 ModItem.WEED_LEGGINGS,
-//                 ModItem.WEED_BOOTS
-//         )) {
-//             // Прыгучесть 1 + скорость 1
-//             addEffect(player, StatusEffects.JUMP_BOOST, 0);
-            
-//             addEffect(player, StatusEffects.SPEED, 0)
-//         }
+        // =========================
+        // 💧 AQUA ARMOR
+        // =========================
+        else if (hasFullSet(
+                player,
+                ModItem.AQUA_HELMET,
+                ModItem.AQUA_CHESTPLATE,
+                ModItem.AQUA_LEGGINGS,
+                ModItem.AQUA_BOOTS
+        )) {
 
-//         // DARK
-//         else if (hasFullSet(
-//                 player,
-//                 ModItem.DARK_HELMET,
-//                 ModItem.DARK_CHESTPLATE,
-//                 ModItem.DARK_LEGGINGS,
-//                 ModItem.DARK_BOOTS
-//         )) {
-//             // Ночное видинье 
-//             addEffect(player, StatusEffects.NIGHT_VISION, 0);
-//         }
+            player.addStatusEffect(new StatusEffectInstance(
+                    StatusEffects.DOLPHINS_GRACE,
+                    40,
+                    0,
+                    false,
+                    true,
+                    true
+            ));
+        }
 
-//         // LIGHT
-//         else if (hasFullSet(
-//                 player,
-//                 ModItem.LIGHT_HELMET,
-//                 ModItem.LIGHT_CHESTPLATE,
-//                 ModItem.LIGHT_LEGGINGS,
-//                 ModItem.LIGHT_BOOTS
-//         )) {
-//             // Регенерация 2
-//              addEffect(player, StatusEffects.REGENERATION, 1);
-//         }
+        // =========================
+        // 🌬 AIR ARMOR
+        // =========================
+        else if (hasFullSet(
+                player,
+                ModItem.AIR_HELMET,
+                ModItem.AIR_CHESTPLATE,
+                ModItem.AIR_LEGGINGS,
+                ModItem.AIR_BOOTS
+        )) {
 
-//         // EARTH
-//         else if (hasFullSet(
-//                 player,
-//                 ModItem.EARTH_HELMET,
-//                 ModItem.EARTH_CHESTPLATE,
-//                 ModItem.EARTH_LEGGINGS,
-//                 ModItem.EARTH_BOOTS
-//         )) {
-//             // Спешка 1
-//             addEffect(player, StatusEffects.HASTE, 0);
-//         }
+            // Скорость I
+            player.addStatusEffect(new StatusEffectInstance(
+                    StatusEffects.SPEED,
+                    40,
+                    0,
+                    false,
+                    true,
+                    true
+            ));
 
-//         // HEROIC
-//         else if (hasFullSet(
-//                 player,
-//                 ModItem.HEROIC_HELMET,
-//                 ModItem.HEROIC_CHESTPLATE,
-//                 ModItem.HEROIC_LEGGINGS,
-//                 ModItem.HEROIC_BOOTS
-//         )) {
-//             // Скорость 1, Сила 1, Спешка 1, Ночное виденье, Регенерация 1
-//             // Скорость I
-//             addEffect(player, StatusEffects.SPEED, 0);
+            // Прыгучесть I
+            player.addStatusEffect(new StatusEffectInstance(
+                    StatusEffects.JUMP_BOOST,
+                    40,
+                    0,
+                    false,
+                    true,
+                    true
+            ));
+        }
 
-//             Сила I
-//             addEffect(player, StatusEffects.STRENGTH, 0);
+        // =========================
+        // 🌑 DARK ARMOR
+        // =========================
+        else if (hasFullSet(
+                player,
+                ModItem.DARK_HELMET,
+                ModItem.DARK_CHESTPLATE,
+                ModItem.DARK_LEGGINGS,
+                ModItem.DARK_BOOTS
+        )) {
 
-//             Спешка I
-//             addEffect(player, StatusEffects.HASTE, 0);
+            player.addStatusEffect(new StatusEffectInstance(
+                    StatusEffects.NIGHT_VISION,
+                    40,
+                    0,
+                    false,
+                    true,
+                    true
+            ));
+        }
 
-//             Ночное зрение
-//             addEffect(player, StatusEffects.NIGHT_VISION, 0);
+        // =========================
+        // ☀ LIGHT ARMOR
+        // =========================
+        else if (hasFullSet(
+                player,
+                ModItem.LIGHT_HELMET,
+                ModItem.LIGHT_CHESTPLATE,
+                ModItem.LIGHT_LEGGINGS,
+                ModItem.LIGHT_BOOTS
+        )) {
 
-//             Регенерация I
-//             addEffect(player, StatusEffects.REGENERATION, 0);
-//         }
-//     }
+            // Регенерация II
+            player.addStatusEffect(new StatusEffectInstance(
+                    StatusEffects.REGENERATION,
+                    40,
+                    1,
+                    false,
+                    true,
+                    true
+            ));
+        }
 
-//     private boolean hasFullSet(
-//             PlayerEntity player,
-//             Item helmet,
-//             Item chestplate,
-//             Item leggings,
-//             Item boots
-//     ) {
-//         return player.getEquippedStack(EquipmentSlot.HEAD).isOf(helmet)
-//                 && player.getEquippedStack(EquipmentSlot.CHEST).isOf(chestplate)
-//                 && player.getEquippedStack(EquipmentSlot.LEGS).isOf(leggings)
-//                 && player.getEquippedStack(EquipmentSlot.FEET).isOf(boots);
-//     }
-// }
+        // =========================
+        // 🪨 EARTH ARMOR
+        // =========================
+        else if (hasFullSet(
+                player,
+                ModItem.EARTH_HELMET,
+                ModItem.EARTH_CHESTPLATE,
+                ModItem.EARTH_LEGGINGS,
+                ModItem.EARTH_BOOTS
+        )) {
+
+            // Спешка I
+            player.addStatusEffect(new StatusEffectInstance(
+                    StatusEffects.HASTE,
+                    40,
+                    0,
+                    false,
+                    true,
+                    true
+            ));
+        }
+
+        // =========================
+        // ⚔ HEROIC ARMOR
+        // =========================
+        else if (hasFullSet(
+                player,
+                ModItem.HEROIC_HELMET,
+                ModItem.HEROIC_CHESTPLATE,
+                ModItem.HEROIC_LEGGINGS,
+                ModItem.HEROIC_BOOTS
+        )) {
+
+            // Скорость I
+            player.addStatusEffect(new StatusEffectInstance(
+                    StatusEffects.SPEED,
+                    40,
+                    0,
+                    false,
+                    true,
+                    true
+            ));
+
+            // Сила I
+            player.addStatusEffect(new StatusEffectInstance(
+                    StatusEffects.STRENGTH,
+                    40,
+                    0,
+                    false,
+                    true,
+                    true
+            ));
+
+            // Спешка I
+            player.addStatusEffect(new StatusEffectInstance(
+                    StatusEffects.HASTE,
+                    40,
+                    0,
+                    false,
+                    true,
+                    true
+            ));
+
+            // Ночное зрение
+            player.addStatusEffect(new StatusEffectInstance(
+                    StatusEffects.NIGHT_VISION,
+                    40,
+                    0,
+                    false,
+                    true,
+                    true
+            ));
+
+            // Регенерация I
+            player.addStatusEffect(new StatusEffectInstance(
+                    StatusEffects.REGENERATION,
+                    40,
+                    0,
+                    false,
+                    true,
+                    true
+            ));
+        }
+    }
+
+    private boolean hasFullSet(
+            PlayerEntity player,
+            Item helmet,
+            Item chestplate,
+            Item leggings,
+            Item boots
+    ) {
+
+        return player.getEquippedStack(EquipmentSlot.HEAD).isOf(helmet)
+                && player.getEquippedStack(EquipmentSlot.CHEST).isOf(chestplate)
+                && player.getEquippedStack(EquipmentSlot.LEGS).isOf(leggings)
+                && player.getEquippedStack(EquipmentSlot.FEET).isOf(boots);
+    }      
+}

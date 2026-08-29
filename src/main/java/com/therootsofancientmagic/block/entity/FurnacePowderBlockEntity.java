@@ -143,8 +143,8 @@ public class FurnacePowderBlockEntity extends BlockEntity implements ExtendedScr
             return new ItemStack(ModItem.ESSENCE_FIRE);
         } else if (input == ModFlowerBlock.FLOWER_AQUA.asItem()) {
             return new ItemStack(ModItem.ESSENCE_AQUA);
-        } else if (input == ModFlowerBlock.FLOWER_WEED.asItem()) {
-            return new ItemStack(ModItem.ESSENCE_WEED);
+        } else if (input == ModFlowerBlock.FLOWER_AIR.asItem()) {
+            return new ItemStack(ModItem.ESSENCE_AIR);
         } else if (input == ModFlowerBlock.FLOWER_EARTH.asItem()) {
             return new ItemStack(ModItem.ESSENCE_EARTH);
         } else if (input == ModFlowerBlock.FLOWER_DARK.asItem()) {
@@ -169,15 +169,15 @@ public class FurnacePowderBlockEntity extends BlockEntity implements ExtendedScr
 
         boolean hasInput = getStack(INPUT_SLOT).getItem() == ModFlowerBlock.FLOWER_FIRE.asItem()
             || getStack(INPUT_SLOT).getItem() == ModFlowerBlock.FLOWER_AQUA.asItem()
-            || getStack(INPUT_SLOT).getItem() == ModFlowerBlock.FLOWER_WEED.asItem()
+            || getStack(INPUT_SLOT).getItem() == ModFlowerBlock.FLOWER_AIR.asItem()
             || getStack(INPUT_SLOT).getItem() == ModFlowerBlock.FLOWER_EARTH.asItem()
             || getStack(INPUT_SLOT).getItem() == ModFlowerBlock.FLOWER_DARK.asItem()
             || getStack(INPUT_SLOT).getItem() == ModFlowerBlock.FLOWER_LIGHT.asItem();
         
         if (getStack(INPUT_SLOT).getItem() == ModFlowerBlock.FLOWER_AQUA.asItem()) {
             result = new ItemStack(ModItem.ESSENCE_AQUA);
-        } else if (getStack(INPUT_SLOT).getItem() == ModFlowerBlock.FLOWER_WEED.asItem()) {
-            result = new ItemStack(ModItem.ESSENCE_WEED);
+        } else if (getStack(INPUT_SLOT).getItem() == ModFlowerBlock.FLOWER_AIR.asItem()) {
+            result = new ItemStack(ModItem.ESSENCE_AIR);
         } else if (getStack(INPUT_SLOT).getItem() == ModFlowerBlock.FLOWER_EARTH.asItem()) {
             result = new ItemStack(ModItem.ESSENCE_EARTH);
         } else if (getStack(INPUT_SLOT).getItem() == ModFlowerBlock.FLOWER_DARK.asItem()) {

@@ -13,6 +13,6 @@ public class RobeSlot extends Slot {
 
     @Override
     public boolean canInsert(ItemStack stack) {
-        return stack.isOf(ModItem.WEED_ROBE);
+        return stack.isOf(ModItem.AIR_ROBE);
     }
 }

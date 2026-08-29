@@ -7,14 +7,14 @@
   ],
   "key": {
     "F": {
-      "item": "the-roots-of-ancient-magic:essence_weed"
+      "item": "the-roots-of-ancient-magic:essence_air"
     },
     "P": {
       "item": "minecraft:stick"
     }
   },
   "result": {
-    "item": "the-roots-of-ancient-magic:weed_pickaxe",
+    "item": "the-roots-of-ancient-magic:air_pickaxe",
     "count": 1
   }
 }

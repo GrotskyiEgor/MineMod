@@ -38,10 +38,10 @@ public class ConfigureFeatureInit {
                 TheRootsOfAncientMagic.id("flower_light_patch")
         );
 
-    public static final RegistryKey<ConfiguredFeature<?, ?>> FLOWER_WEED_KEY =
+    public static final RegistryKey<ConfiguredFeature<?, ?>> FLOWER_AIR_KEY =
         RegistryKey.of(
                 RegistryKeys.CONFIGURED_FEATURE,
-                TheRootsOfAncientMagic.id("flower_weed_patch")
+                TheRootsOfAncientMagic.id("flower_air_patch")
         );
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> FLOWER_EARTH_KEY =
@@ -82,7 +82,7 @@ public class ConfigureFeatureInit {
                 TheRootsOfAncientMagic.id("earth_huge_brown_mushroom")
         );
 
-    public static final List<RegistryKey<ConfiguredFeature<?, ?>>> FLOWERS = List.of(FLOWER_DARK_KEY, FLOWER_LIGHT_KEY, FLOWER_WEED_KEY, FLOWER_EARTH_KEY, FLOWER_FIRE_KEY, FLOWER_AQUA_KEY);
+    public static final List<RegistryKey<ConfiguredFeature<?, ?>>> FLOWERS = List.of(FLOWER_DARK_KEY, FLOWER_LIGHT_KEY, FLOWER_AIR_KEY, FLOWER_EARTH_KEY, FLOWER_FIRE_KEY, FLOWER_AQUA_KEY);
 
     private static Block getBlockForKey(RegistryKey<ConfiguredFeature<?, ?>> key) {
         String path = key.getValue().getPath();
@@ -90,7 +90,7 @@ public class ConfigureFeatureInit {
         return switch(path) {
                 case "flower_dark_patch" -> ModFlowerBlock.FLOWER_DARK;
                 case "flower_light_patch" -> ModFlowerBlock.FLOWER_LIGHT;
-                case "flower_weed_patch" -> ModFlowerBlock.FLOWER_WEED;
+                case "flower_air_patch" -> ModFlowerBlock.FLOWER_AIR;
                 case "flower_earth_patch" -> ModFlowerBlock.FLOWER_EARTH;
                 case "flower_fire_patch" -> ModFlowerBlock.FLOWER_FIRE;
                 case "flower_aqua_patch" -> ModFlowerBlock.FLOWER_AQUA;

@@ -39,10 +39,10 @@ public class PlacedFeatureInit {
                 TheRootsOfAncientMagic.id("flower_light_placed")
         );
 
-    public static final RegistryKey<PlacedFeature> FLOWER_WEED_PLACED_KEY =
+    public static final RegistryKey<PlacedFeature> FLOWER_AIR_PLACED_KEY =
         RegistryKey.of(
                 RegistryKeys.PLACED_FEATURE,
-                TheRootsOfAncientMagic.id("flower_weed_placed")
+                TheRootsOfAncientMagic.id("flower_air_placed")
         );
 
     public static final RegistryKey<PlacedFeature> FLOWER_EARTH_PLACED_KEY =
@@ -93,7 +93,7 @@ public class PlacedFeatureInit {
     public static final List<RegistryKey<PlacedFeature>> FLOWERS_KEYS = List.of(
         FLOWER_DARK_PLACED_KEY, 
         FLOWER_LIGHT_PLACED_KEY, 
-        FLOWER_WEED_PLACED_KEY, 
+        FLOWER_AIR_PLACED_KEY, 
         FLOWER_EARTH_PLACED_KEY,
         FLOWER_AQUA_PLACED_KEY
     );
@@ -104,7 +104,7 @@ public class PlacedFeatureInit {
         return switch(path) {
                 case "flower_dark_placed" -> ConfigureFeatureInit.FLOWER_DARK_KEY;
                 case "flower_light_placed" -> ConfigureFeatureInit.FLOWER_LIGHT_KEY;
-                case "flower_weed_placed" -> ConfigureFeatureInit.FLOWER_WEED_KEY;
+                case "flower_air_placed" -> ConfigureFeatureInit.FLOWER_AIR_KEY;
                 case "flower_earth_placed" -> ConfigureFeatureInit.FLOWER_EARTH_KEY;
                 case "flower_fire_placed" -> ConfigureFeatureInit.FLOWER_FIRE_KEY;
                 case "flower_aqua_placed" -> ConfigureFeatureInit.FLOWER_AQUA_KEY;

@@ -67,37 +67,37 @@ public class ModItem {
         )
     );
 
-    public static final Item WEED_HELMET = registerItem(
-        "weed_helmet", 
+    public static final Item AIR_HELMET = registerItem(
+        "air_helmet", 
         new ArmorItem(
-            ModArmorMaterial.ESSENCE_WEED, 
+            ModArmorMaterial.ESSENCE_AIR, 
             ArmorItem.Type.HELMET,
             new Item.Settings()
         )
     );
     
-    public static final Item WEED_CHESTPLATE = registerItem(
-        "weed_chestplate", 
+    public static final Item AIR_CHESTPLATE = registerItem(
+        "air_chestplate", 
         new ArmorItem(
-            ModArmorMaterial.ESSENCE_WEED, 
+            ModArmorMaterial.ESSENCE_AIR, 
             ArmorItem.Type.CHESTPLATE,
             new Item.Settings()
         )
     );
 
-    public static final Item WEED_LEGGINGS= registerItem(
-        "weed_leggings", 
+    public static final Item AIR_LEGGINGS= registerItem(
+        "air_leggings", 
         new ArmorItem(
-            ModArmorMaterial.ESSENCE_WEED, 
+            ModArmorMaterial.ESSENCE_AIR, 
             ArmorItem.Type.LEGGINGS,
             new Item.Settings()
         )
     );
 
-    public static final Item WEED_BOOTS = registerItem(
-        "weed_boots", 
+    public static final Item AIR_BOOTS = registerItem(
+        "air_boots", 
         new ArmorItem(
-            ModArmorMaterial.ESSENCE_WEED, 
+            ModArmorMaterial.ESSENCE_AIR, 
             ArmorItem.Type.BOOTS,
             new Item.Settings()
         )
@@ -296,8 +296,8 @@ public class ModItem {
          new EarthStaff(new Item.Settings())
     );
         
-    public static final Item WEED_STAFF = registerItem(
-        "weed_staff",
+    public static final Item AIR_STAFF = registerItem(
+        "air_staff",
         new AirStaff(new Item.Settings())
     );
 
@@ -327,8 +327,8 @@ public class ModItem {
         new Item(new Item.Settings())
     );
 
-    public static final Item ESSENCE_WEED = registerItem(
-        "essence_weed",
+    public static final Item ESSENCE_AIR = registerItem(
+        "essence_air",
         new Item(new Item.Settings())
     );
 
@@ -358,7 +358,8 @@ public class ModItem {
         new LightningHammerItem(ModToolMaturial.ESSENCE_HEROIC, 6, -3.0f, new Item.Settings()));
         
     public static final Item NECROMANCER_SCYTHE = registerItem("necromancer_scythe",
-        new NecromancerScytheItem(ModToolMaturial.ESSENCE_HEROIC, 5, -2.4f, new Item.Settings()));
+        new NecromancerScytheItem(ModToolMaturial.ESSENCE_HEROIC, 1, -2.4f, new Item.Settings()));
+
 
     public static final Item AQUA_NECKLACE = registerItem("aqua_necklace",
         new NecklaceItem(new FabricItemSettings().maxCount(1)));
@@ -366,7 +367,7 @@ public class ModItem {
     public static final Item FIRE_NECKLACE = registerItem("fire_necklace",
         new NecklaceItem(new FabricItemSettings().maxCount(1)));
 
-    public static final Item WEED_NECKLACE = registerItem("weed_necklace",
+    public static final Item AIR_NECKLACE = registerItem("air_necklace",
         new NecklaceItem(new FabricItemSettings().maxCount(1)));
 
     public static final Item EARTH_NECKLACE = registerItem("earth_necklace",
@@ -377,8 +378,8 @@ public class ModItem {
         "fire_robe", 
         new ElementalRobeItem(new Item.Settings().maxCount(1)));
 
-    public static final Item WEED_ROBE = registerItem(
-        "weed_robe", 
+    public static final Item AIR_ROBE = registerItem(
+        "air_robe", 
         new ElementalRobeItem(new Item.Settings().maxCount(1)));
     
     public static final Item AQUA_ROBE = registerItem(
@@ -395,7 +396,7 @@ public class ModItem {
     public static final Item FIRE_RING = registerItem("fire_ring",
         new RingItem(new FabricItemSettings().maxCount(1)));
 
-    public static final Item WEED_RING = registerItem("weed_ring",
+    public static final Item AIR_RING = registerItem("air_ring",
         new RingItem(new FabricItemSettings().maxCount(1)));
 
     public static final Item EARTH_RING = registerItem("earth_ring",
@@ -420,7 +421,7 @@ public class ModItem {
     public static final Item EARTH_PICKAXE = registerItem("earth_pickaxe",
             new ElementalPickaxeItem(ModToolMaturial.ESSENCE_LIGHT, 1, -2.8f, new Item.Settings()));
             
-    public static final Item WEED_PICKAXE = registerItem("weed_pickaxe",
+    public static final Item AIR_PICKAXE = registerItem("air_pickaxe",
             new ElementalPickaxeItem(ModToolMaturial.ESSENCE_LIGHT, 1, -2.8f, new Item.Settings()));
             
     
@@ -433,8 +434,8 @@ public class ModItem {
     public static final Item AQUA_AXE = registerItem("aqua_axe",
             new ElementalAxeItem(ModToolMaturial.ESSENCE_AQUA, 5.0f, -3.0f, new Item.Settings()));
     
-    public static final Item WEED_AXE = registerItem("weed_axe",
-            new ElementalAxeItem(ModToolMaturial.ESSENCE_WEED, 5.0f, -3.0f, new Item.Settings()));
+    public static final Item AIR_AXE = registerItem("air_axe",
+            new ElementalAxeItem(ModToolMaturial.ESSENCE_AIR, 5.0f, -3.0f, new Item.Settings()));
     
     public static final Item DARK_AXE = registerItem("dark_axe",
             new ElementalAxeItem(ModToolMaturial.ESSENCE_DARK, 5.0f, -3.0f, new Item.Settings()));
@@ -459,8 +460,8 @@ public class ModItem {
             new ElementalSwordItem(ModToolMaturial.ESSENCE_AQUA, 3, -2.4f, new Item.Settings()));
 
     // отталкивает противника
-    public static final Item WEED_SWORD = registerItem("weed_sword",
-            new ElementalSwordItem(ModToolMaturial.ESSENCE_WEED, 3, -2.4f, new Item.Settings()));
+    public static final Item AIR_SWORD = registerItem("air_sword",
+            new ElementalSwordItem(ModToolMaturial.ESSENCE_AIR, 3, -2.4f, new Item.Settings()));
 
     // подкидивание вверх
     public static final Item EARTH_SWORD = registerItem("earth_sword",
@@ -484,8 +485,8 @@ public class ModItem {
     public static final Item AQUA_SHOVEL = registerItem("aqua_shovel",
             new ElementalShovelItem(ModToolMaturial.ESSENCE_AQUA, 1, -2.8f, new Item.Settings()));
 
-    public static final Item WEED_SHOVEL = registerItem("weed_shovel",
-            new ElementalShovelItem(ModToolMaturial.ESSENCE_WEED, 1, -2.8f, new Item.Settings()));
+    public static final Item AIR_SHOVEL = registerItem("air_shovel",
+            new ElementalShovelItem(ModToolMaturial.ESSENCE_AIR, 1, -2.8f, new Item.Settings()));
 
     public static final Item DARK_SHOVEL = registerItem("dark_shovel",
             new ElementalShovelItem(ModToolMaturial.ESSENCE_DARK, 1, -2.8f, new Item.Settings()));
@@ -505,8 +506,8 @@ public class ModItem {
     public static final Item AQUA_HOE = registerItem("aqua_hoe",
             new ElementalHoeItem(ModToolMaturial.ESSENCE_AQUA, 1, -2.8f, new Item.Settings()));
 
-    public static final Item WEED_HOE = registerItem("weed_hoe",
-            new ElementalHoeItem(ModToolMaturial.ESSENCE_WEED, 1, -2.8f, new Item.Settings()));
+    public static final Item AIR_HOE = registerItem("air_hoe",
+            new ElementalHoeItem(ModToolMaturial.ESSENCE_AIR, 1, -2.8f, new Item.Settings()));
 
     public static final Item LIGHT_HOE = registerItem("light_hoe",
             new ElementalHoeItem(ModToolMaturial.ESSENCE_LIGHT, 1, -2.8f, new Item.Settings()));
