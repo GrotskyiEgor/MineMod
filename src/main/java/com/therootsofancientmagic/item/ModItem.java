@@ -285,7 +285,11 @@ public class ModItem {
         )
     );
 
-    
+    public static final Item HEROIC_STAFF = registerItem(
+        "heroic_staff",
+        new FireStaff(new Item.Settings())
+    );
+
     public static final Item FIRE_STAFF = registerItem(
         "fire_staff",
         new FireStaff(new Item.Settings())
