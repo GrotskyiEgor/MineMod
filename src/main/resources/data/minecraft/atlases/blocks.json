@@ -1,0 +1,9 @@
+{
+  "sources": [
+    {
+      "type": "directory",
+      "source": "the-roots-of-ancient-magic:item/mod_tool",
+      "prefix": "item/mod_tool/"
+    }
+  ]
+}

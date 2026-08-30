@@ -19,8 +19,8 @@ public class AccessoryHandler {
 
         ItemStack necklaceStack = inv.getStack(1);
         if (!necklaceStack.isEmpty() && necklaceStack.getItem() instanceof NecklaceItem) {
-            if (player.getHungerManager().getFoodLevel() < 22) {
-                player.getHungerManager().setFoodLevel(22);
+            if (player.getHungerManager().getFoodLevel() < 20) {
+                player.getHungerManager().setFoodLevel(20);
                 player.getHungerManager().setSaturationLevel(5.0f);
             }
         }

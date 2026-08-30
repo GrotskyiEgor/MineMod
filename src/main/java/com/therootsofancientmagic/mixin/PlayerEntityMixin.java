@@ -398,7 +398,7 @@ public abstract class PlayerEntityMixin implements CustomArmorHolder {
         if (!world.isClient() && player.age % 10 == 0) {
             if (isFireNecklaceInSlot(1)) {
                 if (!player.hasStatusEffect(StatusEffects.ABSORPTION)) {
-                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 200, 0, true, false, true));
+                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 200, 0, true, false, false));
                 }
             } else {
                 if (player.hasStatusEffect(StatusEffects.ABSORPTION)) {
@@ -416,7 +416,7 @@ public abstract class PlayerEntityMixin implements CustomArmorHolder {
         if (!world.isClient() && player.age % 10 == 0) {
             if (isAirNecklaceInSlot(1)) {
                 if (!player.hasStatusEffect(StatusEffects.SPEED)) {
-                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 210, 0, true, false, true));
+                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 210, 0, true, false, false));
                 }
             } else {
                 if (player.hasStatusEffect(StatusEffects.SPEED)) {
@@ -434,7 +434,7 @@ public abstract class PlayerEntityMixin implements CustomArmorHolder {
         if (!world.isClient() && player.age % 10 == 0) {
             if (isEarthNecklaceInSlot(1)) {
                 if (!player.hasStatusEffect(StatusEffects.JUMP_BOOST)) {
-                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 210, 0, true, false, true));
+                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 210, 0, true, false, false));
                 }
             } else {
                 if (player.hasStatusEffect(StatusEffects.JUMP_BOOST)) {
@@ -446,23 +446,20 @@ public abstract class PlayerEntityMixin implements CustomArmorHolder {
 
     @Inject(method = "tick", at = @At("HEAD"))
     private void AquaNecklacePassive(CallbackInfo ci) {
-        PlayerEntity player = (PlayerEntity) (Object) this;
+       PlayerEntity player = (PlayerEntity) (Object) this;
         World world = player.getWorld();
 
         if (!world.isClient()) {
             if (isAquaNecklaceInSlot(1)) {
-                if (player.getMaxAir() < 600) {
-                    if (player.getAir() == player.getMaxAir()) {
-                        player.setAir(600);
-                    }
-                }
-
-                if (!player.isSubmergedIn(FluidTags.WATER) && player.getAir() < 600) {
-                    player.setAir(600);
+                // Якщо амулет одягнений, кожні 10 тіків оновлюємо ефект водного дихання
+                if (player.age % 10 == 0 && !player.hasStatusEffect(StatusEffects.WATER_BREATHING)) {
+                    // Тривалість 210 тіків (10.5 сек), рівень 0 (I), без бульбашок ефекту та іконок
+                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING, 210, 0, true, false, true));
                 }
             } else {
-                if (player.getAir() > 300) {
-                    player.setAir(300);
+                // Якщо амулет зняли, миттєво прибираємо ефект
+                if (player.hasStatusEffect(StatusEffects.WATER_BREATHING)) {
+                    player.removeStatusEffect(StatusEffects.WATER_BREATHING);
                 }
             }
         }

@@ -41,21 +41,21 @@ public class InGameHudMixin {
                 }
             }
 
-            if (hasNecklace) {
-                int scaledWidth = context.getScaledWindowWidth();
-                int scaledHeight = context.getScaledWindowHeight();
+            // if (hasNecklace) {
+            //     int scaledWidth = context.getScaledWindowWidth();
+            //     int scaledHeight = context.getScaledWindowHeight();
 
-                int right = scaledWidth / 2 + 91;
-                int top = scaledHeight - 49; 
+            //     int right = scaledWidth / 2 + 91;
+            //     int top = scaledHeight - 49; 
 
-                for (int i = 0; i < 2; i++) {
-                    int x = right - (i * 8) - 9;
-                    int y = top;
+            //     for (int i = 0; i < 2; i++) {
+            //         int x = right - (i * 8) - 9;
+            //         int y = top;
 
-                    context.drawTexture(ICONS, x, y, 16, 27, 9, 9);
-                    context.drawTexture(ICONS, x, y, 52, 27, 9, 9);
-                }
-            }
+            //         context.drawTexture(ICONS, x, y, 16, 27, 9, 9);
+            //         context.drawTexture(ICONS, x, y, 52, 27, 9, 9);
+            //     }
+            // }
         }
     }
 

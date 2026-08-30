@@ -47,12 +47,6 @@ public class TheRootsOfAncientMagic implements ModInitializer {
     public static final Logger LOGGER =
             LoggerFactory.getLogger(MOD_ID);
             
-    // public static final Item BATTLE_AXE_ITEM = Registry.register(
-    //         Registries.ITEM,
-    //         new Identifier(MOD_ID, "battle_axe"),
-    //         new Item(new FabricItemSettings())
-    // );
-
     @Override
     public void onInitialize() {
         

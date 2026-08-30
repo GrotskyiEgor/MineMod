@@ -89,6 +89,7 @@ public class ElementalHoeItem extends HoeItem {
             player.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 600, 0));
         }
     }
+    
     // обрабатывает один конкретный блок, типо (сбор плодов + посадка семечка обратно)
     private boolean tryHarvestAndReplant(World world, BlockPos pos, ServerPlayerEntity player, ItemStack hoeStack) {
         BlockState state = world.getBlockState(pos);
