@@ -23,6 +23,7 @@ import com.therootsofancientmagic.item.tools.heroic_tools.HeroicAxeItem;
 import com.therootsofancientmagic.item.tools.heroic_tools.HeroicSwordItem;
 import com.therootsofancientmagic.item.tools.heroic_tools.HeroicPickaxeItem;
 import com.therootsofancientmagic.item.tools.heroic_tools.HeroicShovelItem;
+import com.therootsofancientmagic.item.tools.heroic_tools.HeroicStaff;
 import com.therootsofancientmagic.item.tools.heroic_tools.HeroicHoeItem;
 import com.therootsofancientmagic.item.tools.unique_tools.BattleAxeItem;
 import com.therootsofancientmagic.item.tools.unique_tools.LightningHammerItem;
@@ -285,7 +286,11 @@ public class ModItem {
         )
     );
 
-    
+    public static final Item HEROIC_STAFF = registerItem(
+        "heroic_staff",
+        new HeroicStaff(new Item.Settings())
+    );
+
     public static final Item FIRE_STAFF = registerItem(
         "fire_staff",
         new FireStaff(new Item.Settings())
