@@ -59,7 +59,7 @@ public class BattleAxeItem extends SwordItem {
         if (user instanceof ServerPlayerEntity serverPlayer) {
             // Проверяет, если есть 20 мани
             if (!serverPlayer.isCreative()
-                    && !PlayerMana.consumeMana((IEntityDataSaver) serverPlayer, 20, serverPlayer)) {
+                    && !PlayerMana.consumeMana((IEntityDataSaver) serverPlayer, 10, serverPlayer)) {
                 // Если нету мани то абилки не будет
                 return TypedActionResult.fail(stack);
             }
@@ -99,7 +99,7 @@ public class BattleAxeItem extends SwordItem {
             if (!world.isClient() && player instanceof ServerPlayerEntity serverPlayer) {
                 // Каждую секунду абилки, списивает 10 мани
                 if (ticksUsed % 20 == 0 && ticksUsed > 0) {
-                    if (!serverPlayer.isCreative() && !PlayerMana.consumeMana((IEntityDataSaver) serverPlayer, 10, serverPlayer)) {
+                    if (!serverPlayer.isCreative() && !PlayerMana.consumeMana((IEntityDataSaver) serverPlayer, 5, serverPlayer)) {
                         // Если мани нет, абилка прекращаеться
                         player.clearActiveItem();
                         return;

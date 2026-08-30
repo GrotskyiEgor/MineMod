@@ -26,7 +26,7 @@ import java.util.Random;
 
 public class DarkStaff extends Item {
 
-    private static final int COOLDOWN_TICKS = 400;
+    private static final int COOLDOWN_TICKS = 1200;
     private static final double WAVE_RADIUS = 5.0;
     private static final double KNOCKBACK_STRENGTH = 10.0;
     private static final int EFFECT_DURATION = 400;
@@ -47,7 +47,7 @@ public class DarkStaff extends Item {
 
         if (!world.isClient && user instanceof ServerPlayerEntity serverPlayer) {
 
-            if (!PlayerMana.consumeMana((IEntityDataSaver) serverPlayer, 6, serverPlayer)) {
+            if (!PlayerMana.consumeMana((IEntityDataSaver) serverPlayer, 60, serverPlayer)) {
                 return TypedActionResult.fail(stack);
             }
 

@@ -31,7 +31,7 @@ import java.util.List;
 import java.util.Random;
 
 public class EarthStaff extends Item {
-	private static final int COOLDOWN_TICKS = 15;
+	private static final int COOLDOWN_TICKS = 900;
 	private static final int SPHERE_RADIUS = 2;
 	private static final double RAY_RANGE = 20.0D;
 	private static final int DEBRIS_COUNT = 150;
@@ -52,7 +52,7 @@ public class EarthStaff extends Item {
 		}
 
 		if (!world.isClient && user instanceof ServerPlayerEntity serverPlayer) {
-			if (!PlayerMana.consumeMana((IEntityDataSaver) serverPlayer, 10, serverPlayer)) {
+			if (!PlayerMana.consumeMana((IEntityDataSaver) serverPlayer, 40, serverPlayer)) {
 				return TypedActionResult.fail(stack);
 			}
 

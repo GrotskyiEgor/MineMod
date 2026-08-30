@@ -7,13 +7,17 @@ import net.minecraft.registry.Registries;
 import java.util.function.Supplier;
 
 public enum ModToolMaturial implements ToolMaterial {
-    ESSENCE_FIRE(5, 1500, 7.0f, 5.5f, 20, () -> Ingredient.ofItems(Registries.ITEM.get(new Identifier("the-roots-of-ancient-magic", "ESSENCE_FIRE")))),
-    ESSENCE_AQUA(4, 1250, 4.5f, 3.5f, 15, () -> Ingredient.ofItems(Registries.ITEM.get(new Identifier("the-roots-of-ancient-magic", "ESSENCE_AQUA")))),
-    ESSENCE_AIR(5, 1000, 6.0f, 5.0f, 20, () -> Ingredient.ofItems(Registries.ITEM.get(new Identifier("the-roots-of-ancient-magic", "ESSENCE_AIR")))),
-    ESSENCE_DARK(5, 1750, 8.0f, 5.0f, 30, () -> Ingredient.ofItems(Registries.ITEM.get(new Identifier("the-roots-of-ancient-magic", "ESSENCE_DARK")))),
-    ESSENCE_LIGHT(5, 700, 9.0f, 4.50f, 30, () -> Ingredient.ofItems(Registries.ITEM.get(new Identifier("the-roots-of-ancient-magic", "ESSENCE_LIGHT")))),
-    ESSENCE_EARTH(5, 2000, 7.5f, 5.0f, 25, () -> Ingredient.ofItems(Registries.ITEM.get(new Identifier("the-roots-of-ancient-magic", "ESSENCE_EARTH")))),
-    ESSENCE_HEROIC(6, 2500, 8.0f, 8f, 30, () -> Ingredient.ofItems(Registries.ITEM.get(new Identifier("the-roots-of-ancient-magic", "HEROIC_ESSENCE"))));
+    // Железо
+    ESSENCE_AQUA(2, 250, 6.0f, 2.0f, 14, () -> Ingredient.ofItems(Registries.ITEM.get(new Identifier("the-roots-of-ancient-magic", "ESSENCE_AQUA")))),
+    ESSENCE_AIR(2, 250, 6.0f, 2.0f, 14, () -> Ingredient.ofItems(Registries.ITEM.get(new Identifier("the-roots-of-ancient-magic", "ESSENCE_AIR")))),
+    // Алмазы
+    ESSENCE_FIRE(3, 1561, 8.0f, 3.0f, 10, () -> Ingredient.ofItems(Registries.ITEM.get(new Identifier("the-roots-of-ancient-magic", "ESSENCE_FIRE")))),
+    ESSENCE_EARTH(3, 1561, 8.0f, 3.0f, 10, () -> Ingredient.ofItems(Registries.ITEM.get(new Identifier("the-roots-of-ancient-magic", "ESSENCE_EARTH")))),
+    // Незеритовые
+    ESSENCE_DARK(4, 2031, 9.0f, 4.0f, 15, () -> Ingredient.ofItems(Registries.ITEM.get(new Identifier("the-roots-of-ancient-magic", "ESSENCE_DARK")))),
+    ESSENCE_LIGHT(4, 2031, 9.0f, 4.50f, 15, () -> Ingredient.ofItems(Registries.ITEM.get(new Identifier("the-roots-of-ancient-magic", "ESSENCE_LIGHT")))),
+    // Чуть лучше Незеритовых
+    ESSENCE_HEROIC(4, 2400, 10.0f, 5f, 30, () -> Ingredient.ofItems(Registries.ITEM.get(new Identifier("the-roots-of-ancient-magic", "HEROIC_ESSENCE"))));
 
     private final int miningLevel;
     private final int itemDurability;

@@ -25,7 +25,7 @@ import net.minecraft.entity.projectile.ProjectileUtil;
 public class LightningHammerItem extends SwordItem {
 
     private static final int COOLDOWN_TICKS = 100;
-    private static final int MANA_COST = 30;
+    private static final int MANA_COST = 80;
     private static final double RAYCAST_DISTANCE = 20.0D;
 
     public LightningHammerItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {

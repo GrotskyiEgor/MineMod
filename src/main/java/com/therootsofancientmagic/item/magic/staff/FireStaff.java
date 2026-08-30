@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 public class FireStaff extends Item {
-    private static final int COOLDOWN_TICKS = 15;
+    private static final int COOLDOWN_TICKS = 900;
 
     private static final Random RANDOM = new Random();
 
@@ -41,7 +41,7 @@ public class FireStaff extends Item {
             if (user instanceof ServerPlayerEntity serverPlayer) {
                 
                 // ВЫЗЫВАЕМ СПИСАНИЕ МАНЫ: Тратим ровно 10 единиц (1 кружочек на худ-баре)
-                if (PlayerMana.consumeMana((IEntityDataSaver) serverPlayer, 10, serverPlayer)) {
+                if (PlayerMana.consumeMana((IEntityDataSaver) serverPlayer, 40, serverPlayer)) {
                     
                     // МАНЫ ХВАТИЛО: Спавним огненний шар и запускаем звук
                     castSpell(world, user);

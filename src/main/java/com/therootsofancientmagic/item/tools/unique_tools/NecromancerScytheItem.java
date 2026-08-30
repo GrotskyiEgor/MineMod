@@ -33,7 +33,7 @@ import net.minecraft.entity.effect.StatusEffects;
 public class NecromancerScytheItem extends SwordItem {
 
     // Абилка стоит 50 мани, тоесть 5 орбов
-    private static final int MANA_COST = 50;
+    private static final int MANA_COST = 100;
     // кулдаун на использование, 15 секунд
     private static final int COOLDOWN_TICKS = 300;
 

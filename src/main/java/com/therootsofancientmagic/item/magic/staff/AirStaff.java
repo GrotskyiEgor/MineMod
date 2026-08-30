@@ -49,7 +49,7 @@ public class AirStaff extends Item {
         if (!world.isClient) {
             if (user instanceof ServerPlayerEntity serverPlayer) {
                 
-                if (PlayerMana.consumeMana((IEntityDataSaver) serverPlayer, 10, serverPlayer)) {
+                if (PlayerMana.consumeMana((IEntityDataSaver) serverPlayer, 40, serverPlayer)) {
                     
                     Vec3d targetPoint = getTargetPoint(world, user);
 
@@ -90,7 +90,7 @@ public class AirStaff extends Item {
                                 1, 0.2, 0.2, 0.2, 0.0);
                     }
 
-                    user.getItemCooldownManager().set(this, 40);
+                    user.getItemCooldownManager().set(this, 900);
 
                 } else {
 

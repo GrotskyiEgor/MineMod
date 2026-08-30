@@ -357,13 +357,13 @@ public class ModItem {
     );
     
     public static final Item BATTLE_AXE = registerItem("battle_axe",
-            new BattleAxeItem(ModToolMaturial.ESSENCE_HEROIC, 4, -3.4f, new Item.Settings()));
+            new BattleAxeItem(ModToolMaturial.ESSENCE_HEROIC, 7, -3.4f, new Item.Settings()));
 
     public static final Item LIGHTNING_HAMMER = registerItem("lightning_hammer",
-        new LightningHammerItem(ModToolMaturial.ESSENCE_HEROIC, 6, -3.0f, new Item.Settings()));
+        new LightningHammerItem(ModToolMaturial.ESSENCE_HEROIC, 7, -3.0f, new Item.Settings()));
         
     public static final Item NECROMANCER_SCYTHE = registerItem("necromancer_scythe",
-        new NecromancerScytheItem(ModToolMaturial.ESSENCE_HEROIC, 1, -2.4f, new Item.Settings()));
+        new NecromancerScytheItem(ModToolMaturial.ESSENCE_HEROIC, 7, -2.4f, new Item.Settings()));
 
 
     public static final Item AQUA_NECKLACE = registerItem("aqua_necklace",
@@ -406,7 +406,8 @@ public class ModItem {
 
     public static final Item EARTH_RING = registerItem("earth_ring",
         new RingItem(new FabricItemSettings().maxCount(1)));
-    
+
+
     public static final Item HEROIC_PICKAXE = registerItem("heroic_pickaxe",
         new ElementalPickaxeItem(ModToolMaturial.ESSENCE_HEROIC, 1, -2.8f, new Item.Settings()));
 
@@ -431,54 +432,54 @@ public class ModItem {
             
     
     public static final Item HEROIC_AXE = registerItem("heroic_axe",
-        new ElementalAxeItem(ModToolMaturial.ESSENCE_HEROIC, 5.0f, -3.0f, new Item.Settings()));
+        new ElementalAxeItem(ModToolMaturial.ESSENCE_HEROIC, 1, -3.0f, new Item.Settings()));
 
     public static final Item FIRE_AXE = registerItem("fire_axe",
-            new ElementalAxeItem(ModToolMaturial.ESSENCE_FIRE, 5.0f, -3.0f, new Item.Settings()));
+            new ElementalAxeItem(ModToolMaturial.ESSENCE_FIRE, 1, -3.0f, new Item.Settings()));
     
     public static final Item AQUA_AXE = registerItem("aqua_axe",
-            new ElementalAxeItem(ModToolMaturial.ESSENCE_AQUA, 5.0f, -3.0f, new Item.Settings()));
+            new ElementalAxeItem(ModToolMaturial.ESSENCE_AQUA, 1, -3.0f, new Item.Settings()));
     
     public static final Item AIR_AXE = registerItem("air_axe",
-            new ElementalAxeItem(ModToolMaturial.ESSENCE_AIR, 5.0f, -3.0f, new Item.Settings()));
+            new ElementalAxeItem(ModToolMaturial.ESSENCE_AIR, 1, -3.0f, new Item.Settings()));
     
     public static final Item DARK_AXE = registerItem("dark_axe",
-            new ElementalAxeItem(ModToolMaturial.ESSENCE_DARK, 5.0f, -3.0f, new Item.Settings()));
+            new ElementalAxeItem(ModToolMaturial.ESSENCE_DARK, 1, -3.0f, new Item.Settings()));
     
     public static final Item LIGHT_AXE = registerItem("light_axe",
-            new ElementalAxeItem(ModToolMaturial.ESSENCE_LIGHT, 5.0f, -3.0f, new Item.Settings()));
+            new ElementalAxeItem(ModToolMaturial.ESSENCE_LIGHT, 1, -3.0f, new Item.Settings()));
          
     public static final Item EARTH_AXE = registerItem("earth_axe",
-            new ElementalAxeItem(ModToolMaturial.ESSENCE_EARTH, 5.0f, -3.0f, new Item.Settings()));
+            new ElementalAxeItem(ModToolMaturial.ESSENCE_EARTH, 1, -3.0f, new Item.Settings()));
     
     
     // поджигает противника.
     public static final Item HEROIC_SWORD = registerItem("heroic_sword",
-            new ElementalSwordItem(ModToolMaturial.ESSENCE_HEROIC, 3, -2.4f, new Item.Settings()));
+            new ElementalSwordItem(ModToolMaturial.ESSENCE_HEROIC, 1, -2.4f, new Item.Settings()));
 
     // поджигает противника.
     public static final Item FIRE_SWORD = registerItem("fire_sword",
-            new ElementalSwordItem(ModToolMaturial.ESSENCE_FIRE, 3, -2.4f, new Item.Settings()));
+            new ElementalSwordItem(ModToolMaturial.ESSENCE_FIRE, 1, -2.4f, new Item.Settings()));
 
     // замедляет противника
     public static final Item AQUA_SWORD = registerItem("aqua_sword",
-            new ElementalSwordItem(ModToolMaturial.ESSENCE_AQUA, 3, -2.4f, new Item.Settings()));
+            new ElementalSwordItem(ModToolMaturial.ESSENCE_AQUA, 1, -2.4f, new Item.Settings()));
 
     // отталкивает противника
     public static final Item AIR_SWORD = registerItem("air_sword",
-            new ElementalSwordItem(ModToolMaturial.ESSENCE_AIR, 3, -2.4f, new Item.Settings()));
+            new ElementalSwordItem(ModToolMaturial.ESSENCE_AIR, 1, -2.4f, new Item.Settings()));
 
     // подкидивание вверх
     public static final Item EARTH_SWORD = registerItem("earth_sword",
-            new ElementalSwordItem(ModToolMaturial.ESSENCE_EARTH, 3, -2.4f, new Item.Settings()));
+            new ElementalSwordItem(ModToolMaturial.ESSENCE_EARTH, 1, -2.4f, new Item.Settings()));
 
     // накладивает слепоту на противника
     public static final Item DARK_SWORD = registerItem("dark_sword",
-            new ElementalSwordItem(ModToolMaturial.ESSENCE_DARK, 3, -2.4f, new Item.Settings()));
+            new ElementalSwordItem(ModToolMaturial.ESSENCE_DARK, 1, -2.4f, new Item.Settings()));
 
     // ефект спектральной стрели(свечения)
     public static final Item LIGHT_SWORD = registerItem("light_sword",
-            new ElementalSwordItem(ModToolMaturial.ESSENCE_LIGHT, 3, -2.4f, new Item.Settings()));
+            new ElementalSwordItem(ModToolMaturial.ESSENCE_LIGHT, 1, -2.4f, new Item.Settings()));
 
     
     public static final Item HEROIC_SHOVEL = registerItem("heroic_shovel",

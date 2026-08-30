@@ -23,8 +23,8 @@ import net.minecraft.world.World;
 
 public class LightStaff extends Item {
 
-    private static final int MANA_COST = 10;
-    private static final int COOLDOWN_TICKS = 15;
+    private static final int MANA_COST = 6;
+    private static final int COOLDOWN_TICKS = 1200;
     private static final double MAX_DISTANCE = 50.0;
     private static final float CLOUD_RADIUS = 2.5F;
 

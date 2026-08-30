@@ -11,20 +11,10 @@ import net.minecraft.sound.SoundEvents;
 import java.util.function.Supplier;
 
 public enum ModArmorMaterial implements ArmorMaterial {
-    ESSENCE_FIRE(
-            "essence_fire",
-            35,
-            new int[]{4, 9, 7, 4},
-            20,
-            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
-            2.5f,
-            0.1f,
-            () -> Ingredient.ofItems(ModItem.ESSENCE_FIRE)
-    ),
-
+    // Железо
     ESSENCE_AQUA(
             "essence_aqua",
-            30,
+            825,
             new int[]{3, 8, 6, 3},
             15,
             SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,
@@ -35,7 +25,7 @@ public enum ModArmorMaterial implements ArmorMaterial {
 
     ESSENCE_AIR(
             "essence_air",
-            25,
+            825,
             new int[]{3, 7, 6, 3},
             20,
             SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
@@ -44,9 +34,33 @@ public enum ModArmorMaterial implements ArmorMaterial {
             () -> Ingredient.ofItems(ModItem.ESSENCE_AIR)
     ),
 
+    // Алмазная
+    ESSENCE_FIRE(
+            "essence_fire",
+            35,
+            new int[]{4, 9, 7, 4},
+            1815,
+            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
+            2.5f,
+            0.1f,
+            () -> Ingredient.ofItems(ModItem.ESSENCE_FIRE)
+    ),
+
+    ESSENCE_EARTH(
+            "essence_earth",
+            1815,
+            new int[]{5, 10, 8, 5},
+            25,
+            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
+            3.0f,
+            0.2f,
+            () -> Ingredient.ofItems(ModItem.ESSENCE_EARTH)
+    ),
+
+    // Незеритавая 
     ESSENCE_DARK(
             "essence_dark",
-            40,
+            2500,
             new int[]{4, 9, 7, 4},
             30,
             SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
@@ -57,7 +71,7 @@ public enum ModArmorMaterial implements ArmorMaterial {
 
     ESSENCE_LIGHT(
             "essence_light",
-            20,
+            2500,
             new int[]{5, 10, 8, 5},
             30,
             SoundEvents.ITEM_ARMOR_EQUIP_GOLD,
@@ -66,17 +80,7 @@ public enum ModArmorMaterial implements ArmorMaterial {
             () -> Ingredient.ofItems(ModItem.ESSENCE_LIGHT)
     ),
 
-    ESSENCE_EARTH(
-            "essence_earth",
-            50,
-            new int[]{5, 10, 8, 5},
-            25,
-            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
-            3.0f,
-            0.2f,
-            () -> Ingredient.ofItems(ModItem.ESSENCE_EARTH)
-    ),
-
+    // Чуть лучше Незеритовой
     ESSENCE_HEROIC(
             "essence_heroic",
             50,

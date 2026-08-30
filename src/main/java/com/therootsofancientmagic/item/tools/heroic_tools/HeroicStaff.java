@@ -3,7 +3,10 @@ package com.therootsofancientmagic.item.tools.heroic_tools;
 import com.therootsofancientmagic.mana.PlayerMana;
 import com.therootsofancientmagic.util.IEntityDataSaver;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.AreaEffectCloudEntity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -25,7 +28,7 @@ import java.util.List;
 import java.util.Random;
 
 public class HeroicStaff extends Item {
-	private static final int COOLDOWN_TICKS = 200;
+	private static final int COOLDOWN_TICKS = 1200;
 	private static final int DOME_RADIUS = 2;
 	private static final double DETECTION_RADIUS = 10.0D;
 	private static final int DEBRIS_COUNT = 150;
@@ -45,19 +48,24 @@ public class HeroicStaff extends Item {
 		}
 
 		if (!world.isClient && user instanceof ServerPlayerEntity serverPlayer) {
-			if (!PlayerMana.consumeMana((IEntityDataSaver) serverPlayer, 10, serverPlayer)) {
-				return TypedActionResult.fail(stack);
-			}
-
 			ServerWorld serverWorld = (ServerWorld) world;
 
 			List<LivingEntity> targets = findNearbyEntities(serverWorld, user);
 
+			if (targets.isEmpty()) {
+				return TypedActionResult.fail(stack);
+			}
+
+			if (!PlayerMana.consumeMana((IEntityDataSaver) serverPlayer, 100, serverPlayer)) {
+				return TypedActionResult.fail(stack);
+			}
+
 			for (LivingEntity target : targets) {
 				BlockPos centerPos = target.getBlockPos().up(DOME_RADIUS);
 
-				createObsidianLavaSphere(serverWorld, centerPos);
+				createObsidianSnowSphere(serverWorld, centerPos);
 				spawnImpactEffects(serverWorld, centerPos);
+				spawnDragonBreathCloud(serverWorld, centerPos, user);
 			}
 
 			world.playSound(null, user.getBlockPos(), SoundEvents.BLOCK_STONE_PLACE, SoundCategory.PLAYERS, 1.0F, 1.0F);
@@ -76,7 +84,7 @@ public class HeroicStaff extends Item {
 		);
 	}
 
-	private void createObsidianLavaSphere(World world, BlockPos centerPos) {
+	private void createObsidianSnowSphere(World world, BlockPos centerPos) {
 		for (int x = -DOME_RADIUS; x <= DOME_RADIUS; x++) {
 			for (int y = -DOME_RADIUS; y <= DOME_RADIUS; y++) {
 				for (int z = -DOME_RADIUS; z <= DOME_RADIUS; z++) {
@@ -90,24 +98,45 @@ public class HeroicStaff extends Item {
 					if (distance >= DOME_RADIUS - 0.5D) {
 						world.setBlockState(blockPos, Blocks.OBSIDIAN.getDefaultState());
 					} else {
-						world.setBlockState(blockPos, Blocks.LAVA.getDefaultState());
+						world.setBlockState(blockPos, Blocks.SNOW_BLOCK.getDefaultState());
 					}
 				}
 			}
 		}
 	}
 
+	/**
+	 * Создаёт облако дыхания дракона внутри купола: Слабость III и Иссушение.
+	 */
+	private void spawnDragonBreathCloud(ServerWorld world, BlockPos centerPos, PlayerEntity user) {
+		AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(world, centerPos.getX() + 0.5, centerPos.getY(), centerPos.getZ() + 0.5);
+
+		cloud.setOwner(user);
+		cloud.setParticleType(ParticleTypes.DRAGON_BREATH);
+		cloud.setRadius((float) DOME_RADIUS + 0.5F);
+		cloud.setRadiusOnUse(-0.2F);
+		cloud.setWaitTime(0);
+		cloud.setDuration(200);
+		cloud.setRadiusGrowth(-0.02F);
+
+		cloud.addEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 100, 2));
+		cloud.addEffect(new StatusEffectInstance(StatusEffects.WITHER, 100, 0));
+
+		world.spawnEntity(cloud);
+	}
+
 	private void spawnImpactEffects(ServerWorld world, BlockPos centerPos) {
 		Vec3d center = Vec3d.ofCenter(centerPos);
 		ParticleEffect obsidianDust = new BlockStateParticleEffect(ParticleTypes.BLOCK, Blocks.OBSIDIAN.getDefaultState());
+		ParticleEffect snowDust = new BlockStateParticleEffect(ParticleTypes.BLOCK, Blocks.SNOW_BLOCK.getDefaultState());
 
 		sphereBurst(world, center, DEBRIS_COUNT, obsidianDust, 0.4);
-		sphereBurst(world, center, 100, ParticleTypes.LAVA, 0.35);
-		sphereBurst(world, center, DEBRIS_COUNT / 3, ParticleTypes.LARGE_SMOKE, 0.15);
+		sphereBurst(world, center, 100, snowDust, 0.35);
+		sphereBurst(world, center, DEBRIS_COUNT / 3, ParticleTypes.SNOWFLAKE, 0.15);
 		groundRing(world, center, DOME_RADIUS + 1.5, 40);
 
 		world.playSound(null, centerPos, SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.PLAYERS, 1.2F, 0.5F);
-		world.playSound(null, centerPos, SoundEvents.BLOCK_LAVA_AMBIENT, SoundCategory.PLAYERS, 0.8F, 0.8F);
+		world.playSound(null, centerPos, SoundEvents.ENTITY_ENDER_DRAGON_GROWL, SoundCategory.PLAYERS, 0.8F, 0.8F);
 	}
 
 	private void sphereBurst(ServerWorld world, Vec3d origin, int count, ParticleEffect particle, double maxSpeed) {
