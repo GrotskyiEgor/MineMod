@@ -1,0 +1,20 @@
+{
+  "type": "the-roots-of-ancient-magic:craft_table",
+  "pattern": [
+    "FFF",
+    "FPF",
+    "FFF"
+  ],
+  "key": {
+    "F": {
+      "item": "the-roots-of-ancient-magic:essence_air"
+    },
+    "P": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "the-roots-of-ancient-magic:fragment_air",
+    "count": 1
+  }
+}

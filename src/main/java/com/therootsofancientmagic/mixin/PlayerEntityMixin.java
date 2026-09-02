@@ -4,6 +4,8 @@ import com.therootsofancientmagic.component.CustomArmorHolder;
 import com.therootsofancientmagic.entity.WindChargeEntity;
 import com.therootsofancientmagic.item.ModItem;
 import com.therootsofancientmagic.item.magic.robe.ElementalRobeItem;
+import com.therootsofancientmagic.mana.PlayerMana;
+import com.therootsofancientmagic.util.IEntityDataSaver;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -152,20 +154,54 @@ public abstract class PlayerEntityMixin implements CustomArmorHolder {
     @Override
     public void ActivateAquaRobeAbility() {
         PlayerEntity player = (PlayerEntity) (Object) this;
-        if (isAquaRobeOnBack() && !player.getItemCooldownManager().isCoolingDown(ModItem.AQUA_ROBE)) {
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.DOLPHINS_GRACE, 600, 0, true, false));
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING, 600, 0, true, false));
-            player.getItemCooldownManager().set(ModItem.AQUA_ROBE, 700);
+
+        if (isAquaRobeOnBack()
+                && !player.getItemCooldownManager().isCoolingDown(ModItem.AQUA_ROBE)) {
+
+            if (PlayerMana.tryConsumeMana(player, 50)) {
+
+                player.addStatusEffect(new StatusEffectInstance(
+                        StatusEffects.DOLPHINS_GRACE,
+                        600,
+                        0,
+                        true,
+                        false
+                ));
+
+                player.addStatusEffect(new StatusEffectInstance(
+                        StatusEffects.WATER_BREATHING,
+                        600,
+                        0,
+                        true,
+                        false
+                ));
+
+                player.getItemCooldownManager().set(ModItem.AQUA_ROBE, 700);
+            }
         }
     }
 
     @Override
     public void ActivateFireRobeAbility() {
         PlayerEntity player = (PlayerEntity) (Object) this;
-        if (isFireRobeOnBack() && !player.getItemCooldownManager().isCoolingDown(ModItem.FIRE_ROBE)) {
-            this.fireRobeTimer = 200; 
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 200, 0, true, false));
-            player.getItemCooldownManager().set(ModItem.FIRE_ROBE, 300); 
+
+        if (isFireRobeOnBack()
+                && !player.getItemCooldownManager().isCoolingDown(ModItem.FIRE_ROBE)) {
+
+            if (PlayerMana.tryConsumeMana(player, 50)) {
+
+                this.fireRobeTimer = 200;
+
+                player.addStatusEffect(new StatusEffectInstance(
+                        StatusEffects.FIRE_RESISTANCE,
+                        200,
+                        0,
+                        true,
+                        false
+                ));
+
+                player.getItemCooldownManager().set(ModItem.FIRE_ROBE, 300);
+            }
         }
     }
 
@@ -314,31 +350,66 @@ public abstract class PlayerEntityMixin implements CustomArmorHolder {
     public void useFirstRingAbility() {
         PlayerEntity player = (PlayerEntity) (Object) this;
 
-        if (isFireRingInSlot(2) && !player.getItemCooldownManager().isCoolingDown(ModItem.FIRE_RING)) {
-            castFireRingSpell();
-        } else if (isAquaRingInSlot(2) && !player.getItemCooldownManager().isCoolingDown(ModItem.AQUA_RING)) {
-            castAquaRingSpell();
-        } else if (isEarthRingInSlot(2) && !player.getItemCooldownManager().isCoolingDown(ModItem.EARTH_RING)) {
-            castEarthRingSpell();
-        } else if (isAirRingInSlot(2) && !player.getItemCooldownManager().isCoolingDown(ModItem.AIR_RING)) {
-            castAirRingSpell();
-        }
+        if (isFireRingInSlot(2)
+                && !player.getItemCooldownManager().isCoolingDown(ModItem.FIRE_RING)) {
 
-        
+            if (PlayerMana.tryConsumeMana(player, 30)) {
+                castFireRingSpell();
+            }
+
+        } else if (isAquaRingInSlot(2)
+                && !player.getItemCooldownManager().isCoolingDown(ModItem.AQUA_RING)) {
+
+            if (PlayerMana.tryConsumeMana(player, 30)) {
+                castAquaRingSpell();
+            }
+
+        } else if (isEarthRingInSlot(2)
+                && !player.getItemCooldownManager().isCoolingDown(ModItem.EARTH_RING)) {
+
+            if (PlayerMana.tryConsumeMana(player, 30)) {
+                castEarthRingSpell();
+            }
+
+        } else if (isAirRingInSlot(2)
+                && !player.getItemCooldownManager().isCoolingDown(ModItem.AIR_RING)) {
+
+            if (PlayerMana.tryConsumeMana(player, 30)) {
+                castAirRingSpell();
+            }
+        }
     }
 
     @Override
     public void useSecondRingAbility() {
         PlayerEntity player = (PlayerEntity) (Object) this;
 
-        if (isFireRingInSlot(3) && !player.getItemCooldownManager().isCoolingDown(ModItem.FIRE_RING)) {
-            castFireRingSpell();
-        } else if (isAquaRingInSlot(3) && !player.getItemCooldownManager().isCoolingDown(ModItem.AQUA_RING)) {
-            castAquaRingSpell();
-        } else if (isEarthRingInSlot(3) && !player.getItemCooldownManager().isCoolingDown(ModItem.EARTH_RING)) {
-            castEarthRingSpell();
-        } else if (isAirRingInSlot(3) && !player.getItemCooldownManager().isCoolingDown(ModItem.AIR_RING)) {
-            castAirRingSpell();
+        if (isFireRingInSlot(3)
+                && !player.getItemCooldownManager().isCoolingDown(ModItem.FIRE_RING)) {
+
+            if (PlayerMana.tryConsumeMana(player, 30)) {
+                castFireRingSpell();
+            }
+        } else if (isAquaRingInSlot(3)
+                && !player.getItemCooldownManager().isCoolingDown(ModItem.AQUA_RING)) {
+
+            if (PlayerMana.tryConsumeMana(player, 30)) {
+                castAquaRingSpell();
+            }
+
+        } else if (isEarthRingInSlot(3)
+                && !player.getItemCooldownManager().isCoolingDown(ModItem.EARTH_RING)) {
+
+            if (PlayerMana.tryConsumeMana(player, 30)) {
+                castEarthRingSpell();
+            }
+
+        } else if (isAirRingInSlot(3)
+                && !player.getItemCooldownManager().isCoolingDown(ModItem.AIR_RING)) {
+
+            if (PlayerMana.tryConsumeMana(player, 30)) {
+                castAirRingSpell();
+            }
         }
     }
 

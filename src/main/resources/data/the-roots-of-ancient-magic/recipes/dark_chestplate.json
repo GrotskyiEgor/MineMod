@@ -1,0 +1,17 @@
+{
+  "type": "the-roots-of-ancient-magic:craft_table",
+  "pattern": [
+    "F F",
+    "FFF",
+    "FFF"
+  ],
+  "key": {
+    "F": {
+      "item": "the-roots-of-ancient-magic:fragment_dark"
+    }
+  },
+  "result": {
+    "item": "the-roots-of-ancient-magic:dark_chestplate",
+    "count": 1
+  }
+}

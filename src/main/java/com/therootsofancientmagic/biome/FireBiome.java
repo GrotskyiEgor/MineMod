@@ -26,14 +26,11 @@ public class FireBiome {
                         carverLookup
                 );
 
-        // Обычные пещеры и руды
         DefaultBiomeFeatures.addLandCarvers(generationSettings);
         DefaultBiomeFeatures.addDefaultOres(generationSettings);
 
-        // Пустынная растительность
-        // DefaultBiomeFeatures.addDesertGrass(generationSettings);
+        DefaultBiomeFeatures.addSavannaGrass(generationSettings);
 
-        // Твои собственные фичи
         addFeature(
                 generationSettings,
                 featureLookup,
@@ -48,11 +45,15 @@ public class FireBiome {
                 GenerationStep.Feature.LAKES
         );
 
+        addFeature(
+                generationSettings,
+                featureLookup,
+                "fire_acacia",
+                GenerationStep.Feature.VEGETAL_DECORATION
+        );
+
         SpawnSettings.Builder spawnSettings =
                 new SpawnSettings.Builder();
-
-        // Пустынные мобы
-        DefaultBiomeFeatures.addDesertMobs(spawnSettings);
 
         return new Biome.Builder()
                 .precipitation(false)

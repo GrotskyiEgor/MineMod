@@ -1,0 +1,16 @@
+{
+  "type": "the-roots-of-ancient-magic:craft_table",
+  "pattern": [
+    "FF ",
+    "FP ",
+    " P "
+  ],
+  "key": {
+    "F": { "item": "the-roots-of-ancient-magic:fragment_heroic" },
+    "P": { "item": "minecraft:stick" }
+  },
+  "result": {
+    "item": "the-roots-of-ancient-magic:heroic_axe",
+    "count": 1
+  }
+}

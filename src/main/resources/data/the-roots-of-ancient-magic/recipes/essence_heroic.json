@@ -1,0 +1,32 @@
+{
+  "type": "the-roots-of-ancient-magic:craft_table",
+  "pattern": [
+    "ADQ",
+    "L L",
+    "FDE"
+  ],
+  "key": {
+    "D": {
+      "item": "the-roots-of-ancient-magic:essence_dark"
+    },
+    "L": {
+      "item": "the-roots-of-ancient-magic:essence_light"
+    },
+    "A": {
+      "item": "the-roots-of-ancient-magic:essence_air"
+    },
+    "Q": {
+      "item": "the-roots-of-ancient-magic:essence_aqua"
+    },
+    "F": {
+      "item": "the-roots-of-ancient-magic:essence_fire"
+    },
+    "E": {
+      "item": "the-roots-of-ancient-magic:essence_earth"
+    }
+  },
+  "result": {
+    "item": "the-roots-of-ancient-magic:essence_heroic",
+    "count": 2
+  }
+}

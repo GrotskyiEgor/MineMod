@@ -36,7 +36,7 @@ public class RobeAbilityServerHandler {
 
                 if (player.getItemCooldownManager().isCoolingDown(robeItem)) return;
                 
-                if (!player.isCreative() && !PlayerMana.consumeMana((IEntityDataSaver) player, 10, player)) {
+                if (!player.isCreative() && !PlayerMana.consumeMana((IEntityDataSaver) player, 50, player)) {
                     return;
                 }
 

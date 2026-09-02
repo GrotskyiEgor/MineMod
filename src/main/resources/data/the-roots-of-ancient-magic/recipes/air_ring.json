@@ -1,0 +1,23 @@
+{
+  "type": "the-roots-of-ancient-magic:craft_table",
+  "pattern": [
+    "RG ",
+    "GSG",
+    " G "
+  ],
+  "key": {
+    "R": {
+      "item": "the-roots-of-ancient-magic:fragment_air"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "item": "the-roots-of-ancient-magic:air_ring",
+    "count": 1
+  }
+}

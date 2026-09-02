@@ -1,7 +1,12 @@
 package com.therootsofancientmagic.mana; // Путь к нашей папке mana
 
 import com.therootsofancientmagic.util.IEntityDataSaver;
+
+import org.spongepowered.asm.mixin.Unique;
+
 import com.therootsofancientmagic.network.ModMessages; // Импортируем нашу сетевую систему
+
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 
@@ -40,6 +45,19 @@ public class PlayerMana {
             return true;
         }
         return false;
+    }
+
+    @Unique
+    public static boolean tryConsumeMana(PlayerEntity player, int mana_cost) {
+        if (!(player instanceof ServerPlayerEntity serverPlayer)) {
+            return false;
+        }
+
+        return PlayerMana.consumeMana(
+                (IEntityDataSaver) serverPlayer,
+                mana_cost,
+                serverPlayer
+        );
     }
 
     // Пассивная регенерация мани

@@ -1,5 +1,7 @@
 package com.therootsofancientmagic.biome;
 
+import com.therootsofancientmagic.TheRootsOfAncientMagic;
+
 import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
@@ -18,7 +20,6 @@ public class DarkBiome {
             RegistryEntryLookup<PlacedFeature> featureLookup,
             RegistryEntryLookup<ConfiguredCarver<?>> carverLookup
     ) {
-
         GenerationSettings.LookupBackedBuilder generationSettings =
                 new GenerationSettings.LookupBackedBuilder(
                         featureLookup,
@@ -28,15 +29,28 @@ public class DarkBiome {
         DefaultBiomeFeatures.addLandCarvers(generationSettings);
         DefaultBiomeFeatures.addAmethystGeodes(generationSettings);
         DefaultBiomeFeatures.addDefaultOres(generationSettings);
+        DefaultBiomeFeatures.addDungeons(generationSettings);
+        DefaultBiomeFeatures.addTaigaGrass(generationSettings);
 
-        addVanillaFeature(
-                generationSettings,
-                featureLookup,
-                "trees_plains"
+        generationSettings.feature(
+                GenerationStep.Feature.VEGETAL_DECORATION,
+                featureLookup.getOrThrow(
+                        RegistryKey.of(
+                                RegistryKeys.PLACED_FEATURE,
+                                TheRootsOfAncientMagic.id("dark_spruce")
+                        )
+                )
         );
 
-        DefaultBiomeFeatures.addTaigaGrass(generationSettings);
-        DefaultBiomeFeatures.addDefaultMushrooms(generationSettings);
+        generationSettings.feature(
+                GenerationStep.Feature.VEGETAL_DECORATION,
+                featureLookup.getOrThrow(
+                        RegistryKey.of(
+                                RegistryKeys.PLACED_FEATURE,
+                                TheRootsOfAncientMagic.id("dark_red_mushroom")
+                        )
+                )
+        );
 
         DefaultBiomeFeatures.addSprings(generationSettings);
 
@@ -47,40 +61,21 @@ public class DarkBiome {
         DefaultBiomeFeatures.addBatsAndMonsters(spawnSettings);
 
         return new Biome.Builder()
-                .precipitation(false)
+                .precipitation(true)
                 .temperature(0.15F)
                 .downfall(0.9F)
                 .effects(
                         new BiomeEffects.Builder()
-                                .waterColor(0xB39DDB)
-                                .waterFogColor(0x9575CD)
-                                .fogColor(0x9C7CE0)
-                                .skyColor(0x7E57C2)
-                                .grassColor(0x9370DB)
-                                .foliageColor(0xE1BEE7)
+                                .waterColor(0x6A3FA0)
+                                .waterFogColor(0x3A1F5C)
+                                .fogColor(0x5A3A7A)
+                                .skyColor(0x7B4FB3)
+                                .grassColor(0xA855F7)
+                                .foliageColor(0x9333EA)
                                 .build()
                 )
                 .spawnSettings(spawnSettings.build())
                 .generationSettings(generationSettings.build())
                 .build();
-    }
-
-    private static void addVanillaFeature(
-            GenerationSettings.LookupBackedBuilder gen,
-            RegistryEntryLookup<PlacedFeature> featureLookup,
-            String featureId
-    ) {
-        gen.feature(
-                GenerationStep.Feature.VEGETAL_DECORATION,
-                featureLookup.getOrThrow(
-                        RegistryKey.of(
-                                RegistryKeys.PLACED_FEATURE,
-                                net.minecraft.util.Identifier.of(
-                                        "minecraft",
-                                        featureId
-                                )
-                        )
-                )
-        );
     }
 }

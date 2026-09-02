@@ -1,0 +1,17 @@
+{
+  "type": "the-roots-of-ancient-magic:craft_table",
+  "pattern": [
+    "F F",
+    "FFF",
+    "FFF"
+  ],
+  "key": {
+    "F": {
+      "item": "the-roots-of-ancient-magic:fragment_earth"
+    }
+  },
+  "result": {
+    "item": "the-roots-of-ancient-magic:earth_chestplate",
+    "count": 1
+  }
+}

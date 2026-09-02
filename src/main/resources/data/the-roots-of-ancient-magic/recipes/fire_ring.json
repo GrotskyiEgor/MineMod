@@ -1,0 +1,23 @@
+{
+  "type": "the-roots-of-ancient-magic:craft_table",
+  "pattern": [
+    "RG ",
+    "GSG",
+    " G "
+  ],
+  "key": {
+    "R": {
+      "item": "the-roots-of-ancient-magic:fragment_fire"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "S": {
+      "item": "minecraft:flint_and_steel"
+    }
+  },
+  "result": {
+    "item": "the-roots-of-ancient-magic:fire_ring",
+    "count": 1
+  }
+}

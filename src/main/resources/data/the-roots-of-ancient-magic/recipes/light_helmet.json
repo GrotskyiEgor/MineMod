@@ -1,0 +1,16 @@
+{
+  "type": "the-roots-of-ancient-magic:craft_table",
+  "pattern": [
+    "FFF",
+    "F F"
+  ],
+  "key": {
+    "F": {
+      "item": "the-roots-of-ancient-magic:fragment_light"
+    }
+  },
+  "result": {
+    "item": "the-roots-of-ancient-magic:light_helmet",
+    "count": 1
+  }
+}

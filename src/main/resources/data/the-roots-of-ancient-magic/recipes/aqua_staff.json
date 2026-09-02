@@ -1,0 +1,23 @@
+{
+  "type": "the-roots-of-ancient-magic:craft_table",
+  "pattern": [
+    " FE",
+    " PF",
+    "P  "
+  ],
+  "key": {
+    "F": {
+      "item": "the-roots-of-ancient-magic:fragment_aqua"
+    },
+    "P": {
+      "item": "minecraft:stick"
+    },
+    "E": {
+      "item": "the-roots-of-ancient-magic:essence_aqua"
+    }
+  },
+  "result": {
+    "item": "the-roots-of-ancient-magic:aqua_staff",
+    "count": 1
+  }
+}

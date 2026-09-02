@@ -1,0 +1,16 @@
+{
+  "type": "the-roots-of-ancient-magic:craft_table",
+  "pattern": [
+    "F F",
+    "F F"
+  ],
+  "key": {
+    "F": {
+      "item": "the-roots-of-ancient-magic:fragment_fire"
+    }
+  },
+  "result": {
+    "item": "the-roots-of-ancient-magic:fire_boots",
+    "count": 1
+  }
+}

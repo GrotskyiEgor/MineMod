@@ -1,21 +1,23 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "category": "misc",
-    "pattern": [
-        "QQQ",
-        "AQA",
-        "AAA"
-    ],
-    "key": {
-        "Q": {
-            "item": "the-roots-of-ancient-magic:flower_fire"
-        },
-        "A": {
-            "item": "minecraft:gunpowder"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " C ",
+    " K ",
+    " F "
+  ],
+  "key": {
+    "C": {
+      "item": "the-roots-of-ancient-magic:flower_fire"
     },
-    "result": {
-        "item": "the-roots-of-ancient-magic:furnace_powder",
-        "count": 1
+    "K": {
+      "item": "minecraft:cauldron"
+    },
+    "F": {
+      "item": "minecraft:campfire"
     }
+  },
+  "result": {
+    "item": "the-roots-of-ancient-magic:furnace_powder",
+    "count": 1
+  }
 }

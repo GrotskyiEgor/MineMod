@@ -48,22 +48,22 @@ public class LightBiome {
         DefaultBiomeFeatures.addBatsAndMonsters(spawnSettings);
 
         return new Biome.Builder()
-                .precipitation(false)
-                .temperature(1.6F)
-                .downfall(0.0F)
-                .effects(
-                        new BiomeEffects.Builder()
-                                .waterColor(0x4FC3F7)
-                                .waterFogColor(0x0288D1)
-                                .fogColor(0xFFF9C4)
-                                .skyColor(0x90CAF9)
-                                .grassColor(0xFFF200)
-                                .foliageColor(0xFFC107)
-                                .build()
-                )
-                .spawnSettings(spawnSettings.build())
-                .generationSettings(generationSettings.build())
-                .build();
+        .precipitation(false)
+        .temperature(1.6F)
+        .downfall(0.0F)
+        .effects(
+                new BiomeEffects.Builder()
+                        .waterColor(0xFFFF00)
+                        .waterFogColor(0xCC9900)
+                        .fogColor(0xFFFF66)
+                        .skyColor(0xFFFF99)
+                        .grassColor(0xFFF200)
+                        .foliageColor(0xFFB800)
+                        .build()
+        )
+        .spawnSettings(spawnSettings.build())
+        .generationSettings(generationSettings.build())
+        .build();
     }
 
     private static void addVanillaFeature(

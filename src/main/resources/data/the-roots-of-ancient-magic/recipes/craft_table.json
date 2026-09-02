@@ -1,40 +1,30 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "category": "misc",
-    "pattern": [
-        "QWE",
-        "ASD",
-        "ZXQ"
-    ],
-    "key": {
-        "Q": {
-            "item": "minecraft:gunpowder"
-        },
-        "W": {
-            "item": "the-roots-of-ancient-magic:essence_fire"
-        },
-        "E": {
-            "item": "the-roots-of-ancient-magic:essence_aqua"
-        },
-        "A": {
-            "item": "the-roots-of-ancient-magic:essence_air"
-        },
-        "S": {
-            "item": "minecraft:crafting_table"
-        },
-        "D": {
-            "item": "the-roots-of-ancient-magic:essence_earth"
-        },
-        "Z": {
-            "item": "the-roots-of-ancient-magic:essence_dark"
-        },
-        "X": {
-            "item": "the-roots-of-ancient-magic:essence_light"
-        }
-        
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " F ",
+    "IBI",
+    "PWP"
+  ],
+  "key": {
+    "F": {
+      "item": "the-roots-of-ancient-magic:flower_dark"
     },
-    "result": {
-        "item": "the-roots-of-ancient-magic:craft_table",
-        "count": 1
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "B": {
+      "item": "minecraft:book"
+    },
+    "P": {
+      "item": "minecraft:oak_planks"
+    },
+    "W": {
+      "item": "minecraft:crafting_table"
     }
+  },
+  "result": {
+    "item": "the-roots-of-ancient-magic:craft_table",
+    "count": 1
+  }
 }

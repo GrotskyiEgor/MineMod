@@ -13,7 +13,7 @@ import java.util.function.Supplier;
 public enum ModArmorMaterial implements ArmorMaterial {
     // Железо
     ESSENCE_AQUA(
-            "essence_aqua",
+            "the-roots-of-ancient-magic:essence_aqua",
             825,
             new int[]{3, 8, 6, 3},
             15,
@@ -24,7 +24,7 @@ public enum ModArmorMaterial implements ArmorMaterial {
     ),
 
     ESSENCE_AIR(
-            "essence_air",
+            "the-roots-of-ancient-magic:essence_air",
             825,
             new int[]{3, 7, 6, 3},
             20,
@@ -36,7 +36,7 @@ public enum ModArmorMaterial implements ArmorMaterial {
 
     // Алмазная
     ESSENCE_FIRE(
-            "essence_fire",
+            "the-roots-of-ancient-magic:essence_fire",
             35,
             new int[]{4, 9, 7, 4},
             1815,
@@ -47,7 +47,7 @@ public enum ModArmorMaterial implements ArmorMaterial {
     ),
 
     ESSENCE_EARTH(
-            "essence_earth",
+            "the-roots-of-ancient-magic:essence_earth",
             1815,
             new int[]{5, 10, 8, 5},
             25,
@@ -59,7 +59,7 @@ public enum ModArmorMaterial implements ArmorMaterial {
 
     // Незеритавая 
     ESSENCE_DARK(
-            "essence_dark",
+            "the-roots-of-ancient-magic:essence_dark",
             2500,
             new int[]{4, 9, 7, 4},
             30,
@@ -70,7 +70,7 @@ public enum ModArmorMaterial implements ArmorMaterial {
     ),
 
     ESSENCE_LIGHT(
-            "essence_light",
+            "the-roots-of-ancient-magic:essence_light",
             2500,
             new int[]{5, 10, 8, 5},
             30,
@@ -82,7 +82,7 @@ public enum ModArmorMaterial implements ArmorMaterial {
 
     // Чуть лучше Незеритовой
     ESSENCE_HEROIC(
-            "essence_heroic",
+            "the-roots-of-ancient-magic:essence_heroic",
             50,
             new int[]{5, 10, 8, 5},
             25,

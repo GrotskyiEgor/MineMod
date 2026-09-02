@@ -24,9 +24,6 @@ public class PlayerTickMixin {
             return;
         }
 
-        // =========================
-        // 🔥 FIRE ARMOR
-        // =========================
         if (hasFullSet(
                 player,
                 ModItem.FIRE_HELMET,
@@ -45,9 +42,6 @@ public class PlayerTickMixin {
             ));
         }
 
-        // =========================
-        // 💧 AQUA ARMOR
-        // =========================
         else if (hasFullSet(
                 player,
                 ModItem.AQUA_HELMET,
@@ -66,9 +60,6 @@ public class PlayerTickMixin {
             ));
         }
 
-        // =========================
-        // 🌬 AIR ARMOR
-        // =========================
         else if (hasFullSet(
                 player,
                 ModItem.AIR_HELMET,
@@ -98,9 +89,6 @@ public class PlayerTickMixin {
             ));
         }
 
-        // =========================
-        // 🌑 DARK ARMOR
-        // =========================
         else if (hasFullSet(
                 player,
                 ModItem.DARK_HELMET,
@@ -119,9 +107,6 @@ public class PlayerTickMixin {
             ));
         }
 
-        // =========================
-        // ☀ LIGHT ARMOR
-        // =========================
         else if (hasFullSet(
                 player,
                 ModItem.LIGHT_HELMET,
@@ -141,9 +126,6 @@ public class PlayerTickMixin {
             ));
         }
 
-        // =========================
-        // 🪨 EARTH ARMOR
-        // =========================
         else if (hasFullSet(
                 player,
                 ModItem.EARTH_HELMET,
@@ -163,9 +145,6 @@ public class PlayerTickMixin {
             ));
         }
 
-        // =========================
-        // ⚔ HEROIC ARMOR
-        // =========================
         else if (hasFullSet(
                 player,
                 ModItem.HEROIC_HELMET,

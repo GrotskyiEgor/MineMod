@@ -1,8 +1,10 @@
 package com.therootsofancientmagic.client;
 
 import com.therootsofancientmagic.TheRootsOfAncientMagic;
+import com.therootsofancientmagic.client.biomes.dark.DarkBiomeParticles;
 import com.therootsofancientmagic.client.biomes.earth.EarthBiomeParticles;
 import com.therootsofancientmagic.client.biomes.earth.EarthWindOverlay;
+import com.therootsofancientmagic.client.biomes.fire.FireBiomeParticles;
 import com.therootsofancientmagic.entity.ModEntities;
 import com.therootsofancientmagic.item.tools.unique_tools.BattleAxeItem;
 import net.minecraft.client.option.Perspective;
@@ -36,7 +38,9 @@ public class TheRootsOfAncientMagicClient implements ClientModInitializer {
         EarthBiomeParticles.register();
         EarthWindOverlay.register();
 
-        // EntityRendererRegistry.register(ModEntities.WIND_CHARGE, FlyingItemEntityRenderer::new);
+        DarkBiomeParticles.register();
+
+        FireBiomeParticles.register();
 
         robeAbilityKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
                 "key.therootsofancientmagic.robe_ability",

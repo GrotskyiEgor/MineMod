@@ -21,17 +21,17 @@ public class ModItemGroups {
                     ))
                     .icon(() -> new ItemStack(ModItem.HEROIC_SWORD))
                     .entries((context, entries) -> {
+                        entries.add(ModItem.BATTLE_AXE);
+
+                        entries.add(ModItem.LIGHTNING_HAMMER);
+                        entries.add(ModItem.NECROMANCER_SCYTHE);
+
                         entries.add(ModItem.FIRE_STAFF);
                         entries.add(ModItem.AIR_STAFF);
                         entries.add(ModItem.EARTH_STAFF);
                         entries.add(ModItem.AQUA_STAFF);    
                         entries.add(ModItem.LIGHT_STAFF); 
                         entries.add(ModItem.DARK_STAFF); 
-
-
-                        entries.add(ModItem.BATTLE_AXE);
-                        entries.add(ModItem.LIGHTNING_HAMMER);
-                        entries.add(ModItem.NECROMANCER_SCYTHE);
                         
                         entries.add(ModItem.HEROIC_STAFF);
                         entries.add(ModItem.HEROIC_SWORD);
@@ -54,34 +54,19 @@ public class ModItemGroups {
                         entries.add(ModItem.LIGHT_AXE);
                         entries.add(ModItem.EARTH_AXE);
 
-                        entries.add(ModItem.AQUA_ROBE);
-                        entries.add(ModItem.FIRE_ROBE);
-                        entries.add(ModItem.AIR_ROBE);
-                        entries.add(ModItem.EARTH_ROBE);
-                        
                         entries.add(ModItem.FIRE_SHOVEL);
                         entries.add(ModItem.AQUA_SHOVEL);
                         entries.add(ModItem.AIR_SHOVEL);
                         entries.add(ModItem.DARK_SHOVEL);
                         entries.add(ModItem.LIGHT_SHOVEL);
                         entries.add(ModItem.EARTH_SHOVEL);
-
+                        
                         entries.add(ModItem.FIRE_HOE);
                         entries.add(ModItem.AQUA_HOE);
                         entries.add(ModItem.AIR_HOE);
                         entries.add(ModItem.DARK_HOE);
                         entries.add(ModItem.LIGHT_HOE);
                         entries.add(ModItem.EARTH_HOE);
-
-                        entries.add(ModItem.AQUA_NECKLACE);
-                        entries.add(ModItem.FIRE_NECKLACE);
-                        entries.add(ModItem.EARTH_NECKLACE);
-                        entries.add(ModItem.AIR_NECKLACE);
-
-                        entries.add(ModItem.AQUA_RING);
-                        entries.add(ModItem.FIRE_RING);
-                        entries.add(ModItem.AIR_RING);
-                        entries.add(ModItem.EARTH_RING);
                     })
                     .build()
     );
@@ -102,10 +87,19 @@ public class ModItemGroups {
                         entries.add(ModItem.ESSENCE_LIGHT);
                         entries.add(ModItem.ESSENCE_DARK);
                         entries.add(ModItem.ESSENCE_HEROIC);
+
+                        entries.add(ModItem.FRAGMENT_AQUA);
+                        entries.add(ModItem.FRAGMENT_FIRE);
+                        entries.add(ModItem.FRAGMENT_AIR);
+                        entries.add(ModItem.FRAGMENT_EARTH);
+                        entries.add(ModItem.FRAGMENT_LIGHT);
+                        entries.add(ModItem.FRAGMENT_DARK);
+                        entries.add(ModItem.FRAGMENT_HEROIC);
                         
                         entries.add(ModBlock.FURNACE_POWDER);
                         entries.add(ModBlock.CRAFT_TABLE);
-                        
+                        entries.add(ModItem.IRON_STICK);
+
                         entries.add(ModFlowerBlock.FLOWER_DARK);
                         entries.add(ModFlowerBlock.FLOWER_LIGHT);
                         entries.add(ModFlowerBlock.FLOWER_AQUA);
@@ -159,6 +153,21 @@ public class ModItemGroups {
                         entries.add(ModItem.HEROIC_CHESTPLATE);                       
                         entries.add(ModItem.HEROIC_LEGGINGS);                      
                         entries.add(ModItem.HEROIC_BOOTS);
+
+                        entries.add(ModItem.AQUA_ROBE);
+                        entries.add(ModItem.FIRE_ROBE);
+                        entries.add(ModItem.AIR_ROBE);
+                        entries.add(ModItem.EARTH_ROBE);
+                        
+                        entries.add(ModItem.AQUA_NECKLACE);
+                        entries.add(ModItem.FIRE_NECKLACE);
+                        entries.add(ModItem.EARTH_NECKLACE);
+                        entries.add(ModItem.AIR_NECKLACE);
+
+                        entries.add(ModItem.AQUA_RING);
+                        entries.add(ModItem.FIRE_RING);
+                        entries.add(ModItem.AIR_RING);
+                        entries.add(ModItem.EARTH_RING);
                     })
                     .build()
     );

@@ -321,6 +321,10 @@ public class ModItem {
         new DarkStaff(new Item.Settings())
     );
 
+    public static final Item IRON_STICK = registerItem(
+        "iron_stick",
+        new Item(new Item.Settings())
+    );
 
     public static final Item ESSENCE_AQUA = registerItem(
         "essence_aqua",
@@ -353,6 +357,39 @@ public class ModItem {
     );
     public static final Item ESSENCE_HEROIC = registerItem(
         "essence_heroic",
+        new Item(new Item.Settings())    );
+
+    public static final Item FRAGMENT_AQUA = registerItem(
+        "fragment_aqua",
+        new Item(new Item.Settings())
+    );
+
+    public static final Item FRAGMENT_FIRE = registerItem(
+        "fragment_fire",
+        new Item(new Item.Settings())
+    );
+
+    public static final Item FRAGMENT_AIR = registerItem(
+        "fragment_air",
+        new Item(new Item.Settings())
+    );
+
+    public static final Item FRAGMENT_EARTH = registerItem(
+        "fragment_earth",
+        new Item(new Item.Settings())
+    );
+
+    public static final Item FRAGMENT_LIGHT = registerItem(
+        "fragment_light",
+        new Item(new Item.Settings())
+    );
+
+    public static final Item FRAGMENT_DARK = registerItem(
+        "fragment_dark",
+        new Item(new Item.Settings())
+    );
+    public static final Item FRAGMENT_HEROIC = registerItem(
+        "fragment_heroic",
         new Item(new Item.Settings())
     );
     

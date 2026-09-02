@@ -1,0 +1,24 @@
+{
+  "type": "the-roots-of-ancient-magic:craft_table",
+  "category": "equipment",
+  "pattern": [
+    "PXP",
+    "PN ",
+    " N "
+  ],
+  "key": {
+    "P": {
+      "item": "the-roots-of-ancient-magic:fragment_heroic"
+    },
+    "X": {
+      "item": "the-roots-of-ancient-magic:essence_heroic"
+    },
+    "N": {
+      "item": "the-roots-of-ancient-magic:iron_stick"
+    }
+  },
+  "result": {
+    "item": "the-roots-of-ancient-magic:battle_axe",
+    "count": 1
+  }
+}

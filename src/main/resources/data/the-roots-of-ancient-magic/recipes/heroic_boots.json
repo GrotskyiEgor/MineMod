@@ -1,0 +1,16 @@
+{
+  "type": "the-roots-of-ancient-magic:craft_table",
+  "pattern": [
+    "F F",
+    "F F"
+  ],
+  "key": {
+    "F": {
+      "item": "the-roots-of-ancient-magic:fragment_heroic"
+    }
+  },
+  "result": {
+    "item": "the-roots-of-ancient-magic:heroic_boots",
+    "count": 1
+  }
+}

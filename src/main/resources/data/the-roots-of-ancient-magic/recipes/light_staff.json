@@ -1,0 +1,23 @@
+{
+  "type": "the-roots-of-ancient-magic:craft_table",
+  "pattern": [
+    " FE",
+    " PF",
+    "P  "
+  ],
+  "key": {
+    "F": {
+      "item": "the-roots-of-ancient-magic:fragment_light"
+    },
+    "P": {
+      "item": "minecraft:stick"
+    },
+    "E": {
+      "item": "the-roots-of-ancient-magic:essence_light"
+    }
+  },
+  "result": {
+    "item": "the-roots-of-ancient-magic:light_staff",
+    "count": 1
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "the-roots-of-ancient-magic:craft_table",
+  "pattern": [
+    "RG ",
+    "GSG",
+    " G "
+  ],
+  "key": {
+    "R": {
+      "item": "the-roots-of-ancient-magic:fragment_aqua"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "S": {
+      "item": "minecraft:water_bucket"
+    }
+  },
+  "result": {
+    "item": "the-roots-of-ancient-magic:aqua_ring",
+    "count": 1
+  }
+}

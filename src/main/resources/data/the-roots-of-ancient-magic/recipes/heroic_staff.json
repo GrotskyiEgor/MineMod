@@ -1,0 +1,23 @@
+{
+  "type": "the-roots-of-ancient-magic:craft_table",
+  "pattern": [
+    " FE",
+    " PF",
+    "P  "
+  ],
+  "key": {
+    "F": {
+      "item": "the-roots-of-ancient-magic:fragment_heroic"
+    },
+    "P": {
+      "item": "minecraft:stick"
+    },
+    "E": {
+      "item": "the-roots-of-ancient-magic:essence_heroic"
+    }
+  },
+  "result": {
+    "item": "the-roots-of-ancient-magic:heroic_staff",
+    "count": 1
+  }
+}

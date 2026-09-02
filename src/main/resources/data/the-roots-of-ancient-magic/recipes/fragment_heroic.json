@@ -1,0 +1,20 @@
+{
+  "type": "the-roots-of-ancient-magic:craft_table",
+  "pattern": [
+    "FFF",
+    "FPF",
+    "FFF"
+  ],
+  "key": {
+    "F": {
+      "item": "the-roots-of-ancient-magic:essence_heroic"
+    },
+    "P": {
+      "item": "minecraft:netherite_scrap"
+    }
+  },
+  "result": {
+    "item": "the-roots-of-ancient-magic:fragment_heroic",
+    "count": 1
+  }
+}
